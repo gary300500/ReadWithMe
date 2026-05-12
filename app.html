@@ -1,0 +1,4204 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>ReadWithMe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f3ea;
+  --bg-soft: #fbf7f0;
+  --surface: rgba(255, 252, 247, 0.88);
+  --surface-strong: #fffaf5;
+  --surface-muted: #f4ecde;
+  --text: #1f1b16;
+  --text-soft: #6c665f;
+  --text-muted: #a0968a;
+  --border: rgba(171, 137, 95, 0.18);
+  --border-strong: rgba(171, 137, 95, 0.28);
+  --accent: #b67a2f;
+  --accent-dark: #9b6422;
+  --accent-soft: #efe0c8;
+  --danger: #c85f4b;
+  --shadow: 0 18px 40px rgba(80, 54, 24, 0.12);
+  --hairline: rgba(77, 54, 31, 0.08);
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif: "Noto Serif SC", "Songti SC", "STSong", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(211, 183, 140, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.78), transparent 28%),
+    #f0ece6;
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  width: min(100vw, 430px);
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 8%, rgba(255, 255, 255, 0.74), transparent 22%),
+    linear-gradient(180deg, #fbf7f0 0%, #f8f3ea 52%, #fbf7f0 100%);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  color: var(--text);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(166, 122, 67, 0.22);
+  border-radius: 999px;
+}
+
+@media (min-width: 760px) {
+  #root {
+    height: min(100dvh - 28px, 932px);
+    margin-top: 14px;
+    border: 10px solid #111;
+    border-radius: 42px;
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.22);
+  }
+}
+
+.app-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 7%, rgba(255, 255, 255, 0.82), transparent 21%),
+    linear-gradient(180deg, #fbf7f0 0%, #f8f3ea 55%, #fbf7f0 100%);
+}
+
+.scroll-area {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.statusbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 22px;
+  flex: 0 0 44px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.statusbar .island {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 126px;
+  height: 36px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #050505;
+  box-shadow: inset -19px 0 0 rgba(28, 75, 142, 0.25);
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.signal {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 13px;
+}
+
+.signal i {
+  display: block;
+  width: 3px;
+  background: #111;
+  border-radius: 2px;
+}
+
+.signal i:nth-child(1) { height: 4px; }
+.signal i:nth-child(2) { height: 7px; }
+.signal i:nth-child(3) { height: 10px; }
+.signal i:nth-child(4) { height: 13px; }
+
+.wifi {
+  position: relative;
+  width: 15px;
+  height: 12px;
+}
+
+.wifi::before,
+.wifi::after {
+  position: absolute;
+  left: 50%;
+  content: "";
+  transform: translateX(-50%);
+  border: 2px solid #111;
+  border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+}
+
+.wifi::before {
+  top: 0;
+  width: 14px;
+  height: 8px;
+}
+
+.wifi::after {
+  top: 5px;
+  width: 8px;
+  height: 5px;
+}
+
+.battery {
+  position: relative;
+  width: 23px;
+  height: 12px;
+  border: 1.8px solid #111;
+  border-radius: 4px;
+}
+
+.battery::before {
+  position: absolute;
+  right: -4px;
+  top: 3px;
+  width: 2px;
+  height: 5px;
+  content: "";
+  background: #111;
+  border-radius: 0 2px 2px 0;
+}
+
+.battery::after {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 15px;
+  height: 6px;
+  content: "";
+  background: #111;
+  border-radius: 2px;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: #4f4a44;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.round-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--text);
+  border-radius: 999px;
+  background: rgba(241, 230, 210, 0.78);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.round-button:active {
+  transform: scale(0.96);
+}
+
+.screen-body {
+  padding: 10px 18px 0;
+}
+
+.library-scroll {
+  padding-bottom: 98px;
+}
+
+.screen-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 18px;
+}
+
+.screen-title {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.count-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  color: #81776b;
+  background: rgba(235, 229, 219, 0.82);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.import-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 17px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: rgba(255, 252, 247, 0.84);
+  box-shadow: 0 9px 26px rgba(80, 54, 24, 0.07);
+}
+
+.import-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.import-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  flex: 0 0 auto;
+  color: #fff;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #f6ead4, #fff7ec);
+}
+
+.import-icon::before {
+  width: 32px;
+  height: 26px;
+  content: "";
+  border-radius: 4px 4px 7px 7px;
+  background: linear-gradient(180deg, #b58242, #9d642b);
+  box-shadow: inset 0 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+.import-icon svg {
+  position: absolute;
+  bottom: 19px;
+  color: #fffaf5;
+}
+
+.import-card h2 {
+  margin: 0 0 6px;
+  color: #2a261f;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.import-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.chevron {
+  color: #7c7267;
+}
+
+.privacy-card {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 250, 245, 0.46);
+}
+
+.privacy-badge {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.privacy-title {
+  margin-bottom: 4px;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.privacy-text {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.book-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+}
+
+.book-row {
+  display: flex;
+  width: 100%;
+  gap: 14px;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 252, 247, 0.72);
+  box-shadow: 0 8px 18px rgba(80, 54, 24, 0.04);
+}
+
+.book-cover {
+  position: relative;
+  width: 64px;
+  height: 92px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 7px;
+  color: #fff;
+  background: linear-gradient(145deg, #111823, #4e6674);
+  box-shadow: 0 7px 14px rgba(46, 29, 12, 0.16);
+}
+
+.book-cover::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.24), transparent 24%),
+    linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.1) 46%, transparent 47%);
+}
+
+.book-cover::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  content: "";
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.cover-title {
+  position: absolute;
+  left: 16px;
+  right: 10px;
+  top: 15px;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.08;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.cover-mark {
+  position: absolute;
+  left: 15px;
+  bottom: 8px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.cover-1 { background: linear-gradient(150deg, #111823, #587181 60%, #1f2228); }
+.cover-2 { background: linear-gradient(150deg, #120c08, #a15b15 58%, #2b1710); }
+.cover-3 { background: linear-gradient(150deg, #d88c48, #49362d 57%, #161111); }
+.cover-4 { background: linear-gradient(150deg, #e7d6b9, #5d6a6d 54%, #332f2b); }
+.cover-5 { background: linear-gradient(150deg, #132134, #4b769b 58%, #09111c); }
+.cover-6 { background: linear-gradient(150deg, #2a170f, #8b5c2c 58%, #15100d); }
+
+.book-info {
+  min-width: 0;
+  flex: 1;
+  padding-top: 2px;
+}
+
+.book-row-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.book-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  overflow: hidden;
+  color: #241f18;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.more-button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  color: #81786d;
+  border-radius: 999px;
+}
+
+.more-button:active {
+  background: rgba(166, 122, 67, 0.12);
+}
+
+.book-percent {
+  margin-top: 5px;
+  color: #7f776c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.new-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 7px;
+  color: #fff;
+  border-radius: 999px;
+  background: #8a4e20;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+.progress-track {
+  width: 150px;
+  max-width: 100%;
+  height: 4px;
+  margin: 7px 0 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e6ded3;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9b6422, #c78a3a);
+}
+
+.last-read {
+  overflow: hidden;
+  color: #9f9588;
+  font-size: 12px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bottom-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 82px;
+  padding: 8px 42px 16px;
+  border-top: 1px solid rgba(132, 103, 68, 0.08);
+  background: rgba(251, 247, 240, 0.86);
+  backdrop-filter: blur(18px);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 72px;
+  color: #8f8578;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.nav-item.active {
+  color: var(--accent);
+}
+
+.empty-state {
+  padding: 34px 18px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.empty-state h3 {
+  margin: 10px 0 6px;
+  color: var(--text);
+  font-size: 17px;
+}
+
+.delete-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.dialog-card {
+  width: min(100%, 318px);
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+}
+
+.dialog-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.dialog-card p {
+  margin: 0 0 20px;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.toast {
+  position: absolute;
+  left: 50%;
+  top: 112px;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(328px, calc(100% - 32px));
+  min-height: 64px;
+  padding: 12px 16px;
+  color: #fff;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  background: rgba(24, 24, 24, 0.92);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+.toast-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #39b54a;
+  color: #fff;
+  font-weight: 900;
+}
+
+.toast-title {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.toast-subtitle {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.btn-outline {
+  color: var(--accent);
+  border: 1px solid rgba(182, 122, 47, 0.72);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(180deg, #be8439, #a96c25);
+}
+
+.btn-danger {
+  color: #fff;
+  background: var(--danger);
+}
+
+.topbar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+  min-height: 54px;
+  padding: 2px 18px 8px;
+}
+
+.topbar-title {
+  overflow: hidden;
+  color: #575148;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-detail-body {
+  padding: 2px 18px 110px;
+}
+
+.book-summary {
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 14px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+
+.book-summary .book-cover {
+  width: 78px;
+  height: 112px;
+}
+
+.book-summary-title {
+  color: #241f18;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.book-summary-meta {
+  margin-top: 7px;
+  color: #8b8176;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.continue-btn {
+  width: 100%;
+  height: 44px;
+  margin: 4px 0 18px;
+  color: #fff;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #a66328, #7d3e12);
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(124, 66, 19, 0.14);
+}
+
+.volume-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #4e4439;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.chapters-body {
+  padding: 6px 18px 24px;
+}
+
+.chapter-hero {
+  margin: 8px 0 16px;
+}
+
+.chapter-hero h1 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 27px;
+  letter-spacing: -0.04em;
+}
+
+.chapter-hero p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.chapter-row {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  text-align: left;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.chapter-row.current {
+  background: #f4eadc;
+}
+
+.chapter-title {
+  overflow: hidden;
+  color: #241f18;
+  font-size: 16px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chapter-meta {
+  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.bottom-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 95;
+  background: rgba(0, 0, 0, 0.36);
+}
+
+.plain-backdrop {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.sheet-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  border-radius: 18px 18px 0 0;
+  background: rgba(255, 252, 247, 0.98);
+  box-shadow: 0 -18px 40px rgba(52, 35, 17, 0.18);
+  animation: sheetIn 230ms cubic-bezier(0.22, 0.8, 0.22, 1);
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 54px;
+  padding: 0 20px;
+  color: #2c251e;
+  text-align: left;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.action-row.danger {
+  color: #cf3e2e;
+}
+
+.action-cancel {
+  width: 100%;
+  height: 52px;
+  color: #6d6257;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.reader-screen {
+  background: linear-gradient(180deg, #fbf7f0, #f8f3ea 72%, #fbf7f0);
+}
+
+.reader-scroll {
+  padding: 4px 24px 92px;
+}
+
+.reader-title-muted {
+  margin: 0 0 24px;
+  color: #b1a697;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.reader-article {
+  padding-top: 10px;
+}
+
+.reader-p {
+  margin: 0 0 24px;
+  color: #222;
+  font-family: var(--serif);
+  font-size: var(--reader-font-size, 20px);
+  font-weight: 500;
+  line-height: var(--reader-line-height, 1.84);
+  letter-spacing: 0.02em;
+  text-indent: 2em;
+}
+
+.comment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 22px;
+  margin-left: 6px;
+  padding: 0 8px;
+  color: #8f6b3d;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-indent: 0;
+  vertical-align: middle;
+  border: 1px solid rgba(143, 107, 61, 0.32);
+  border-radius: 8px 8px 8px 2px;
+  background: rgba(255, 250, 245, 0.5);
+}
+
+.comment-badge.active {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.reader-progress {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #a59c90;
+  font-size: 11px;
+}
+
+.chapter-jump-panel {
+  padding: 10px 18px 18px;
+}
+
+.jump-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 4px 0 16px;
+  color: #2b241c;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.jump-progress {
+  color: #7d7063;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.jump-range {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.jump-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  color: #4c4339;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.reading-setting-panel {
+  padding: 10px 18px 24px;
+}
+
+.sheet-row {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  color: #2f2923;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.stepper {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  overflow: hidden;
+  height: 36px;
+  border-radius: 8px;
+  background: #f4efe8;
+}
+
+.stepper button,
+.stepper span {
+  display: grid;
+  place-items: center;
+  color: #3f382f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.swatches {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.swatch.active {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.spacing-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.spacing-option {
+  height: 36px;
+  color: #7d7368;
+  border-radius: 8px;
+  background: #f4efe8;
+}
+
+.spacing-option.active {
+  color: #fff;
+  background: #c4a17c;
+}
+
+.summon-panel {
+  padding: 10px 18px 20px;
+}
+
+.summon-title {
+  margin: 0 0 8px;
+  color: #1f1f1f;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.summon-subtitle {
+  margin: 0 0 12px;
+  color: #9a9188;
+  font-size: 12px;
+}
+
+.summon-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 24px;
+  gap: 10px;
+  align-items: center;
+  min-height: 54px;
+}
+
+.check-box {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: transparent;
+  border: 1.5px solid #cfc5ba;
+  border-radius: 5px;
+}
+
+.check-box.on {
+  color: #fff;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.summon-button {
+  width: 100%;
+  height: 46px;
+  margin-top: 12px;
+  color: #fff;
+  border-radius: 9px;
+  background: linear-gradient(180deg, #9d5a22, #7b3c12);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.reader-progress button {
+  color: #9e9e9e;
+  font-size: 11px;
+}
+
+.reader-progress-middle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mini-track {
+  width: 84px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5dccf;
+}
+
+.mini-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #c88833;
+}
+
+.comment-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  background: linear-gradient(180deg, transparent, rgba(61, 44, 25, 0.04));
+}
+
+.comment-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  max-height: 55%;
+  min-height: 385px;
+  border-radius: 22px 22px 0 0;
+  background: rgba(255, 252, 247, 0.96);
+  box-shadow: 0 -14px 34px rgba(67, 45, 20, 0.12);
+  animation: sheetIn 260ms cubic-bezier(0.22, 0.8, 0.22, 1);
+}
+
+@keyframes sheetIn {
+  from { transform: translateY(35%); opacity: 0.4; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.sheet-grabber {
+  width: 42px;
+  height: 4px;
+  margin: 10px auto 4px;
+  border-radius: 999px;
+  background: rgba(70, 48, 24, 0.22);
+}
+
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px 12px;
+}
+
+.sheet-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.sheet-title {
+  color: #1f1f1f;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.sheet-subtitle {
+  color: #9c948a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sheet-close {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: #222;
+  border-radius: 999px;
+  background: #f3eee6;
+}
+
+.sheet-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 10px;
+  color: #9a9a9a;
+  font-size: 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.sheet-tabs strong {
+  position: relative;
+  color: #2e2e2e;
+}
+
+.sheet-tabs strong::after {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 16px;
+  height: 2px;
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.sheet-tab-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.comments-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 0 18px;
+}
+
+.comment-item {
+  display: grid;
+  grid-template-columns: 42px 1fr 34px;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  color: rgba(48, 36, 24, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: var(--avatar-bg, #ffd6d6);
+  font-size: 20px;
+  box-shadow: 0 5px 12px rgba(92, 68, 36, 0.08);
+}
+
+.comment-main {
+  min-width: 0;
+}
+
+.comment-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+
+.comment-name {
+  color: #222;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.tag {
+  height: 20px;
+  padding: 0 7px;
+  color: #b46c2c;
+  border-radius: 6px;
+  background: #fff0df;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 20px;
+}
+
+.comment-text {
+  color: #2a2a2a;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.like-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #6f6b66;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.comment-input {
+  display: grid;
+  grid-template-columns: 42px 1fr 68px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--hairline);
+  background: rgba(255, 252, 247, 0.96);
+}
+
+.comment-input input {
+  width: 100%;
+  height: 38px;
+  padding: 0 40px 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  font-size: 13px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap .smile {
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  color: #8a837a;
+}
+
+.send-btn {
+  height: 38px;
+  color: #776d62;
+  border-radius: 10px;
+  background: #f0eae2;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.settings-body {
+  padding: 4px 18px 28px;
+}
+
+.settings-head {
+  margin: 10px 0 18px;
+}
+
+.settings-head h1 {
+  margin: 0 0 8px;
+  color: #1f1b16;
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.settings-head p {
+  margin: 0;
+  color: #a19688;
+  font-size: 13px;
+}
+
+.field-label,
+.section-label {
+  display: block;
+  margin: 0 0 8px;
+  color: #6a6258;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.segment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 46px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  background: rgba(255, 252, 247, 0.62);
+}
+
+.segment button {
+  color: #8d8276;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.segment button.active {
+  color: #fff;
+  background: linear-gradient(180deg, #be8439, #a96c25);
+}
+
+.form-field {
+  margin-bottom: 13px;
+}
+
+.input {
+  width: 100%;
+  height: 45px;
+  padding: 0 13px;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  outline: none;
+  background: rgba(255, 252, 247, 0.74);
+  color: #554e45;
+  font-size: 14px;
+  transition: border 160ms ease, box-shadow 160ms ease;
+}
+
+.input:focus {
+  border-color: rgba(182, 122, 47, 0.58);
+  box-shadow: 0 0 0 3px rgba(182, 122, 47, 0.1);
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap .input {
+  padding-right: 46px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  color: #8d8276;
+}
+
+.settings-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0 18px;
+}
+
+.profile-list {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.profile-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 252, 247, 0.58);
+  color: #5e554a;
+  text-align: left;
+}
+
+.profile-row.active {
+  border-color: rgba(182, 122, 47, 0.52);
+  background: rgba(255, 248, 236, 0.88);
+  box-shadow: 0 8px 20px rgba(95, 69, 34, 0.07);
+}
+
+.profile-name {
+  display: block;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-meta {
+  display: block;
+  overflow: hidden;
+  margin-top: 3px;
+  color: #9d9285;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-pill {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #efe3d2;
+  color: #8a5a22;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.profile-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.status-message {
+  padding: 10px 12px;
+  margin: -4px 0 16px;
+  color: #6c665f;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 252, 247, 0.56);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.status-message.error {
+  color: #a3422f;
+  background: #fff0ec;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.settings-row-main {
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.row-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.settings-row-title {
+  color: #2a261f;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.settings-row-desc {
+  margin-top: 3px;
+  color: #a19688;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #d8cec1;
+  transition: background 160ms ease;
+}
+
+.toggle::after {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  content: "";
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(50, 35, 18, 0.18);
+  transition: transform 160ms ease;
+}
+
+.toggle.on {
+  background: linear-gradient(180deg, #be8439, #9f6421);
+}
+
+.toggle.on::after {
+  transform: translateX(20px);
+}
+
+.persona-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.persona-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.persona-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.persona-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--avatar-bg, #ffd6d6);
+  font-size: 18px;
+}
+
+.persona-title {
+  color: #2a261f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.persona-desc {
+  overflow: hidden;
+  margin-top: 2px;
+  color: #a19688;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settings-tip {
+  margin-top: 18px;
+  color: #b1a697;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.tab-body {
+  padding-bottom: 104px;
+}
+
+.friends-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 16px;
+}
+
+.friends-head h1 {
+  margin: 0 0 8px;
+  color: #1f1b16;
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.friends-head p {
+  margin: 0;
+  color: #8d8276;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.add-friend-btn {
+  height: 32px;
+  padding: 0 10px;
+  flex: 0 0 auto;
+  color: var(--accent);
+  border: 1px solid rgba(182, 122, 47, 0.62);
+  border-radius: 7px;
+  background: rgba(255, 252, 247, 0.7);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.friend-card {
+  display: grid;
+  grid-template-columns: 52px 1fr 20px;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  min-height: 76px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 252, 247, 0.72);
+}
+
+.friend-avatar {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: #3d2d23;
+  border-radius: 999px;
+  background: var(--avatar-bg, #f4a6b3);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #241f18;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.preset-pill {
+  height: 18px;
+  padding: 0 6px;
+  color: var(--accent);
+  border-radius: 5px;
+  background: #fff0df;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 18px;
+}
+
+.friend-desc {
+  margin-top: 3px;
+  color: #756c61;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.field-label-row,
+.status-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.field-label-row .field-label {
+  margin-bottom: 0;
+}
+
+.field-counter {
+  color: #b1a697;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.help-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  border: 1px solid rgba(182, 122, 47, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.72);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.status-message.success {
+  color: #3f6f36;
+  background: #f0faee;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: #b9b1a7;
+}
+
+.status-dot.success {
+  background: #4caf37;
+}
+
+.status-dot.error {
+  background: #cf3e2e;
+}
+
+.status-dot.loading {
+  background: #c88938;
+}
+
+.config-dialog {
+  text-align: left;
+}
+
+.config-dialog h3 {
+  text-align: center;
+}
+
+.config-list {
+  display: grid;
+  gap: 9px;
+  padding: 0;
+  margin: 0 0 14px;
+  list-style: none;
+  color: #574f46;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.config-example-box {
+  padding: 12px;
+  margin: 12px 0 16px;
+  border: 1px dashed rgba(182, 122, 47, 0.45);
+  border-radius: 12px;
+  background: rgba(255, 248, 237, 0.78);
+  color: #74695f;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.config-example-box strong {
+  color: #3b342c;
+}
+
+.settings-example-box {
+  margin: 2px 0 16px;
+}
+
+.loading-card {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid rgba(182, 122, 47, 0.18);
+  border-top-color: var(--accent);
+  border-radius: 999px;
+  animation: spin 800ms linear infinite;
+}
+
+.frequency-hint {
+  color: #b1a697;
+  font-size: 12px;
+  text-align: center;
+  margin: -4px 0 20px;
+}
+
+.prompt-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.avatar-sheet-panel {
+  padding: 8px 0 10px;
+}
+
+.avatar-sheet-title {
+  padding: 10px 20px 12px;
+  color: #1f1b16;
+  font-size: 17px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.edit-body {
+  padding: 4px 18px 110px;
+}
+
+.edit-avatar-zone {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin: 18px 0 22px;
+}
+
+.edit-avatar-zone .friend-avatar {
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+}
+
+.frequency {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: rgba(255, 252, 247, 0.66);
+}
+
+.frequency button {
+  color: #3f382f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.frequency button.active {
+  color: #fff;
+  background: linear-gradient(180deg, #b87a31, #985e1f);
+}
+
+.prompt-box {
+  width: 100%;
+  min-height: 128px;
+  padding: 13px;
+  resize: none;
+  color: #554e45;
+  border: 1px solid var(--border-strong);
+  border-radius: 9px;
+  outline: none;
+  background: rgba(255, 252, 247, 0.74);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 360px) {
+  .book-cover {
+    width: 60px;
+    height: 90px;
+  }
+
+  .screen-body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .reader-scroll {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="env,react">
+const { useCallback, useEffect, useMemo, useRef, useState } = React;
+
+const STORAGE_KEYS = {
+  novels: 'rwm_novels',
+  settings: 'rwm_settings',
+  liveSettings: 'rwm_live_settings',
+  modelProfiles: 'rwm_model_profiles',
+  personas: 'rwm_personas',
+  personasVersion: 'rwm_personas_version',
+  apiKeys: 'rwm_model_api_keys',
+};
+
+const DEFAULT_PROXY_URL = 'http://127.0.0.1:11435';
+const DEFAULT_PROMPT_VERSION = 'v2';
+const PERSONA_SCHEMA_VERSION = 'ai-friends-flow-2026-05';
+
+const DEFAULT_LIVE_SETTINGS = {
+  enabled: false,
+  proxyUrl: DEFAULT_PROXY_URL,
+  profileId: 'default',
+  promptVersion: DEFAULT_PROMPT_VERSION,
+};
+
+const DEFAULT_MODEL_PROFILES = [{
+  id: 'default',
+  name: '我的 OpenAI 服务',
+  baseUrl: 'https://api.openai.com/v1',
+  model: 'gpt-4.1-mini',
+  temperature: 0.85,
+  maxOutputTokens: 700,
+}];
+
+const DEFAULT_PERSONAS = [
+  {
+    id: 'tucao',
+    name: '吐槽姬',
+    tag: '吐槽达人',
+    description: '毒舌吐槽，直言真相，擅长发现槽点',
+    stylePrompt: [
+      '你是“吐槽姬”，一个毒舌但不刻薄的读书伙伴。',
+      '擅长犀利吐槽、发现槽点，用幽默的方式调侃情节、人物和设定。',
+      '',
+      '风格：直接、调侃、机智，偶尔卖萌。',
+      '目标：让阅读过程更有趣，戳破矛盾与不合理之处。',
+    ].join('\n'),
+    avatar: '姬',
+    color: '#f4a6b3',
+    frequency: 'high',
+    preset: true,
+    enabled: true,
+  },
+  {
+    id: 'fenxi',
+    name: '分析菌',
+    tag: '逻辑分析',
+    description: '逻辑缜密，擅长分析情节与细节',
+    stylePrompt: '你是“分析菌”，逻辑缜密，擅长拆解剧情结构、人物动机、伏笔与细节线索。评论要清晰、有根据，避免过度脑补。',
+    avatar: '析',
+    color: '#cfd8c0',
+    frequency: 'medium',
+    preset: true,
+    enabled: true,
+  },
+  {
+    id: 'kaozheng',
+    name: '考据党',
+    tag: '考据考据',
+    description: '考据严谨，文史背景无所不查',
+    stylePrompt: '你是“考据党”，严谨、博闻，擅长从历史、文化、制度、地理和设定层面补充背景。评论要克制准确，不确定时用推测语气。',
+    avatar: '考',
+    color: '#e7a75d',
+    frequency: 'low',
+    preset: true,
+    enabled: true,
+  },
+  {
+    id: 'gankai',
+    name: '感慨君',
+    tag: '情绪共鸣',
+    description: '感性细腻，随时为角色抒发感慨',
+    stylePrompt: '你是“感慨君”，感性细腻，擅长捕捉人物情绪、命运感和氛围变化。评论要有共情，但不要夸张煽情。',
+    avatar: '感',
+    color: '#e8c2a3',
+    frequency: 'medium',
+    preset: true,
+    enabled: true,
+  },
+  {
+    id: 'tiwen',
+    name: '提问菌',
+    tag: '抛出问题',
+    description: '好奇发问，指出问题引发思考',
+    stylePrompt: '你是“提问菌”，好奇而敏锐，擅长提出读者会在意的问题，指出逻辑空白、信息缺口和后续悬念。评论要像抛出思考，不要替作者下结论。',
+    avatar: '问',
+    color: '#d9d2b3',
+    frequency: 'low',
+    preset: true,
+    enabled: true,
+  },
+  {
+    id: 'my_book_friend',
+    name: '我的小书友',
+    tag: '自定义',
+    description: '温柔陪伴，喜欢从细节里发现温暖',
+    stylePrompt: '你是“我的小书友”，温柔、耐心、陪伴感强。喜欢从细节里发现温暖，关注人物之间细微的情绪流动。评论要轻柔自然，像一起读书时的小声分享。',
+    avatar: '友',
+    color: '#d8dce3',
+    frequency: 'medium',
+    preset: false,
+    enabled: true,
+  },
+];
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+}
+
+function clamp(n, min, max) {
+  return Math.min(max, Math.max(min, n));
+}
+
+function lsGet(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function lsSet(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {}
+}
+
+function sessionGet(key, fallback) {
+  try {
+    const raw = sessionStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function sessionSet(key, value) {
+  try {
+    sessionStorage.setItem(key, JSON.stringify(value));
+  } catch {}
+}
+
+function normalizeText(text) {
+  return String(text || '').replace(/\r\n/g, '\n').trim();
+}
+
+const CHINESE_DIGITS = {
+  零: 0,
+  〇: 0,
+  一: 1,
+  二: 2,
+  两: 2,
+  三: 3,
+  四: 4,
+  五: 5,
+  六: 6,
+  七: 7,
+  八: 8,
+  九: 9,
+};
+
+const CHINESE_UNITS = {
+  十: 10,
+  百: 100,
+  千: 1000,
+  万: 10000,
+};
+
+function parseChapterNumber(raw) {
+  const text = String(raw || '').replace(/\s+/g, '');
+  if (!text) return null;
+  if (/^\d+$/.test(text)) return Number(text);
+  let total = 0;
+  let section = 0;
+  let number = 0;
+  for (const char of text) {
+    if (Object.prototype.hasOwnProperty.call(CHINESE_DIGITS, char)) {
+      number = CHINESE_DIGITS[char];
+      continue;
+    }
+    const unit = CHINESE_UNITS[char];
+    if (!unit) return null;
+    if (unit === 10000) {
+      total += (section + number) * unit;
+      section = 0;
+    } else {
+      section += (number || 1) * unit;
+    }
+    number = 0;
+  }
+  return total + section + number || null;
+}
+
+function hasSentencePunctuation(text) {
+  return /[，。！？；,.!?;]/.test(text);
+}
+
+function isWeakChapterUnit(unit) {
+  return unit === '篇' || unit === '节';
+}
+
+function getChapterCandidate(line, lineIndex, startIndex, lines) {
+  const title = String(line || '').trim().replace(/\s+/g, ' ');
+  if (!title || title.length > 72) return null;
+
+  const prevBlank = lineIndex === 0 || !String(lines[lineIndex - 1] || '').trim();
+  const nextBlank = lineIndex === lines.length - 1 || !String(lines[lineIndex + 1] || '').trim();
+  const numbered = title.match(/^(?:正文\s*)?第\s*([零〇一二两三四五六七八九十百千万\d]+)\s*([章回卷部集篇节])([：:、.\-—\s]*)(.{0,48})$/);
+  if (numbered) {
+    const number = parseChapterNumber(numbered[1]);
+    const unit = numbered[2];
+    const separator = numbered[3] || '';
+    const suffix = (numbered[4] || '').trim();
+    if (!number) return null;
+    if (!['章', '回'].includes(unit) && suffix && !separator) return null;
+    if (isWeakChapterUnit(unit) && (hasSentencePunctuation(title) || /^[是为有在于和与及的了着过把被将会能可我你他她它这那更]/.test(suffix))) {
+      return null;
+    }
+    let score = unit === '章' || unit === '回' ? 7 : unit === '卷' || unit === '部' || unit === '集' ? 6 : 3;
+    if (prevBlank) score += 1.5;
+    if (nextBlank) score += 1;
+    if (title.length <= 36) score += 1;
+    if (title.length <= 20) score += 0.5;
+    if (suffix.length > 36) score -= 1;
+    if (isWeakChapterUnit(unit)) score -= 1.5;
+    return { index: startIndex, title, number, unit, score, weak: isWeakChapterUnit(unit), special: false };
+  }
+
+  const special = title.match(/^(序章|楔子|前言|引子|尾声|后记|番外)(?:\s*[：:、.\-—]\s*(.{1,40}))?$/);
+  if (special) {
+    let score = 6;
+    if (prevBlank) score += 1;
+    if (nextBlank) score += 1;
+    return { index: startIndex, title, number: null, unit: special[1], score, weak: false, special: true };
+  }
+
+  return null;
+}
+
+function averageCandidateGap(candidates) {
+  if (candidates.length < 2) return 0;
+  let total = 0;
+  for (let index = 1; index < candidates.length; index++) {
+    total += candidates[index].index - candidates[index - 1].index;
+  }
+  return total / (candidates.length - 1);
+}
+
+function sequenceConfidence(candidates) {
+  const numbered = candidates.filter(item => Number.isFinite(item.number));
+  if (numbered.length < 2) return 0;
+  let increasing = 0;
+  for (let index = 1; index < numbered.length; index++) {
+    const diff = numbered[index].number - numbered[index - 1].number;
+    if (diff > 0 && diff <= 10) increasing++;
+  }
+  return increasing / (numbered.length - 1);
+}
+
+function chooseChapterCandidates(candidates) {
+  const strong = candidates.filter(item => !item.weak && item.score >= 6);
+  const weak = candidates.filter(item => item.weak && item.score >= 4);
+  const selected = strong.length >= 2
+    ? strong
+    : strong.filter(item => item.score >= 8);
+
+  if (selected.length >= 2) {
+    return candidates.filter(item => selected.includes(item) || (item.special && item.score >= 7));
+  }
+
+  const weakLooksLikeToc = weak.length >= 3
+    && sequenceConfidence(weak) >= 0.65
+    && averageCandidateGap(weak) >= 300;
+  if (weakLooksLikeToc) return weak;
+  return selected;
+}
+
+function parseNovelChapters(text) {
+  const normalized = normalizeText(text);
+  const lines = normalized.split('\n');
+  const matches = [];
+  let offset = 0;
+  lines.forEach((line, index) => {
+    const candidate = getChapterCandidate(line, index, offset, lines);
+    if (candidate) matches.push(candidate);
+    offset += line.length + 1;
+  });
+  const selected = chooseChapterCandidates(matches);
+  if (!matches.length) {
+    return [{ title: '全文', content: normalized || '这本书还没有可阅读的正文。' }];
+  }
+  if (!selected.length) {
+    return [{ title: '全文', content: normalized || '这本书还没有可阅读的正文。' }];
+  }
+  return selected.map((item, index) => {
+    const start = item.index + item.title.length;
+    const end = index + 1 < selected.length ? selected[index + 1].index : normalized.length;
+    return { title: item.title, content: normalized.slice(start, end).trim() || item.title };
+  });
+}
+
+function titleFromFileName(name) {
+  return String(name || '').replace(/\.(txt|text|epub)$/i, '').trim() || '未命名小说';
+}
+
+function hashText(text) {
+  let hash = 2166136261;
+  for (let i = 0; i < text.length; i++) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return Math.abs(hash >>> 0);
+}
+
+function safeJsonParse(text, fallback = null) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    return fallback;
+  }
+}
+
+function extractJsonBlock(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return '{}';
+  const fenced = raw.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fenced) return fenced[1].trim();
+  const start = raw.indexOf('{');
+  const end = raw.lastIndexOf('}');
+  if (start >= 0 && end > start) return raw.slice(start, end + 1);
+  return raw;
+}
+
+function normalizeModelProfile(profile = {}) {
+  return {
+    id: profile.id || uid(),
+    name: String(profile.name || '我的 OpenAI 服务').trim(),
+    baseUrl: String(profile.baseUrl || '').trim(),
+    model: String(profile.model || '').trim(),
+    temperature: clamp(Number(profile.temperature ?? 0.85) || 0.85, 0, 2),
+    maxOutputTokens: clamp(Number(profile.maxOutputTokens ?? 700) || 700, 100, 4000),
+  };
+}
+
+function getDefaultProfileId(profiles = [], preferredId = '') {
+  const normalizedProfiles = Array.isArray(profiles) ? profiles : [];
+  if (!normalizedProfiles.length) return '';
+  const preferred = String(preferredId || '').trim();
+  if (preferred && normalizedProfiles.some(profile => profile.id === preferred)) return preferred;
+  return normalizedProfiles[0].id || '';
+}
+
+function getProfileById(profiles = [], profileId = '') {
+  const id = String(profileId || '').trim();
+  return (Array.isArray(profiles) ? profiles : []).find(profile => profile.id === id) || null;
+}
+
+function getPersonaProfileId(persona = {}, profiles = [], defaultProfileId = '') {
+  const overrideId = String(persona.modelProfileId || '').trim();
+  if (overrideId && getProfileById(profiles, overrideId)) return overrideId;
+  return getDefaultProfileId(profiles, defaultProfileId);
+}
+
+function groupPersonasByProfile(personas = [], profiles = [], defaultProfileId = '') {
+  const groupsById = new Map();
+  personas.filter(persona => persona.enabled).forEach(persona => {
+    const profileId = getPersonaProfileId(persona, profiles, defaultProfileId);
+    const profile = getProfileById(profiles, profileId);
+    if (!profile) return;
+    if (!groupsById.has(profile.id)) groupsById.set(profile.id, { profile, personas: [] });
+    groupsById.get(profile.id).personas.push(persona);
+  });
+  return Array.from(groupsById.values());
+}
+
+function normalizePersona(persona = {}, index = 0) {
+  const fallback = DEFAULT_PERSONAS[index % DEFAULT_PERSONAS.length];
+  return {
+    ...fallback,
+    ...persona,
+    id: persona.id || fallback.id || uid(),
+    enabled: Boolean(persona.enabled ?? fallback.enabled),
+    modelProfileId: String(persona.modelProfileId || '').trim(),
+  };
+}
+
+function frequencyLabel(frequency) {
+  if (frequency === 'high') return '高（频繁）';
+  if (frequency === 'low') return '低（偶尔）';
+  return '中（适中）';
+}
+
+function frequencyHint(frequency) {
+  if (frequency === 'high') return '频繁出现，积极发表意见';
+  if (frequency === 'low') return '偶尔出现，只在合适段落发声';
+  return '适中出现，保持陪伴但不过度打扰';
+}
+
+function createBlankPersona() {
+  return {
+    id: uid(),
+    name: '',
+    tag: '自定义',
+    description: '自定义阅读陪伴角色',
+    stylePrompt: '',
+    avatar: '友',
+    color: '#d8dce3',
+    frequency: 'medium',
+    preset: false,
+    enabled: true,
+  };
+}
+
+function normalizeUpstreamBase(baseUrl) {
+  return String(baseUrl || '').trim().replace(/\/+$/, '').replace(/\/v1$/i, '');
+}
+
+function profileFingerprint(profilesInput, personas, promptVersion, defaultProfileId = '') {
+  const profiles = (Array.isArray(profilesInput) ? profilesInput : [profilesInput])
+    .filter(Boolean)
+    .map(normalizeModelProfile);
+  const resolvedDefaultId = getDefaultProfileId(profiles, defaultProfileId);
+  return JSON.stringify({
+    defaultProfileId: resolvedDefaultId,
+    profiles: profiles.map(profile => [
+      profile.id,
+      normalizeUpstreamBase(profile.baseUrl),
+      profile.model,
+      profile.temperature,
+      profile.maxOutputTokens,
+    ]),
+    personas: personas.filter(p => p.enabled).map(p => [
+      p.id,
+      p.name,
+      p.tag,
+      p.stylePrompt,
+      getPersonaProfileId(p, profiles, resolvedDefaultId),
+    ]),
+    promptVersion,
+  });
+}
+
+function connectionFingerprint(profile, apiKey, proxyUrl) {
+  return JSON.stringify({
+    proxyUrl: String(proxyUrl || '').trim().replace(/\/+$/, ''),
+    baseUrl: normalizeUpstreamBase(profile.baseUrl),
+    model: String(profile.model || '').trim(),
+    apiKeyHash: hashText(String(apiKey || '').trim()),
+  });
+}
+
+function buildAiCacheKey(novelId, chapterIndex, fingerprint) {
+  return `rwm_ai_comments_${novelId}_${chapterIndex}_${hashText(fingerprint)}`;
+}
+
+function chunkParagraphs(paragraphs, chunkSize = 8) {
+  const chunks = [];
+  for (let i = 0; i < paragraphs.length; i += chunkSize) {
+    chunks.push(paragraphs.slice(i, i + chunkSize).map((text, offset) => ({
+      paragraphIndex: i + offset,
+      text: text.slice(0, 900),
+    })));
+  }
+  return chunks.slice(0, 8);
+}
+
+function buildGenerationPrompt({ chapterTitle, chunk, personas }) {
+  return [
+    '你是中文网文陪读评论系统。请为段落生成短评论，风格像读者弹幕或段评。',
+    '要求：',
+    '1. 每段最多一条评论，不必每段都有。',
+    '2. 评论应短、具体、贴合段落，不剧透后文。',
+    '3. 只使用启用的人格 personaId。',
+    '4. 严格输出 JSON：{"comments":[{"paragraphIndex":0,"personaId":"...","text":"..."}]}。',
+    `章节标题：${chapterTitle || ''}`,
+    `可用人格：${personas.map(p => `${p.id}=${p.name}/${p.tag}/${p.stylePrompt}`).join('；')}`,
+    `段落：${JSON.stringify(chunk, null, 2)}`,
+  ].join('\n');
+}
+
+const aiClient = {
+  async testConnection(proxyUrl, profile, apiKey) {
+    const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/test`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, model: profile.model }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.ok === false) {
+      throw new Error(data?.error?.message || data?.error || `连接失败：${res.status}`);
+    }
+    const expectedModel = String(profile.model || '').trim();
+    const testedModel = String(data?.model || '').trim();
+    const completedRealTest = data?.testKind === 'chat-completion'
+      && data?.modelVerified === true
+      && testedModel === expectedModel
+      && String(data?.replyPreview || '').trim();
+    if (!completedRealTest) {
+      throw new Error('测试连接未完成真实模型调用，请重启本地代理后重试。');
+    }
+    return data;
+  },
+  async listModels(proxyUrl, profile, apiKey) {
+    const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/models`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data?.error?.message || data?.error || `模型列表失败：${res.status}`);
+    return Array.isArray(data?.data) ? data.data : [];
+  },
+  async generateChunk(proxyUrl, profile, apiKey, chapterTitle, chunk, personas) {
+    const body = {
+      model: profile.model,
+      temperature: profile.temperature,
+      max_tokens: profile.maxOutputTokens,
+      messages: [
+        { role: 'system', content: '你只输出 JSON，不要输出 Markdown。' },
+        { role: 'user', content: buildGenerationPrompt({ chapterTitle, chunk, personas }) },
+      ],
+    };
+    const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data?.error?.message || data?.error || `生成失败：${res.status}`);
+    const content = data?.choices?.[0]?.message?.content || '';
+    const parsed = safeJsonParse(extractJsonBlock(content), { comments: [] });
+    return Array.isArray(parsed?.comments) ? parsed.comments : [];
+  },
+};
+
+function getErrorMessage(error) {
+  return error?.message || String(error || '未知错误');
+}
+
+function choosePersonaForParagraph(personas, paragraphIndex, salt = 0) {
+  const enabled = personas.filter(p => p.enabled);
+  if (!enabled.length) return null;
+  return enabled[(paragraphIndex + salt) % enabled.length];
+}
+
+function buildAiComment(persona, paragraphKey, chapterIndex, text, profileId = 'demo') {
+  return {
+    id: `${profileId}-${chapterIndex}-${paragraphKey}-${hashText(text)}`,
+    personaId: persona.id,
+    personaName: persona.name,
+    personaTag: persona.tag,
+    personaColor: persona.color,
+    personaAvatar: persona.avatar,
+    text,
+    likes: 16 + (hashText(text) % 96),
+    liked: false,
+    source: profileId === 'demo' ? 'demo' : 'llm',
+    modelProfileId: profileId,
+    createdAt: Date.now(),
+  };
+}
+
+function normalizeGeneratedComments(rawComments, personas, chapterIndex, profileId, chunkIndex) {
+  const personaMap = new Map(personas.filter(p => p.enabled).map(p => [p.id, p]));
+  const byParagraph = {};
+  rawComments.forEach(item => {
+    const paragraphIndex = Number(item?.paragraphIndex);
+    const text = normalizeText(item?.text || '');
+    if (!Number.isInteger(paragraphIndex) || !text) return;
+    const paragraphKey = `${chapterIndex}-${paragraphIndex}`;
+    const persona = personaMap.get(item?.personaId) || choosePersonaForParagraph(personas, paragraphIndex, chunkIndex);
+    if (!persona) return;
+    byParagraph[paragraphKey] = [
+      ...(byParagraph[paragraphKey] || []),
+      buildAiComment(persona, paragraphKey, chapterIndex, text, profileId),
+    ];
+  });
+  return byParagraph;
+}
+
+function mergeCommentsByKey(target, source) {
+  Object.entries(source || {}).forEach(([key, comments]) => {
+    target[key] = [...(target[key] || []), ...(Array.isArray(comments) ? comments : [])];
+  });
+  return target;
+}
+
+function generateDemoComments(paragraphText, paragraphIndex, chapterIndex, personas = DEFAULT_PERSONAS) {
+  const h = hashText(`${paragraphText}-${paragraphIndex}-${chapterIndex}`);
+  if (h % 5 === 0) return [];
+  const enabled = personas.filter(p => p.enabled);
+  if (!enabled.length) return [];
+  const templates = [
+    '这句的画面感很强，像镜头突然推进了一格。',
+    '这里明显在压节奏，后面大概率要接一个反转。',
+    '这个细节不是随手写的，感觉会回收伏笔。',
+    '人物说得轻，但信息量其实很重。',
+    '这段读起来像弹簧被慢慢压紧了。',
+    '懂了，作者在这里偷偷把氛围拧暗了。',
+  ];
+  const count = 1 + (h % 2);
+  return Array.from({ length: count }, (_, i) => {
+    const persona = enabled[(h + i + paragraphIndex) % enabled.length];
+    const text = templates[(h + i) % templates.length];
+    return buildAiComment(persona, `${chapterIndex}-${paragraphIndex}`, chapterIndex, text, 'demo');
+  });
+}
+
+function ensureLocalLibrary() {
+  const saved = lsGet(STORAGE_KEYS.novels, []);
+  if (!Array.isArray(saved)) return [];
+  return saved.filter(book => {
+    const id = String(book?.id || '');
+    return book && !book.demo && !id.startsWith('demo_');
+  });
+}
+
+function ensurePersonasLibrary() {
+  const saved = lsGet(STORAGE_KEYS.personas, null);
+  const versionMatches = localStorage.getItem(STORAGE_KEYS.personasVersion) === PERSONA_SCHEMA_VERSION;
+  const defaultIds = new Set(DEFAULT_PERSONAS.map(persona => persona.id));
+  if (!Array.isArray(saved)) {
+    const defaults = DEFAULT_PERSONAS.map(normalizePersona);
+    lsSet(STORAGE_KEYS.personas, defaults);
+    localStorage.setItem(STORAGE_KEYS.personasVersion, PERSONA_SCHEMA_VERSION);
+    return defaults;
+  }
+  const savedMap = new Map(saved.map(persona => [persona.id, persona]));
+  const defaults = DEFAULT_PERSONAS.map((persona, index) => normalizePersona({
+    ...persona,
+    ...(versionMatches ? (savedMap.get(persona.id) || {}) : {}),
+  }, index));
+  const custom = saved
+    .filter(persona => !defaultIds.has(persona.id) && !['gongming', 'wenrou'].includes(persona.id))
+    .map(normalizePersona);
+  const next = [...defaults, ...custom];
+  lsSet(STORAGE_KEYS.personas, next);
+  localStorage.setItem(STORAGE_KEYS.personasVersion, PERSONA_SCHEMA_VERSION);
+  return next;
+}
+
+function StatusBar() {
+  return (
+    <div className="statusbar" aria-hidden="true">
+      <span>9:41</span>
+      <span className="island" />
+      <span className="status-icons">
+        <span className="signal"><i /><i /><i /><i /></span>
+        <span className="wifi" />
+        <span className="battery" />
+      </span>
+    </div>
+  );
+}
+
+const Icon = ({ name, size = 22, strokeWidth = 2, ...props }) => {
+  const paths = {
+    plus: <><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></>,
+    chevronLeft: <polyline points="15 18 9 12 15 6" />,
+    chevronRight: <polyline points="9 18 15 12 9 6" />,
+    more: <><circle cx="5" cy="12" r="1.4" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none" /><circle cx="19" cy="12" r="1.4" fill="currentColor" stroke="none" /></>,
+    book: <><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v18H7.5A2.5 2.5 0 0 0 5 22V4.5Z" /><path d="M5 4.5A2.5 2.5 0 0 0 2.5 2H2v18h.5A2.5 2.5 0 0 1 5 22" /></>,
+    settings: <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" /></>,
+    shield: <path d="M12 3 5.5 5.5v5.7c0 4.1 2.7 7.7 6.5 9.1 3.8-1.4 6.5-5 6.5-9.1V5.5L12 3Z" />,
+    upload: <><path d="M12 15V4" /><path d="m7 9 5-5 5 5" /><path d="M5 15v4h14v-4" /></>,
+    x: <><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></>,
+    eye: <><path d="M2 12s3.7-6 10-6 10 6 10 6-3.7 6-10 6S2 12 2 12Z" /><circle cx="12" cy="12" r="2.5" /></>,
+    thumbs: <><path d="M7 11v9H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h3Z" /><path d="M7 11 11 3a2 2 0 0 1 3 2l-.8 4H19a2 2 0 0 1 2 2.3l-1.1 6A3 3 0 0 1 17 20H7" /></>,
+    smile: <><circle cx="12" cy="12" r="9" /><path d="M8 14s1.2 2 4 2 4-2 4-2" /><path d="M9 10h.01M15 10h.01" /></>,
+    comment: <><path d="M21 12a8 8 0 0 1-8 8H6l-3 2 1.1-4.2A8 8 0 1 1 21 12Z" /><path d="M8 10h8M8 14h5" /></>,
+    play: <path d="M8 5v14l11-7-11-7Z" />,
+    pencil: <><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" /></>,
+    trash: <><path d="M3 6h18" /><path d="M8 6V4h8v2" /><path d="M6 6l1 15h10l1-15" /></>,
+    users: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
+    hex: <path d="M12 2 20.5 7v10L12 22 3.5 17V7L12 2Z" />,
+    check: <polyline points="20 6 9 17 4 12" />,
+  };
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      {paths[name]}
+    </svg>
+  );
+};
+
+function TopBar({ title, left, right }) {
+  return (
+    <div className="topbar">
+      <div>{left}</div>
+      <div className="topbar-title">{title}</div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>{right}</div>
+    </div>
+  );
+}
+
+function Toggle({ on, onClick, label }) {
+  return <button className={`toggle ${on ? 'on' : ''}`} onClick={onClick} aria-label={label} aria-pressed={on} />;
+}
+
+function Toast({ toast }) {
+  if (!toast) return null;
+  return (
+    <div className="toast" role="status">
+      <div className="toast-icon"><Icon name="check" size={17} strokeWidth={3} /></div>
+      <div>
+        <div className="toast-title">{toast.title}</div>
+        {toast.subtitle && <div className="toast-subtitle">{toast.subtitle}</div>}
+      </div>
+    </div>
+  );
+}
+
+function PersonaAvatar({ persona }) {
+  const avatar = persona?.avatar || persona?.name?.slice(0, 1) || '友';
+  return (
+    <div className="friend-avatar" style={{ '--avatar-bg': persona?.color || '#d8dce3' }}>
+      {String(avatar).startsWith('data:')
+        ? <img src={avatar} alt="" />
+        : avatar}
+    </div>
+  );
+}
+
+function BottomNav({ active, onNavigate }) {
+  const items = [
+    { id: 'bookshelf', label: '书架', icon: 'book' },
+    { id: 'friends', label: 'AI书友设置', icon: 'users' },
+    { id: 'settings', label: 'AI接口设置', icon: 'hex' },
+  ];
+  return (
+    <div className="bottom-nav">
+      {items.map(item => (
+        <button key={item.id} className={`nav-item ${active === item.id ? 'active' : ''}`} onClick={() => onNavigate(item.id)}>
+          <Icon name={item.icon} size={22} strokeWidth={active === item.id ? 2.2 : 1.9} />
+          <span>{item.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function BookActionSheet({ novel, onClose, onContinue, onRename, onDelete }) {
+  if (!novel) return null;
+  return (
+    <>
+      <div className="bottom-sheet-backdrop" onClick={onClose} />
+      <div className="sheet-panel">
+        <button className="action-row" onClick={onContinue}><Icon name="play" size={21} />继续阅读</button>
+        <button className="action-row" onClick={onRename}><Icon name="pencil" size={20} />重命名</button>
+        <button className="action-row danger" onClick={onDelete}><Icon name="trash" size={20} />删除书籍</button>
+        <button className="action-cancel" onClick={onClose}>取消</button>
+      </div>
+    </>
+  );
+}
+
+function RenameDialog({ novel, onClose, onSave }) {
+  const [name, setName] = useState(novel?.title || '');
+  if (!novel) return null;
+  return (
+    <div className="delete-dialog" onClick={onClose}>
+      <div className="dialog-card" onClick={event => event.stopPropagation()}>
+        <h3>重命名书籍</h3>
+        <p>修改后的名称只保存在本地书架。</p>
+        <input className="input" value={name} onChange={event => setName(event.target.value)} autoFocus />
+        <div className="dialog-actions" style={{ marginTop: 16 }}>
+          <button className="btn btn-outline" onClick={onClose}>取消</button>
+          <button className="btn btn-primary" onClick={() => onSave(name.trim() || novel.title)}>保存</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BookCover({ title, theme = 1 }) {
+  return (
+    <div className={`book-cover cover-${theme}`}>
+      <div className="cover-title">{String(title || '小说').slice(0, 6)}</div>
+      <div className="cover-mark">READ</div>
+    </div>
+  );
+}
+
+function BookshelfScreen({ novels, onSelectNovel, onImport, onDeleteNovel, onRenameNovel, onContinueNovel, onNavigate, toast }) {
+  const fileRef = useRef(null);
+  const [importing, setImporting] = useState(false);
+  const [deletingId, setDeletingId] = useState(null);
+  const [actionId, setActionId] = useState(null);
+  const [renamingId, setRenamingId] = useState(null);
+  const actionNovel = novels.find(novel => novel.id === actionId);
+  const renamingNovel = novels.find(novel => novel.id === renamingId);
+
+  const handleFile = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setImporting(true);
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      onImport(titleFromFileName(file.name), ev.target.result, file.name);
+      setImporting(false);
+    };
+    reader.onerror = () => setImporting(false);
+    reader.readAsText(file, 'utf-8');
+    event.target.value = '';
+  };
+
+  return (
+    <div className="app-screen">
+      <StatusBar />
+      <div className="scroll-area library-scroll">
+        <div className="screen-body">
+          <div className="top-row">
+            <div className="brand">ReadWithMe</div>
+          </div>
+
+          <div className="screen-title-row">
+            <h1 className="screen-title">本地书架</h1>
+            <span className="count-pill">{novels.length} 本书</span>
+          </div>
+
+          <button className="import-card" onClick={() => fileRef.current?.click()} disabled={importing}>
+            <span className="import-left">
+              <span className="import-icon"><Icon name="plus" size={17} strokeWidth={2.8} /></span>
+              <span>
+                <h2>{importing ? '正在导入...' : '导入 TXT / EPUB'}</h2>
+                <p>从本地文件导入书籍</p>
+              </span>
+            </span>
+            <Icon className="chevron" name="chevronRight" size={22} strokeWidth={1.9} />
+          </button>
+
+          <div className="privacy-card">
+            <div className="privacy-badge"><Icon name="shield" size={24} strokeWidth={1.7} /></div>
+            <div>
+              <div className="privacy-title">所有书籍仅存储在本地设备中</div>
+              <div className="privacy-text">不联网传输书籍，保护你的阅读隐私</div>
+            </div>
+          </div>
+
+          {novels.length > 0 && (
+            <div className="book-list">
+              {novels.map((novel, index) => {
+                const lastRead = novel.lastReadTitle || `第 ${Math.max(1, (novel.lastReadChapter || 0) + 1)} 章`;
+                return (
+                  <button key={novel.id} className="book-row" onClick={() => onSelectNovel(novel.id)}>
+                    <BookCover title={novel.title} theme={novel.coverTheme || ((index % 6) + 1)} />
+                    <span className="book-info">
+                      <span className="book-row-head">
+                        <span style={{ minWidth: 0 }}>
+                          <span className="book-title">{novel.title}{novel.isNew && <span className="new-pill">NEW</span>}</span>
+                          <span className="book-percent">{novel.metaLine || `${novel.totalChapters || 1} 章`}</span>
+                        </span>
+                        <span
+                          className="more-button"
+                          role="button"
+                          tabIndex="0"
+                          aria-label={`${novel.title} 操作菜单`}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setActionId(novel.id);
+                          }}
+                        >
+                          <Icon name="more" size={20} />
+                        </span>
+                      </span>
+                      <span className="last-read">上次阅读：{lastRead}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          <input ref={fileRef} type="file" accept=".txt,.text,.epub" onChange={handleFile} style={{ display: 'none' }} />
+        </div>
+      </div>
+
+      <BottomNav active="bookshelf" onNavigate={onNavigate} />
+
+      <Toast toast={toast} />
+      <BookActionSheet
+        novel={actionNovel}
+        onClose={() => setActionId(null)}
+        onContinue={() => { onContinueNovel(actionId); setActionId(null); }}
+        onRename={() => { setRenamingId(actionId); setActionId(null); }}
+        onDelete={() => { setDeletingId(actionId); setActionId(null); }}
+      />
+      <RenameDialog
+        novel={renamingNovel}
+        onClose={() => setRenamingId(null)}
+        onSave={(name) => { onRenameNovel(renamingId, name); setRenamingId(null); }}
+      />
+      {deletingId && (
+        <div className="delete-dialog" onClick={() => setDeletingId(null)}>
+          <div className="dialog-card" onClick={e => e.stopPropagation()}>
+            <h3>删除这本书？</h3>
+            <p>会同时删除章节内容、阅读进度、你的段评和该书的 AI 评论缓存。</p>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setDeletingId(null)}>取消</button>
+              <button className="btn btn-danger" onClick={() => { onDeleteNovel(deletingId); setDeletingId(null); }}>删除</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ChapterListScreen({ novel, chapters, onSelectChapter, onBack, onContinue, onDeleteNovel, onRenameNovel, toast }) {
+  const [showActions, setShowActions] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showRename, setShowRename] = useState(false);
+  const chapterCount = novel.displayChapterCount || chapters.length;
+  return (
+    <div className="app-screen">
+      <StatusBar />
+      <TopBar
+        title={novel.title}
+        left={<button className="round-button" onClick={onBack} aria-label="返回书架"><Icon name="chevronLeft" size={21} strokeWidth={1.9} /></button>}
+        right={<button className="round-button" onClick={() => setShowActions(true)} aria-label="书籍操作菜单"><Icon name="more" size={22} /></button>}
+      />
+      <div className="scroll-area book-detail-body">
+        <div className="book-summary">
+          <BookCover title={novel.title} theme={novel.coverTheme || 1} />
+          <div>
+            <div className="book-summary-title">{novel.title}</div>
+            <div className="book-summary-meta">
+              {novel.metaLine || `${chapterCount} 章`}<br />
+              已读到第 {Math.max(1, (novel.lastReadChapter || 0) + 1)} 章
+            </div>
+          </div>
+        </div>
+        <button className="continue-btn" onClick={onContinue}>继续阅读</button>
+
+        <div className="volume-title">
+          <span>正文卷</span>
+          <span style={{ color: '#9f9588', fontSize: 12 }}>共 {chapterCount} 章</span>
+        </div>
+
+        {chapters.map((chapter, index) => {
+          const isCurrent = index === (novel.lastReadChapter || 0);
+          const isRead = index <= (novel.maxReadChapter || 0);
+          return (
+            <button key={`${chapter.title}-${index}`} className={`chapter-row ${isCurrent ? 'current' : ''}`} onClick={() => onSelectChapter(index)}>
+              <div className="top-row">
+                <div style={{ minWidth: 0 }}>
+                  <div className="chapter-title">第 {index + 1} 章 · {chapter.title.replace(/^第[^\s]+章\s*/, '')}</div>
+                  <div className="chapter-meta">{isCurrent ? '当前阅读' : isRead ? '已阅读' : '未阅读'}</div>
+                </div>
+                <Icon name="chevronRight" size={19} style={{ color: '#b39b7a', flex: '0 0 auto' }} />
+              </div>
+            </button>
+          );
+        })}
+      </div>
+      <BookActionSheet
+        novel={showActions ? novel : null}
+        onClose={() => setShowActions(false)}
+        onContinue={() => { setShowActions(false); onContinue(); }}
+        onRename={() => { setShowActions(false); setShowRename(true); }}
+        onDelete={() => { setShowActions(false); setShowDelete(true); }}
+      />
+      <RenameDialog
+        novel={showRename ? novel : null}
+        onClose={() => setShowRename(false)}
+        onSave={(name) => { onRenameNovel(novel.id, name); setShowRename(false); }}
+      />
+      {showDelete && (
+        <div className="delete-dialog" onClick={() => setShowDelete(false)}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>删除书籍</h3>
+            <p>确定要删除《{novel.title}》吗？此操作无法撤销。</p>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setShowDelete(false)}>取消</button>
+              <button className="btn btn-danger" onClick={() => { onDeleteNovel(novel.id); setShowDelete(false); onBack(); }}>删除</button>
+            </div>
+          </div>
+        </div>
+      )}
+      <Toast toast={toast} />
+    </div>
+  );
+}
+
+function CommentBadge({ count, active, onClick }) {
+  return (
+    <button className={`comment-badge ${active ? 'active' : ''}`} onClick={onClick} aria-label={`${count} 条评论`}>
+      {count}
+    </button>
+  );
+}
+
+function CommentItem({ comment }) {
+  return (
+    <div className="comment-item">
+      <div className="avatar" style={{ '--avatar-bg': comment.personaColor }}>{comment.personaAvatar}</div>
+      <div className="comment-main">
+        <div className="comment-meta">
+          <span className="comment-name">{comment.personaName}</span>
+          <span className="tag">{comment.personaTag}</span>
+        </div>
+        <div className="comment-text">{comment.text}</div>
+      </div>
+      <div className="like-box">
+        <Icon name="thumbs" size={20} strokeWidth={1.8} />
+        <span>{comment.likes}</span>
+      </div>
+    </div>
+  );
+}
+
+function CommentPanel({ comments, userComments, onAddUserComment, onClose }) {
+  const [inputText, setInputText] = useState('');
+  const allComments = [...comments, ...userComments];
+
+  const handleSubmit = () => {
+    const text = inputText.trim();
+    if (!text) return;
+    onAddUserComment(text);
+    setInputText('');
+  };
+
+  return (
+    <>
+      <div className="comment-sheet-backdrop" onClick={onClose} />
+      <div className="comment-sheet" data-comment-panel="true">
+        <div className="sheet-grabber" />
+        <div className="sheet-head">
+          <div className="sheet-title-wrap">
+            <div className="sheet-title">本段说</div>
+            <div className="sheet-subtitle">AI 视角，畅所欲言</div>
+          </div>
+          <button className="sheet-close" onClick={onClose} aria-label="关闭评论">
+            <Icon name="x" size={22} strokeWidth={2.1} />
+          </button>
+        </div>
+        <div className="sheet-tabs">
+          <div className="sheet-tab-group">
+            <span>推荐排序</span>
+          </div>
+          <div className="sheet-tab-group">
+            <strong>默认</strong>
+            <span>热门</span>
+            <span>最新</span>
+          </div>
+        </div>
+        <div className="comments-list">
+          {allComments.length === 0 ? (
+            <div className="empty-state">
+              <h3>还没有评论</h3>
+              <p>写下你的想法，给后面的自己留个批注。</p>
+            </div>
+          ) : (
+            allComments.map((comment, index) => <CommentItem key={comment.id || index} comment={comment} />)
+          )}
+        </div>
+        <div className="comment-input">
+          <div className="avatar" style={{ '--avatar-bg': '#e8dde5' }}>读</div>
+          <div className="input-wrap">
+            <input value={inputText} onChange={e => setInputText(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') handleSubmit(); }} placeholder="写下你的评论..." />
+            <Icon className="smile" name="smile" size={20} strokeWidth={1.8} />
+          </div>
+          <button className="send-btn" onClick={handleSubmit}>发送</button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ChapterJumpPanel({ chapter, chapterIndex, chapters, progress, onClose, onChangeChapter, onOpenCatalog }) {
+  return (
+    <>
+      <div className="bottom-sheet-backdrop plain-backdrop" onClick={onClose} />
+      <div className="sheet-panel chapter-jump-panel">
+        <div className="sheet-grabber" />
+        <div className="jump-head">
+          <span>{chapter?.title || `第 ${chapterIndex + 1} 章`}</span>
+          <span className="jump-progress">{progress}%</span>
+        </div>
+        <input
+          className="jump-range"
+          type="range"
+          min="0"
+          max={Math.max(0, chapters.length - 1)}
+          value={chapterIndex}
+          onChange={event => onChangeChapter(Number(event.target.value))}
+        />
+        <div className="jump-controls">
+          <button onClick={() => chapterIndex > 0 && onChangeChapter(chapterIndex - 1)}>上一章</button>
+          <button onClick={onOpenCatalog}>目录</button>
+          <span>共{chapters.length}章</span>
+          <button onClick={() => chapterIndex < chapters.length - 1 && onChangeChapter(chapterIndex + 1)}>下一章</button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ReadingSettingsPanel({ settings, onClose }) {
+  const bgOptions = ['#fbf7f0', '#f7f0e5', '#eef3ea', '#8c8b84', '#222'];
+  return (
+    <>
+      <div className="bottom-sheet-backdrop" onClick={onClose} />
+      <div className="sheet-panel reading-setting-panel">
+        <div className="sheet-grabber" />
+        <div className="sheet-head" style={{ padding: '0 0 10px' }}>
+          <div className="sheet-title" style={{ fontFamily: 'var(--sans)', fontSize: 16 }}>阅读设置</div>
+          <button className="sheet-close" onClick={onClose} aria-label="关闭阅读设置"><Icon name="x" size={20} /></button>
+        </div>
+        <div className="sheet-row">
+          <span>字体大小</span>
+          <div className="stepper">
+            <button onClick={() => settings.setFontSize(size => clamp(size - 1, 14, 26))}>A-</button>
+            <span>{settings.fontSize}</span>
+            <button onClick={() => settings.setFontSize(size => clamp(size + 1, 14, 26))}>A+</button>
+          </div>
+        </div>
+        <div className="sheet-row">
+          <span>背景颜色</span>
+          <div className="swatches">
+            {bgOptions.map((color, index) => (
+              <button key={color} className={`swatch ${index === 0 ? 'active' : ''}`} style={{ background: color }} aria-label={`背景颜色 ${index + 1}`} />
+            ))}
+          </div>
+        </div>
+        <div className="sheet-row">
+          <span>行间距</span>
+          <div className="spacing-options">
+            {[1.65, 1.84, 2.05].map(value => (
+              <button key={value} className={`spacing-option ${Math.abs((settings.lineHeight || 1.84) - value) < 0.02 ? 'active' : ''}`} onClick={() => settings.setLineHeight(value)}>
+                {value === 1.65 ? '紧凑' : value === 1.84 ? '标准' : '宽松'}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function SummonPanel({ personas, selectedIds, onToggle, onGenerate, onClose }) {
+  const selectedCount = selectedIds.length;
+  return (
+    <>
+      <div className="bottom-sheet-backdrop" onClick={onClose} />
+      <div className="sheet-panel summon-panel">
+        <div className="sheet-grabber" />
+        <div className="sheet-head" style={{ padding: '0 0 6px' }}>
+          <div>
+            <h3 className="summon-title">召唤 AI 书友评论</h3>
+            <p className="summon-subtitle">选择你想召唤的 AI 书友：</p>
+          </div>
+          <button className="sheet-close" onClick={onClose} aria-label="关闭召唤面板"><Icon name="x" size={20} /></button>
+        </div>
+        {personas.map(persona => {
+          const checked = selectedIds.includes(persona.id);
+          return (
+            <button className="summon-row" key={persona.id} onClick={() => onToggle(persona.id)}>
+              <div className="avatar" style={{ '--avatar-bg': persona.color }}>{persona.avatar}</div>
+              <div style={{ textAlign: 'left', minWidth: 0 }}>
+                <div className="persona-title">{persona.name}</div>
+                <div className="persona-desc">{persona.description || persona.stylePrompt}</div>
+              </div>
+              <span className={`check-box ${checked ? 'on' : ''}`}><Icon name="check" size={14} strokeWidth={3} /></span>
+            </button>
+          );
+        })}
+        <button className="summon-button" disabled={!selectedCount} onClick={onGenerate}>生成评论（{selectedCount}）</button>
+      </div>
+    </>
+  );
+}
+
+function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, onUpdateProgress, settings, userComments, onAddUserComment, aiState, onGenerateChapter }) {
+  const chapter = chapters[chapterIndex];
+  const scrollRef = useRef(null);
+  const [expandedParagraph, setExpandedParagraph] = useState(() => window.location.hash === '#reader-comment' ? 2 : null);
+  const [showChapterJump, setShowChapterJump] = useState(() => window.location.hash === '#reader-jump');
+  const [showReadingSettings, setShowReadingSettings] = useState(() => window.location.hash === '#reader-settings');
+  const [summonParagraph, setSummonParagraph] = useState(() => window.location.hash === '#reader-summon' ? 2 : null);
+  const [summonSelectedIds, setSummonSelectedIds] = useState(() => settings.personas.filter(p => p.enabled).slice(0, 2).map(p => p.id));
+  const [readerToast, setReaderToast] = useState(null);
+  const longPressTimer = useRef(null);
+  const suppressNextClick = useRef(false);
+
+  const paragraphs = useMemo(() => {
+    if (!chapter) return [];
+    return chapter.content.split(/\n+/).map(p => p.trim()).filter(Boolean);
+  }, [chapter]);
+
+  useEffect(() => {
+    onUpdateProgress(chapterIndex);
+    setExpandedParagraph(window.location.hash === '#reader-comment' ? 2 : null);
+  }, [chapterIndex, onUpdateProgress]);
+
+  useEffect(() => {
+    if (settings.liveSettings.enabled && chapter) {
+      onGenerateChapter(chapterIndex, chapter.title, paragraphs, false);
+    }
+  }, [chapterIndex, chapter, paragraphs, onGenerateChapter, settings.liveSettings.enabled, settings.liveTriggerKey]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTop = chapterIndex === novel.lastReadChapter ? novel.lastScrollPos || 0 : 0;
+  }, [chapterIndex, novel.lastReadChapter, novel.lastScrollPos]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return undefined;
+    let timer = null;
+    const handleScroll = () => {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => onUpdateProgress(chapterIndex, el.scrollTop), 250);
+    };
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      el.removeEventListener('scroll', handleScroll);
+      if (timer) clearTimeout(timer);
+    };
+  }, [chapterIndex, onUpdateProgress]);
+
+  const activeAiState = aiState.chapterIndex === chapterIndex ? aiState : { status: 'idle', commentsByKey: {}, error: '' };
+  const aiCommentsByKey = activeAiState.commentsByKey || {};
+  const progress = novel.displayReaderProgress || (chapters.length > 0 ? ((chapterIndex + 1) / chapters.length * 100).toFixed(2) : '0.00');
+  const readerStyle = {
+    '--reader-font-size': `${settings.fontSize || 20}px`,
+    '--reader-line-height': settings.lineHeight || 1.84,
+  };
+  const clearLongPress = () => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  };
+  const startLongPress = (index) => {
+    clearLongPress();
+    longPressTimer.current = setTimeout(() => {
+      suppressNextClick.current = true;
+      setSummonParagraph(index);
+      longPressTimer.current = null;
+    }, 520);
+  };
+  const toggleSummon = (personaId) => {
+    setSummonSelectedIds(prev => prev.includes(personaId)
+      ? prev.filter(id => id !== personaId)
+      : [...prev, personaId]);
+  };
+  const generateSummonedComments = () => {
+    if (summonParagraph === null) return;
+    const key = `${chapterIndex}-${summonParagraph}`;
+    const paragraph = paragraphs[summonParagraph] || '';
+    const selectedPersonas = settings.personas.filter(persona => summonSelectedIds.includes(persona.id));
+    selectedPersonas.forEach((persona, index) => {
+      const text = [
+        '从这句话能看出场景里的压迫感已经铺开了。',
+        '这里像是在把角色的判断和时代背景同时往前推。',
+        '这个细节很适合回头看，信息量比表面更重。',
+      ][(hashText(paragraph + persona.id) + index) % 3];
+      onAddUserComment(key, text, {
+        personaName: persona.name,
+        personaTag: persona.tag,
+        personaColor: persona.color,
+        personaAvatar: persona.avatar,
+        source: 'summoned',
+      });
+    });
+    setSummonParagraph(null);
+    setExpandedParagraph(summonParagraph);
+    setReaderToast({ title: '已添加 AI 书友评论', subtitle: `写入 ${selectedPersonas.length} 条本段说` });
+    window.setTimeout(() => setReaderToast(null), 1900);
+  };
+
+  return (
+    <div className="app-screen reader-screen" style={readerStyle}>
+      <StatusBar />
+      <TopBar
+        title={`${chapter?.title || `第 ${chapterIndex + 1} 章`} · ${progress}%`}
+        left={<button onClick={onBack} aria-label="返回目录"><Icon name="chevronLeft" size={24} strokeWidth={1.9} /></button>}
+        right={<button onClick={() => setShowReadingSettings(true)} aria-label="阅读设置"><Icon name="more" size={22} /></button>}
+      />
+      <div ref={scrollRef} className="scroll-area reader-scroll">
+        <div className="reader-article">
+          <div className="reader-title-muted">{novel.title}</div>
+          {activeAiState.status === 'error' && (
+            <div className="status-message error">{activeAiState.error}</div>
+          )}
+          {paragraphs.map((paragraph, index) => {
+            const key = `${chapterIndex}-${index}`;
+            const aiComments = settings.liveSettings.enabled && aiCommentsByKey[key]?.length
+              ? aiCommentsByKey[key]
+              : generateDemoComments(paragraph, index, chapterIndex, settings.personas);
+            const myComments = userComments[key] || [];
+            const totalCount = aiComments.length + myComments.length;
+            return (
+              <p
+                className="reader-p"
+                key={key}
+                role="button"
+                tabIndex="0"
+                aria-label={`打开章节跳转：第 ${index + 1} 段`}
+                onClick={() => {
+                  if (suppressNextClick.current) {
+                    suppressNextClick.current = false;
+                    return;
+                  }
+                  setShowChapterJump(true);
+                }}
+                onPointerDown={() => startLongPress(index)}
+                onPointerUp={clearLongPress}
+                onPointerCancel={clearLongPress}
+                onContextMenu={(event) => { event.preventDefault(); setSummonParagraph(index); }}
+              >
+                {paragraph}
+                {totalCount > 0 && (
+                  <CommentBadge
+                    count={totalCount}
+                    active={expandedParagraph === index}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setExpandedParagraph(expandedParagraph === index ? null : index);
+                    }}
+                  />
+                )}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="reader-progress">
+        <button disabled={chapterIndex <= 0} onClick={() => chapterIndex > 0 && onChangeChapter(chapterIndex - 1)}>上一章</button>
+        <div className="reader-progress-middle">
+          <div className="mini-track"><div className="mini-fill" style={{ width: `${progress}%` }} /></div>
+          <span>{chapterIndex + 1}/{chapters.length}</span>
+        </div>
+        <button disabled={chapterIndex >= chapters.length - 1} onClick={() => chapterIndex < chapters.length - 1 && onChangeChapter(chapterIndex + 1)}>下一章</button>
+      </div>
+
+      {expandedParagraph !== null && (() => {
+        const key = `${chapterIndex}-${expandedParagraph}`;
+        const aiComments = settings.liveSettings.enabled && aiCommentsByKey[key]?.length
+          ? aiCommentsByKey[key]
+          : generateDemoComments(paragraphs[expandedParagraph], expandedParagraph, chapterIndex, settings.personas);
+        const myComments = userComments[key] || [];
+        return (
+          <CommentPanel
+            comments={aiComments}
+            userComments={myComments}
+            onAddUserComment={(text) => onAddUserComment(key, text)}
+            onClose={() => setExpandedParagraph(null)}
+          />
+        );
+      })()}
+      {showChapterJump && (
+        <ChapterJumpPanel
+          chapter={chapter}
+          chapterIndex={chapterIndex}
+          chapters={chapters}
+          progress={progress}
+          onClose={() => setShowChapterJump(false)}
+          onChangeChapter={(index) => { onChangeChapter(index); setShowChapterJump(false); }}
+          onOpenCatalog={() => { setShowChapterJump(false); onBack(); }}
+        />
+      )}
+      {showReadingSettings && <ReadingSettingsPanel settings={settings} onClose={() => setShowReadingSettings(false)} />}
+      {summonParagraph !== null && (
+        <SummonPanel
+          personas={settings.personas}
+          selectedIds={summonSelectedIds}
+          onToggle={toggleSummon}
+          onGenerate={generateSummonedComments}
+          onClose={() => setSummonParagraph(null)}
+        />
+      )}
+      <Toast toast={readerToast} />
+    </div>
+  );
+}
+
+function SettingsScreen({ settings, onNavigate }) {
+  const {
+    currentProfile,
+    updateCurrentProfile,
+    modelProfiles,
+    selectedProfileId,
+    setSelectedProfileId,
+    defaultProfileId,
+    addModelProfile,
+    setDefaultProfileId,
+    currentApiKey,
+    setCurrentApiKey,
+    liveSettings,
+    setLiveSettings,
+    connectionState,
+    isDiscoveringModels,
+    onTestConnection,
+    onDiscoverModels,
+    currentConnectionFingerprint,
+  } = settings;
+  const [showKey, setShowKey] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
+  const [toast, setToast] = useState(null);
+  const isCurrentConnectionTested = connectionState.fingerprint === currentConnectionFingerprint;
+  const isLoading = connectionState.status === 'loading' || isDiscoveringModels;
+  const isSuccess = connectionState.status === 'success' && isCurrentConnectionTested;
+  const isError = connectionState.status === 'error' && isCurrentConnectionTested;
+  const statusText = isLoading ? '测试中' : isSuccess ? '已连接' : isError ? '连接失败' : '未测试';
+  const statusMessage = isSuccess
+    ? (connectionState.message || '连接成功，模型可用。可以开始使用该接口生成评论。')
+    : isError
+      ? (connectionState.message || '连接失败，请检查 Base URL / API Key / 模型名称。')
+      : '填写配置后点击测试连接。测试会真实调用所选模型。';
+
+  const saveConfig = () => {
+    if (!isSuccess) {
+      setToast({ title: '请先测试连接', subtitle: '确认模型可用后再保存配置' });
+      window.setTimeout(() => setToast(null), 1900);
+      return;
+    }
+    setLiveSettings(prev => ({ ...prev, enabled: true, profileId: currentProfile.id }));
+    setToast({ title: '已保存并设为当前接口', subtitle: '接口配置已保存在本地设备' });
+    window.setTimeout(() => setToast(null), 1900);
+  };
+  const isDefaultProfile = currentProfile.id === defaultProfileId;
+
+  return (
+    <div className="app-screen">
+      <StatusBar />
+      <div className="scroll-area settings-body tab-body">
+        <div className="settings-head">
+          <h1>AI 接口设置</h1>
+          <p>配置你的 AI 服务，用于生成评论。支持任何 OpenAI SDK 兼容接口。</p>
+        </div>
+
+        <span className="section-label">接口列表</span>
+        <div className="profile-list">
+          {modelProfiles.map(profile => (
+            <button
+              key={profile.id}
+              className={`profile-row ${profile.id === selectedProfileId ? 'active' : ''}`}
+              onClick={() => setSelectedProfileId(profile.id)}
+            >
+              <span style={{ minWidth: 0 }}>
+                <span className="profile-name">{profile.name || '未命名接口'}</span>
+                <span className="profile-meta">{profile.model || '未填写模型'} · {profile.baseUrl || '未填写 Base URL'}</span>
+              </span>
+              {profile.id === defaultProfileId && <span className="profile-pill">默认</span>}
+            </button>
+          ))}
+        </div>
+
+        <div className="profile-tools">
+          <button className="btn btn-outline" onClick={addModelProfile}>新增接口</button>
+          <button className="btn btn-outline" onClick={() => setDefaultProfileId(currentProfile.id)} disabled={isDefaultProfile}>
+            {isDefaultProfile ? '已是默认' : '设为默认'}
+          </button>
+        </div>
+
+        <label className="form-field">
+          <span className="field-label">配置名称</span>
+          <input className="input" value={currentProfile.name} onChange={e => updateCurrentProfile({ name: e.target.value })} placeholder="例如：我的 OpenAI 服务" />
+        </label>
+
+        <label className="form-field">
+          <span className="field-label">Base URL</span>
+          <input className="input" value={currentProfile.baseUrl} onChange={e => updateCurrentProfile({ baseUrl: e.target.value })} placeholder="例如：https://api.openai.com/v1" />
+        </label>
+
+        <label className="form-field">
+          <span className="field-label">API Key</span>
+          <span className="password-wrap">
+            <input className="input" type={showKey ? 'text' : 'password'} value={currentApiKey} onChange={e => setCurrentApiKey(e.target.value)} placeholder="输入你的 API Key" />
+            <button className="eye-btn" type="button" onClick={() => setShowKey(prev => !prev)} aria-label="显示或隐藏 API Key">
+              <Icon name="eye" size={20} strokeWidth={1.8} />
+            </button>
+          </span>
+        </label>
+
+        <label className="form-field">
+          <span className="field-label">模型名称</span>
+          <input className="input" value={currentProfile.model} onChange={e => updateCurrentProfile({ model: e.target.value })} placeholder="例如：gpt-4.1-mini" />
+        </label>
+
+        <div className="config-example-box settings-example-box">
+          <strong>填写示例与提示</strong><br />
+          OpenAI 官方 → https://api.openai.com/v1<br />
+          自建/远程兼容服务 → http://100.x.x.x:11434/v1<br />
+          模型名称示例：gpt-4.1-mini、qwen2.5:7b、deepseek-r1:7b<br />
+          按你的服务端支持如实填写。
+        </div>
+
+        <div className="settings-actions">
+          <button className="btn btn-outline" onClick={onTestConnection} disabled={isLoading}>{isLoading ? '测试中...' : '测试连接'}</button>
+          <button className="btn btn-primary" onClick={saveConfig}>保存配置</button>
+        </div>
+
+        <button style={{ display: 'none' }} onClick={onDiscoverModels} disabled={isDiscoveringModels}>发现模型</button>
+
+        <span className="section-label">当前状态</span>
+        <div className={`status-message ${isError ? 'error' : ''} ${isSuccess ? 'success' : ''}`}>
+          <div className="status-head">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 800 }}>
+              <span className={`status-dot ${isLoading ? 'loading' : isSuccess ? 'success' : isError ? 'error' : ''}`} />
+              当前状态：{statusText}
+            </div>
+            <button className="help-icon-btn" onClick={() => setShowHelp(true)} aria-label="查看配置说明">i</button>
+          </div>
+          <div style={{ marginTop: 7 }}>{statusMessage}</div>
+        </div>
+
+        <div className="settings-tip">
+          提示：请确保你拥有所使用 AI 服务的合法权限。<br />
+          测试连接会向当前模型发起一次最小请求；API Key 仅保存在本地设备中。
+        </div>
+      </div>
+      <BottomNav active="settings" onNavigate={onNavigate} />
+      <Toast toast={toast} />
+
+      {isLoading && (
+        <div className="delete-dialog">
+          <div className="dialog-card loading-card">
+            <div className="spinner" />
+            <h3>正在测试连接...</h3>
+            <p>请稍候</p>
+          </div>
+        </div>
+      )}
+
+      {showHelp && (
+        <div className="delete-dialog" onClick={() => setShowHelp(false)}>
+          <div className="dialog-card config-dialog" onClick={event => event.stopPropagation()}>
+            <h3>配置说明</h3>
+            <ul className="config-list">
+              <li>适配一切 OpenAI SDK 兼容方式。</li>
+              <li>可连接官方服务、代理服务、自建兼容服务。</li>
+              <li>远程 Ollama 也可使用，但需提供兼容的 Base URL。</li>
+              <li>API Key 是否必填取决于你的服务端。</li>
+              <li>测试连接会真实调用所填模型，成功后再保存为当前接口。</li>
+            </ul>
+            <div className="config-example-box">
+              <strong>常见示例</strong><br />
+              OpenAI 官方：https://api.openai.com/v1<br />
+              自建/远程兼容服务：http://100.x.x.x:11434/v1<br />
+              模型示例：gpt-4.1-mini、qwen2.5:7b、deepseek-r1:7b
+            </div>
+            <div className="settings-tip" style={{ margin: '0 0 16px', textAlign: 'left' }}>
+              提示（可选）：通过 Tailscale 连接到远程电脑，再访问该电脑上运行的 Ollama（兼容 OpenAI 接口），即可在本地使用。
+            </div>
+            <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => setShowHelp(false)}>知道了</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AiFriendsScreen({ personas, onNavigate, onEditFriend, onAddFriend, toast }) {
+  return (
+    <div className="app-screen">
+      <StatusBar />
+      <div className="scroll-area settings-body tab-body">
+        <div className="friends-head">
+          <div>
+            <h1>AI 书友设置</h1>
+            <p>管理您的 AI 书友（阅读陪伴角色），自定义他们的性格与出现频率。</p>
+          </div>
+          <button className="add-friend-btn" onClick={onAddFriend}>＋ 新增AI书友</button>
+        </div>
+        <div className="section-label">我的AI书友</div>
+        {personas.map(persona => (
+          <button className="friend-card" key={persona.id} onClick={() => onEditFriend(persona.id)}>
+            <PersonaAvatar persona={persona} />
+            <div style={{ minWidth: 0 }}>
+              <div className="friend-title">
+                {persona.name}
+                <span className="preset-pill">{persona.preset ? '预设' : '自定义'}</span>
+              </div>
+              <div className="friend-desc">{persona.description || persona.stylePrompt}</div>
+              <div className="friend-desc">出现频率：{frequencyLabel(persona.frequency)}</div>
+            </div>
+            <Icon name="chevronRight" size={18} style={{ color: '#9f9588' }} />
+          </button>
+        ))}
+      </div>
+      <BottomNav active="friends" onNavigate={onNavigate} />
+      <Toast toast={toast} />
+    </div>
+  );
+}
+
+function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultProfileId = '', onBack, onSave, onNavigate }) {
+  const isCreate = mode === 'create';
+  const avatarFileRef = useRef(null);
+  const [draft, setDraft] = useState(() => isCreate ? createBlankPersona() : { ...persona });
+  const [showAvatarSheet, setShowAvatarSheet] = useState(false);
+  const [showRestoreConfirm, setShowRestoreConfirm] = useState(false);
+  useEffect(() => {
+    setDraft(isCreate ? createBlankPersona() : { ...persona });
+  }, [isCreate, persona?.id]);
+  if (!isCreate && !persona) return null;
+
+  const updateDraft = (patch) => setDraft(prev => ({ ...prev, ...patch }));
+  const promptText = draft.stylePrompt || '';
+  const defaultPersona = !isCreate ? DEFAULT_PERSONAS.find(item => item.id === persona.id) : null;
+  const canSubmit = !isCreate || (draft.name.trim() && promptText.trim());
+  const defaultProfile = getProfileById(modelProfiles, defaultProfileId) || modelProfiles[0] || null;
+
+  const handleAvatarFile = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => updateDraft({ avatar: ev.target.result, color: '#efe0c8' });
+    reader.readAsDataURL(file);
+    event.target.value = '';
+    setShowAvatarSheet(false);
+  };
+
+  const restoreDefault = () => {
+    if (defaultPersona) setDraft(normalizePersona(defaultPersona, DEFAULT_PERSONAS.findIndex(item => item.id === defaultPersona.id)));
+    setShowRestoreConfirm(false);
+  };
+
+  const submit = () => {
+    if (!canSubmit) return;
+    const name = draft.name.trim() || '我的AI书友';
+    onSave({
+      ...draft,
+      name,
+      tag: draft.preset ? draft.tag : '自定义',
+      description: draft.description || `${name} 的自定义阅读视角`,
+      stylePrompt: normalizeText(promptText) || '你是一个温和、直接、会抓住细节的读书伙伴。',
+      enabled: true,
+    }, isCreate ? 'create' : 'edit');
+  };
+
+  return (
+    <div className="app-screen">
+      <StatusBar />
+      <TopBar
+        title={isCreate ? '创建 AI书友' : '编辑 AI书友'}
+        left={<button onClick={onBack} aria-label="返回AI书友设置"><Icon name="chevronLeft" size={25} strokeWidth={1.9} /></button>}
+        right={null}
+      />
+      <div className="scroll-area edit-body">
+        <div style={{ color: '#8d8276', fontSize: 13, marginBottom: 8 }}>
+          {isCreate ? '自定义你的阅读伙伴' : '预设书友也可修改'}
+        </div>
+        <div className="edit-avatar-zone">
+          <PersonaAvatar persona={draft} />
+          <button className="btn btn-outline" style={{ height: 34, padding: '0 14px' }} onClick={() => setShowAvatarSheet(true)}>更换头像</button>
+          <input ref={avatarFileRef} type="file" accept="image/*" onChange={handleAvatarFile} style={{ display: 'none' }} />
+        </div>
+        <label className="form-field">
+          <span className="field-label-row">
+            <span className="field-label">名称</span>
+            <span className="field-counter">{(draft.name || '').length}/12</span>
+          </span>
+          <input className="input" maxLength="12" value={draft.name || ''} onChange={event => updateDraft({ name: event.target.value })} placeholder={isCreate ? '给你的AI书友起个名字' : ''} />
+        </label>
+        <label className="form-field">
+          <span className="field-label">出现频率</span>
+          <div className="frequency">
+            {[
+              ['low', '低'],
+              ['medium', '中'],
+              ['high', '高'],
+            ].map(([value, label]) => (
+              <button key={value} type="button" className={draft.frequency === value ? 'active' : ''} onClick={() => updateDraft({ frequency: value })}>{label}</button>
+            ))}
+          </div>
+        </label>
+        <div className="frequency-hint">{frequencyHint(draft.frequency)}</div>
+        <label className="form-field">
+          <span className="field-label">使用接口</span>
+          <select
+            className="input"
+            value={draft.modelProfileId || ''}
+            onChange={event => updateDraft({ modelProfileId: event.target.value })}
+          >
+            <option value="">跟随默认接口{defaultProfile ? `（${defaultProfile.name}）` : ''}</option>
+            {modelProfiles.map(profile => (
+              <option key={profile.id} value={profile.id}>{profile.name || '未命名接口'} · {profile.model || '未填写模型'}</option>
+            ))}
+          </select>
+        </label>
+        <label className="form-field">
+          <span className="field-label-row">
+            <span className="field-label">性格 Prompt</span>
+            <button type="button" className="help-icon-btn" aria-label="Prompt 说明">i</button>
+          </span>
+          <textarea
+            className="prompt-box"
+            maxLength="800"
+            value={promptText}
+            onChange={event => updateDraft({ stylePrompt: event.target.value })}
+            placeholder={isCreate ? '例如：你是一个温柔但敏锐的读书伙伴，擅长从细节里发现人物情绪，并用简短自然的语气陪我阅读。' : ''}
+          />
+          <span className="prompt-footer"><span className="field-counter">{promptText.length}/800</span></span>
+        </label>
+        <div className="settings-actions" style={{ marginTop: 28 }}>
+          <button className="btn btn-outline" onClick={isCreate ? onBack : () => setShowRestoreConfirm(true)}>{isCreate ? '取消' : '恢复默认'}</button>
+          <button className="btn btn-primary" onClick={submit} disabled={!canSubmit}>{isCreate ? '创建AI书友' : '保存修改'}</button>
+        </div>
+      </div>
+      <BottomNav active="friends" onNavigate={(target) => {
+        if (target === 'friends') onBack();
+        else onNavigate(target);
+      }} />
+
+      {showAvatarSheet && (
+        <>
+          <div className="bottom-sheet-backdrop" onClick={() => setShowAvatarSheet(false)} />
+          <div className="sheet-panel avatar-sheet-panel">
+            <div className="avatar-sheet-title">选择头像来源</div>
+            <button className="action-row" onClick={() => { updateDraft({ avatar: '友', color: '#d8dce3' }); setShowAvatarSheet(false); }}>默认头像</button>
+            <button className="action-row" onClick={() => avatarFileRef.current?.click()}>上传图片</button>
+            <button className="action-cancel" onClick={() => setShowAvatarSheet(false)}>取消</button>
+          </div>
+        </>
+      )}
+
+      {showRestoreConfirm && (
+        <div className="delete-dialog" onClick={() => setShowRestoreConfirm(false)}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>恢复默认人格设定？</h3>
+            <p>将恢复该书友的默认人格设定，当前的所有修改都将被删除。</p>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setShowRestoreConfirm(false)}>取消</button>
+              <button className="btn btn-primary" onClick={restoreDefault}>确认恢复</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function App() {
+  const [novels, setNovels] = useState(() => ensureLocalLibrary());
+  const initialHash = window.location.hash.replace('#', '');
+  const initialNovelId = novels[0]?.id || null;
+  const shouldOpenReader = ['reader', 'reader-comment', 'reader-jump', 'reader-settings', 'reader-summon'].includes(initialHash);
+  const [screen, setScreen] = useState(() => {
+    if (initialHash === 'settings' || initialHash === 'api-settings') return 'settings';
+    if (initialHash === 'friends' || initialHash === 'ai-friends') return 'friends';
+    if (initialHash === 'chapters' && initialNovelId) return 'chapters';
+    if (shouldOpenReader && initialNovelId) return 'reader';
+    return 'bookshelf';
+  });
+  const [currentNovelId, setCurrentNovelId] = useState(() => (initialHash === 'chapters' || shouldOpenReader ? initialNovelId : null));
+  const [currentChapter, setCurrentChapter] = useState(() => shouldOpenReader ? (novels[0]?.lastReadChapter || 0) : 0);
+  const [appToast, setAppToast] = useState(null);
+  const [editingPersonaId, setEditingPersonaId] = useState(null);
+
+  const baseSettings = lsGet(STORAGE_KEYS.settings, { fontSize: 20, lineHeight: 1.84, theme: 'light' });
+  const [fontSize, setFontSize] = useState(() => baseSettings.fontSize || 20);
+  const [lineHeight, setLineHeight] = useState(() => baseSettings.lineHeight || 1.84);
+  const [theme, setTheme] = useState(() => baseSettings.theme || 'light');
+  const [liveSettings, setLiveSettings] = useState(() => ({ ...DEFAULT_LIVE_SETTINGS, ...lsGet(STORAGE_KEYS.liveSettings, DEFAULT_LIVE_SETTINGS) }));
+  const [modelProfiles, setModelProfiles] = useState(() => {
+    const saved = lsGet(STORAGE_KEYS.modelProfiles, DEFAULT_MODEL_PROFILES);
+    return (saved && saved.length ? saved : DEFAULT_MODEL_PROFILES).map(normalizeModelProfile);
+  });
+  const [selectedProfileId, setSelectedProfileId] = useState(() => getDefaultProfileId(modelProfiles, liveSettings.profileId));
+  const [personas, setPersonas] = useState(() => {
+    return ensurePersonasLibrary();
+  });
+  const [apiKeysByProfileId, setApiKeysByProfileId] = useState(() => lsGet(STORAGE_KEYS.apiKeys, {}));
+  const [connectionState, setConnectionState] = useState({ status: 'idle', message: '' });
+  const [isDiscoveringModels, setIsDiscoveringModels] = useState(false);
+  const [chapterAiState, setChapterAiState] = useState({ chapterIndex: null, status: 'idle', commentsByKey: {}, error: '', fingerprint: '' });
+  const [userComments, setUserComments] = useState({});
+
+  const currentNovel = novels.find(novel => novel.id === currentNovelId);
+  const currentChapters = useMemo(() => {
+    if (!currentNovelId) return [];
+    const data = lsGet(`rwm_novel_${currentNovelId}`, null);
+    return data?.chapters || [];
+  }, [currentNovelId]);
+
+  const defaultProfileId = useMemo(() => getDefaultProfileId(modelProfiles, liveSettings.profileId), [modelProfiles, liveSettings.profileId]);
+  const currentProfile = useMemo(() => normalizeModelProfile(getProfileById(modelProfiles, selectedProfileId) || getProfileById(modelProfiles, defaultProfileId) || modelProfiles[0] || DEFAULT_MODEL_PROFILES[0]), [modelProfiles, selectedProfileId, defaultProfileId]);
+  const currentApiKey = apiKeysByProfileId[currentProfile.id] || '';
+  const liveTriggerKey = useMemo(
+    () => profileFingerprint(modelProfiles, personas, liveSettings.promptVersion, defaultProfileId),
+    [modelProfiles, personas, liveSettings.promptVersion, defaultProfileId],
+  );
+  const currentConnectionFingerprint = useMemo(
+    () => connectionFingerprint(currentProfile, currentApiKey, liveSettings.proxyUrl),
+    [currentProfile, currentApiKey, liveSettings.proxyUrl],
+  );
+
+  useEffect(() => { lsSet(STORAGE_KEYS.novels, novels); }, [novels]);
+  useEffect(() => { lsSet(STORAGE_KEYS.settings, { fontSize, lineHeight, theme }); }, [fontSize, lineHeight, theme]);
+  useEffect(() => { lsSet(STORAGE_KEYS.liveSettings, liveSettings); }, [liveSettings]);
+  useEffect(() => { lsSet(STORAGE_KEYS.modelProfiles, modelProfiles); }, [modelProfiles]);
+  useEffect(() => { lsSet(STORAGE_KEYS.personas, personas); }, [personas]);
+  useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
+
+  useEffect(() => {
+    const resolvedDefaultId = getDefaultProfileId(modelProfiles, liveSettings.profileId);
+    if (resolvedDefaultId && resolvedDefaultId !== liveSettings.profileId) {
+      setLiveSettings(prev => ({ ...prev, profileId: resolvedDefaultId }));
+    }
+    if (!getProfileById(modelProfiles, selectedProfileId)) {
+      setSelectedProfileId(resolvedDefaultId);
+    }
+  }, [modelProfiles, liveSettings.profileId, selectedProfileId]);
+
+  useEffect(() => {
+    setConnectionState(prev => {
+      if (prev.status === 'idle') return prev;
+      if (prev.fingerprint === currentConnectionFingerprint) return prev;
+      return { status: 'idle', message: '' };
+    });
+  }, [currentConnectionFingerprint]);
+
+  useEffect(() => {
+    if (currentNovelId) setUserComments(lsGet(`rwm_comments_${currentNovelId}`, {}));
+  }, [currentNovelId]);
+
+  const persistApiKeys = useCallback((updater) => {
+    setApiKeysByProfileId(prev => {
+      const updated = typeof updater === 'function' ? updater(prev) : updater;
+      lsSet(STORAGE_KEYS.apiKeys, updated);
+      return updated;
+    });
+  }, []);
+
+  const setCurrentApiKey = useCallback((value) => {
+    persistApiKeys(prev => ({ ...prev, [currentProfile.id]: value }));
+  }, [currentProfile.id, persistApiKeys]);
+
+  const updateCurrentProfile = useCallback((patch) => {
+    setModelProfiles(prev => {
+      const targetId = selectedProfileId || getDefaultProfileId(prev, liveSettings.profileId);
+      const next = prev.length ? [...prev] : DEFAULT_MODEL_PROFILES.map(normalizeModelProfile);
+      const index = next.findIndex(profile => profile.id === targetId);
+      const safeIndex = index >= 0 ? index : 0;
+      const base = next[safeIndex] || DEFAULT_MODEL_PROFILES[0];
+      next[safeIndex] = normalizeModelProfile({ ...base, ...patch, id: base.id });
+      return next;
+    });
+  }, [liveSettings.profileId, selectedProfileId]);
+
+  const addModelProfile = useCallback(() => {
+    const id = uid();
+    const profile = normalizeModelProfile({
+      id,
+      name: `AI 接口 ${modelProfiles.length + 1}`,
+      baseUrl: DEFAULT_MODEL_PROFILES[0].baseUrl,
+      model: DEFAULT_MODEL_PROFILES[0].model,
+    });
+    setModelProfiles(prev => [...prev, profile]);
+    setSelectedProfileId(id);
+    setConnectionState({ status: 'idle', message: '' });
+  }, [modelProfiles.length]);
+
+  const setDefaultProfileId = useCallback((profileId) => {
+    const resolved = getDefaultProfileId(modelProfiles, profileId);
+    if (!resolved) return;
+    setLiveSettings(prev => ({ ...prev, enabled: true, profileId: resolved }));
+  }, [modelProfiles]);
+
+  const showToast = useCallback((toast) => {
+    setAppToast(toast);
+    window.setTimeout(() => setAppToast(null), 1900);
+  }, []);
+
+  const navigateTab = useCallback((target) => {
+    if (target === 'bookshelf') setScreen('bookshelf');
+    if (target === 'friends') setScreen('friends');
+    if (target === 'settings') setScreen('settings');
+  }, []);
+
+  const handleImport = useCallback((title, text, fileName) => {
+    const chapters = parseNovelChapters(text);
+    const id = uid();
+    const meta = {
+      id,
+      title,
+      fileName,
+      totalChapters: chapters.length,
+      lastReadChapter: 0,
+      maxReadChapter: 0,
+      lastScrollPos: 0,
+      addedAt: Date.now(),
+      coverTheme: ((hashText(title) % 6) + 1),
+    };
+    lsSet(`rwm_novel_${id}`, { chapters });
+    setNovels(prev => [{ ...meta, isNew: true }, ...prev]);
+    setCurrentNovelId(id);
+    setCurrentChapter(0);
+    setScreen('chapters');
+    showToast({ title: '导入成功', subtitle: '已导入 1 本书' });
+  }, [showToast]);
+
+  const clearNovelAiCache = useCallback((novelId) => {
+    try {
+      Object.keys(localStorage)
+        .filter(key => key.startsWith(`rwm_ai_comments_${novelId}_`))
+        .forEach(key => localStorage.removeItem(key));
+    } catch {}
+  }, []);
+
+  const handleDelete = useCallback((id) => {
+    setNovels(prev => prev.filter(novel => novel.id !== id));
+    try {
+      localStorage.removeItem(`rwm_novel_${id}`);
+      localStorage.removeItem(`rwm_comments_${id}`);
+    } catch {}
+    clearNovelAiCache(id);
+    if (currentNovelId === id) {
+      setCurrentNovelId(null);
+      setScreen('bookshelf');
+      setChapterAiState({ chapterIndex: null, status: 'idle', commentsByKey: {}, error: '', fingerprint: '' });
+    }
+  }, [clearNovelAiCache, currentNovelId]);
+
+  const handleSelectNovel = (id) => {
+    setCurrentNovelId(id);
+    const novel = novels.find(item => item.id === id);
+    setCurrentChapter(novel?.lastReadChapter || 0);
+    setScreen('chapters');
+  };
+
+  const handleContinueNovel = (id = currentNovelId) => {
+    const novel = novels.find(item => item.id === id);
+    if (!novel) return;
+    setCurrentNovelId(id);
+    setCurrentChapter(novel.lastReadChapter || 0);
+    setScreen('reader');
+  };
+
+  const handleRenameNovel = (id, name) => {
+    setNovels(prev => prev.map(novel => novel.id === id ? { ...novel, title: name } : novel));
+  };
+
+  const handleSelectChapter = (index) => {
+    setCurrentChapter(index);
+    setScreen('reader');
+  };
+
+  const handleChangeChapter = (index) => {
+    setCurrentChapter(index);
+  };
+
+  const handleUpdateProgress = useCallback((chapterIndex, scrollPos) => {
+    setNovels(prev => prev.map(novel => (
+      novel.id === currentNovelId
+        ? {
+            ...novel,
+            lastReadChapter: chapterIndex,
+            maxReadChapter: Math.max(novel.maxReadChapter || 0, chapterIndex),
+            lastScrollPos: scrollPos != null ? scrollPos : novel.lastScrollPos || 0,
+          }
+        : novel
+    )));
+  }, [currentNovelId]);
+
+  const handleAddUserComment = useCallback((paragraphKey, text, patch = {}) => {
+    setUserComments(prev => {
+      const existing = prev[paragraphKey] || [];
+      const updated = {
+        ...prev,
+        [paragraphKey]: [...existing, {
+          id: uid(),
+          personaName: patch.personaName || '我',
+          personaTag: patch.personaTag || '读者',
+          personaColor: patch.personaColor || '#e8dde5',
+          personaAvatar: patch.personaAvatar || '读',
+          text,
+          likes: 0,
+          liked: false,
+          source: patch.source || 'reader',
+        }],
+      };
+      lsSet(`rwm_comments_${currentNovelId}`, updated);
+      return updated;
+    });
+  }, [currentNovelId]);
+
+  const generateChapterComments = useCallback(async (chapterIndex, chapterTitle, paragraphs, force = false) => {
+    if (!currentNovelId) return;
+    if (!liveSettings.enabled) {
+      setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: liveTriggerKey });
+      return;
+    }
+    const activePersonas = personas.filter(persona => persona.enabled);
+    const profileGroups = groupPersonasByProfile(activePersonas, modelProfiles, defaultProfileId)
+      .filter(group => liveSettings.proxyUrl.trim()
+        && group.profile.baseUrl.trim()
+        && group.profile.model.trim()
+        && !/api\.example\.com/i.test(group.profile.baseUrl));
+    if (!profileGroups.length) {
+      setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: liveTriggerKey });
+      return;
+    }
+    const fingerprint = profileFingerprint(modelProfiles, personas, liveSettings.promptVersion, defaultProfileId);
+    const cacheKey = buildAiCacheKey(currentNovelId, chapterIndex, fingerprint);
+    if (!force) {
+      const cached = lsGet(cacheKey, null);
+      if (cached?.commentsByKey) {
+        setChapterAiState({ chapterIndex, status: 'success', commentsByKey: cached.commentsByKey, error: '', fingerprint });
+        return;
+      }
+    }
+    setChapterAiState({ chapterIndex, status: 'loading', commentsByKey: {}, error: '', fingerprint });
+    try {
+      const merged = {};
+      const chunks = chunkParagraphs(paragraphs);
+      const errors = [];
+      let successCount = 0;
+      for (const group of profileGroups) {
+        try {
+          const apiKey = apiKeysByProfileId[group.profile.id] || '';
+          for (let index = 0; index < chunks.length; index++) {
+            const rawComments = await aiClient.generateChunk(
+              liveSettings.proxyUrl,
+              group.profile,
+              apiKey,
+              chapterTitle,
+              chunks[index],
+              group.personas,
+            );
+            mergeCommentsByKey(
+              merged,
+              normalizeGeneratedComments(rawComments, group.personas, chapterIndex, group.profile.id, index),
+            );
+          }
+          successCount++;
+        } catch (error) {
+          errors.push(`${group.profile.name || group.profile.model}: ${getErrorMessage(error)}`);
+        }
+      }
+      if (!successCount) {
+        throw new Error(errors[0] || 'AI 评论生成失败');
+      }
+      const payload = { commentsByKey: merged, generatedAt: Date.now(), fingerprint };
+      lsSet(cacheKey, payload);
+      setChapterAiState({ chapterIndex, status: 'success', commentsByKey: merged, error: '', fingerprint });
+    } catch (error) {
+      setChapterAiState({ chapterIndex, status: 'error', commentsByKey: {}, error: getErrorMessage(error), fingerprint });
+    }
+  }, [currentNovelId, modelProfiles, defaultProfileId, apiKeysByProfileId, liveSettings, liveTriggerKey, personas]);
+
+  const handleTestConnection = useCallback(async () => {
+    if (!liveSettings.proxyUrl.trim() || !currentProfile.baseUrl.trim() || !currentProfile.model.trim()) {
+      setConnectionState({
+        status: 'error',
+        message: '请先填写 Proxy URL、Base URL 和模型名称，再测试连接。',
+        fingerprint: currentConnectionFingerprint,
+      });
+      return;
+    }
+    setConnectionState({ status: 'loading', message: '正在测试连接...', fingerprint: currentConnectionFingerprint });
+    try {
+      const result = await aiClient.testConnection(liveSettings.proxyUrl, currentProfile, currentApiKey);
+      setConnectionState({
+        status: 'success',
+        message: `连接成功，模型 ${result.model || currentProfile.model} 已通过实测。`,
+        fingerprint: currentConnectionFingerprint,
+      });
+    } catch (error) {
+      setConnectionState({ status: 'error', message: getErrorMessage(error), fingerprint: currentConnectionFingerprint });
+    }
+  }, [liveSettings.proxyUrl, currentProfile, currentApiKey, currentConnectionFingerprint]);
+
+  const handleDiscoverModels = useCallback(async () => {
+    setIsDiscoveringModels(true);
+    try {
+      const models = await aiClient.listModels(liveSettings.proxyUrl, currentProfile, currentApiKey);
+      setConnectionState({ status: 'success', message: models.length ? `已发现 ${models.length} 个模型。` : '端点可连通，但没有返回模型列表。' });
+      if (!currentProfile.model && models[0]?.id) updateCurrentProfile({ model: models[0].id });
+    } catch (error) {
+      setConnectionState({ status: 'error', message: getErrorMessage(error) });
+    } finally {
+      setIsDiscoveringModels(false);
+    }
+  }, [liveSettings.proxyUrl, currentProfile, currentApiKey, updateCurrentProfile]);
+
+  const handleAddFriend = useCallback(() => {
+    setEditingPersonaId(null);
+    setScreen('friendCreate');
+  }, []);
+
+  const handleEditFriend = (personaId) => {
+    setEditingPersonaId(personaId);
+    setScreen('friendEdit');
+  };
+
+  const handleSaveFriend = (draft, mode = 'edit') => {
+    if (mode === 'create') {
+      setPersonas(prev => [...prev, normalizePersona(draft, prev.length)]);
+      showToast({ title: 'AI书友创建成功', subtitle: '已添加到你的AI书友列表' });
+    } else {
+      setPersonas(prev => prev.map(persona => persona.id === draft.id ? normalizePersona(draft) : persona));
+      showToast({ title: '已保存AI书友设置', subtitle: '设置已成功保存' });
+    }
+    setScreen('friends');
+  };
+
+  const settingsObj = {
+    fontSize,
+    setFontSize,
+    lineHeight,
+    setLineHeight,
+    theme,
+    setTheme,
+    liveSettings,
+    setLiveSettings,
+    modelProfiles,
+    selectedProfileId,
+    setSelectedProfileId,
+    defaultProfileId,
+    addModelProfile,
+    setDefaultProfileId,
+    currentProfile,
+    updateCurrentProfile,
+    currentApiKey,
+    setCurrentApiKey,
+    connectionState,
+    isDiscoveringModels,
+    personas,
+    setPersonas,
+    onTestConnection: handleTestConnection,
+    onDiscoverModels: handleDiscoverModels,
+    liveTriggerKey,
+    currentConnectionFingerprint,
+  };
+
+  return (
+    <>
+      {screen === 'bookshelf' && (
+        <BookshelfScreen
+          novels={novels}
+          onSelectNovel={handleSelectNovel}
+          onImport={handleImport}
+          onDeleteNovel={handleDelete}
+          onRenameNovel={handleRenameNovel}
+          onContinueNovel={handleContinueNovel}
+          onNavigate={navigateTab}
+          toast={appToast}
+        />
+      )}
+      {screen === 'chapters' && currentNovel && (
+        <ChapterListScreen
+          novel={currentNovel}
+          chapters={currentChapters}
+          onSelectChapter={handleSelectChapter}
+          onBack={() => setScreen('bookshelf')}
+          onContinue={() => handleContinueNovel(currentNovel.id)}
+          onDeleteNovel={handleDelete}
+          onRenameNovel={handleRenameNovel}
+          toast={appToast}
+        />
+      )}
+      {screen === 'reader' && currentNovel && currentChapters.length > 0 && (
+        <ReaderScreen
+          novel={currentNovel}
+          chapters={currentChapters}
+          chapterIndex={currentChapter}
+          onBack={() => setScreen('chapters')}
+          onChangeChapter={handleChangeChapter}
+          onUpdateProgress={handleUpdateProgress}
+          settings={settingsObj}
+          userComments={userComments}
+          onAddUserComment={handleAddUserComment}
+          aiState={chapterAiState}
+          onGenerateChapter={generateChapterComments}
+        />
+      )}
+      {screen === 'settings' && (
+        <SettingsScreen settings={settingsObj} onNavigate={navigateTab} />
+      )}
+      {screen === 'friends' && (
+        <AiFriendsScreen
+          personas={personas}
+          onNavigate={navigateTab}
+          onEditFriend={handleEditFriend}
+          onAddFriend={handleAddFriend}
+          toast={appToast}
+        />
+      )}
+      {screen === 'friendEdit' && (
+        <FriendEditScreen
+          persona={personas.find(persona => persona.id === editingPersonaId)}
+          modelProfiles={modelProfiles}
+          defaultProfileId={defaultProfileId}
+          onBack={() => setScreen('friends')}
+          onSave={handleSaveFriend}
+          onNavigate={navigateTab}
+        />
+      )}
+      {screen === 'friendCreate' && (
+        <FriendEditScreen
+          mode="create"
+          modelProfiles={modelProfiles}
+          defaultProfileId={defaultProfileId}
+          onBack={() => setScreen('friends')}
+          onSave={handleSaveFriend}
+          onNavigate={navigateTab}
+        />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.chrome-headless/
+__pycache__/
+*.pyc
+
+.claude/settings.local.json
+
+CLAUDE.md
+大隐.txt
+QiDian *.jpg
+产品流程设计/
+
+design_bundle.txt
+bundle_tail.txt
+Prototype
+ReadWithMe.html
