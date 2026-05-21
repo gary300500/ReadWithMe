@@ -40,11 +40,36 @@ def build_headers(api_key):
   return headers
 
 
+def disable_model_thinking(body):
+  if not isinstance(body, dict):
+    return body
+  updated = dict(body)
+  messages = updated.get("messages")
+  if isinstance(messages, list) and messages:
+    updated_messages = []
+    for index, message in enumerate(messages):
+      if not isinstance(message, dict):
+        updated_messages.append(message)
+        continue
+      next_message = dict(message)
+      if index == 0:
+        content = str(next_message.get("content") or "")
+        prefix = "/no_think\nDo not reason step by step. Do not output thinking. Return only the final answer."
+        if "/no_think" not in content and "Do not reason step by step" not in content:
+          next_message["content"] = f"{prefix}\n{content}"
+      updated_messages.append(next_message)
+    updated["messages"] = updated_messages
+  updated["reasoning"] = {"enabled": False, "effort": "none", "exclude": True}
+  updated["think"] = False
+  updated["include_reasoning"] = False
+  return updated
+
+
 def forward_json(method, url, payload, headers):
   data = None if payload is None else json.dumps(payload).encode("utf-8")
   request = Request(url=url, method=method, data=data, headers=headers)
   try:
-    with urlopen(request, timeout=45) as response:
+    with urlopen(request, timeout=180) as response:
       content_type = response.headers.get("Content-Type", "")
       raw_body = response.read()
       if "application/json" not in content_type:
@@ -64,17 +89,17 @@ def forward_json(method, url, payload, headers):
 def build_connection_test_body(model):
   if not isinstance(model, str) or not model.strip():
     raise ValueError("Missing model")
-  return {
+  return disable_model_thinking({
     "model": model.strip(),
     "messages": [
       {
         "role": "user",
-        "content": "/no_think\nReply with exactly OK to confirm this model is usable.",
+        "content": "Reply with exactly OK to confirm this model is usable.",
       }
     ],
     "temperature": 0,
     "max_tokens": 64,
-  }
+  })
 
 
 def extract_chat_content(payload):
@@ -165,7 +190,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
         body = data.get("body")
         if not isinstance(body, dict):
           raise ValueError("Missing chat body")
-        status, payload = forward_json("POST", f"{base_url}/v1/chat/completions", body, headers)
+        status, payload = forward_json("POST", f"{base_url}/v1/chat/completions", disable_model_thinking(body), headers)
         json_response(self, 200 if status < 400 else status, payload)
         return
       json_response(self, 404, {"error": "Unknown endpoint"})

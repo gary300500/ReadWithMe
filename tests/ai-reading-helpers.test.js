@@ -39,17 +39,44 @@ function loadAppContract() {
   const appSource = fs.readFileSync(appPath, 'utf8');
   const script = [
     extractConstBlock(appSource, 'STORAGE_KEYS'),
+    'const FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS = 160;',
+    'const CHAPTER_COMMENT_CHUNK_SIZE = 8;',
+    extractFunctionBlock(appSource, 'normalizeText'),
+    extractFunctionBlock(appSource, 'toSimplifiedChinese'),
+    extractFunctionBlock(appSource, 'normalizeCommentText'),
+    extractFunctionBlock(appSource, 'clamp'),
+    extractFunctionBlock(appSource, 'hashText'),
     extractFunctionBlock(appSource, 'buildChapterMemoryKey'),
     extractFunctionBlock(appSource, 'buildChapterCommentKey'),
     extractFunctionBlock(appSource, 'buildChapterThreadKey'),
     extractFunctionBlock(appSource, 'buildParagraphThreadKey'),
+    extractFunctionBlock(appSource, 'hasBookPersonaOverride'),
+    extractFunctionBlock(appSource, 'normalizeBookPersonaIds'),
+    extractFunctionBlock(appSource, 'getBookPersonas'),
     extractFunctionBlock(appSource, 'normalizeReadingPersona'),
     extractFunctionBlock(appSource, 'validateSummaryCandidate'),
     extractFunctionBlock(appSource, 'createSummaryArtifact'),
     extractFunctionBlock(appSource, 'promoteSummaryArtifact'),
+    extractFunctionBlock(appSource, 'getChapterScrollPositions'),
+    extractFunctionBlock(appSource, 'getChapterScrollPos'),
+    extractFunctionBlock(appSource, 'updateChapterScrollProgress'),
+    extractFunctionBlock(appSource, 'getAiGeneratedThrough'),
+    extractFunctionBlock(appSource, 'getAiPregenTarget'),
     extractFunctionBlock(appSource, 'stripJsonFence'),
     extractFunctionBlock(appSource, 'repairLooseJson'),
     extractFunctionBlock(appSource, 'parseStructuredPayload'),
+    extractFunctionBlock(appSource, 'disableModelThinking'),
+    extractFunctionBlock(appSource, 'chunkParagraphs'),
+    extractFunctionBlock(appSource, 'getChapterCommentCacheSignature'),
+    extractFunctionBlock(appSource, 'normalizeCompletedChunkIndexes'),
+    extractFunctionBlock(appSource, 'createChapterCommentCachePayload'),
+    extractFunctionBlock(appSource, 'isCompleteChapterCommentCache'),
+    extractFunctionBlock(appSource, 'getStartupParagraphs'),
+    extractFunctionBlock(appSource, 'chunkStartupParagraphs'),
+    extractFunctionBlock(appSource, 'buildFirstChapterBundlePrompt'),
+    extractFunctionBlock(appSource, 'validateFirstChapterBundle'),
+    extractFunctionBlock(appSource, 'buildAiComment'),
+    extractFunctionBlock(appSource, 'createReaderComment'),
     extractFunctionBlock(appSource, 'createPrebuildState'),
     extractFunctionBlock(appSource, 'planPrebuildWindow'),
     extractFunctionBlock(appSource, 'createEmptyThread'),
@@ -57,17 +84,39 @@ function loadAppContract() {
     extractFunctionBlock(appSource, 'appendThreadTurn'),
     'module.exports = {',
     '  STORAGE_KEYS,',
+    '  toSimplifiedChinese,',
+    '  normalizeCommentText,',
     '  buildChapterMemoryKey,',
     '  buildChapterCommentKey,',
     '  buildChapterThreadKey,',
     '  buildParagraphThreadKey,',
+    '  hasBookPersonaOverride,',
+    '  normalizeBookPersonaIds,',
+    '  getBookPersonas,',
     '  normalizeReadingPersona,',
     '  validateSummaryCandidate,',
     '  createSummaryArtifact,',
     '  promoteSummaryArtifact,',
+    '  getChapterScrollPositions,',
+    '  getChapterScrollPos,',
+    '  updateChapterScrollProgress,',
+    '  getAiGeneratedThrough,',
+    '  getAiPregenTarget,',
     '  stripJsonFence,',
     '  repairLooseJson,',
-    '  parseStructuredPayload,',
+  '  parseStructuredPayload,',
+  '  disableModelThinking,',
+  '  chunkParagraphs,',
+  '  getChapterCommentCacheSignature,',
+  '  normalizeCompletedChunkIndexes,',
+  '  createChapterCommentCachePayload,',
+  '  isCompleteChapterCommentCache,',
+  '  getStartupParagraphs,',
+    '  chunkStartupParagraphs,',
+    '  buildFirstChapterBundlePrompt,',
+    '  validateFirstChapterBundle,',
+    '  buildAiComment,',
+    '  createReaderComment,',
     '  createPrebuildState,',
     '  planPrebuildWindow,',
     '  createEmptyThread,',
@@ -86,17 +135,39 @@ function normalize(value) {
 
 const appContract = loadAppContract();
 
+assert.equal(typeof appContract.toSimplifiedChinese, 'function');
+assert.equal(typeof appContract.normalizeCommentText, 'function');
 assert.equal(typeof appContract.buildChapterMemoryKey, 'function');
 assert.equal(typeof appContract.buildChapterCommentKey, 'function');
 assert.equal(typeof appContract.buildChapterThreadKey, 'function');
 assert.equal(typeof appContract.buildParagraphThreadKey, 'function');
+assert.equal(typeof appContract.hasBookPersonaOverride, 'function');
+assert.equal(typeof appContract.normalizeBookPersonaIds, 'function');
+assert.equal(typeof appContract.getBookPersonas, 'function');
 assert.equal(typeof appContract.normalizeReadingPersona, 'function');
 assert.equal(typeof appContract.validateSummaryCandidate, 'function');
 assert.equal(typeof appContract.createSummaryArtifact, 'function');
 assert.equal(typeof appContract.promoteSummaryArtifact, 'function');
+assert.equal(typeof appContract.getChapterScrollPositions, 'function');
+assert.equal(typeof appContract.getChapterScrollPos, 'function');
+assert.equal(typeof appContract.updateChapterScrollProgress, 'function');
+assert.equal(typeof appContract.getAiGeneratedThrough, 'function');
+assert.equal(typeof appContract.getAiPregenTarget, 'function');
 assert.equal(typeof appContract.stripJsonFence, 'function');
 assert.equal(typeof appContract.repairLooseJson, 'function');
 assert.equal(typeof appContract.parseStructuredPayload, 'function');
+assert.equal(typeof appContract.disableModelThinking, 'function');
+assert.equal(typeof appContract.chunkParagraphs, 'function');
+assert.equal(typeof appContract.getChapterCommentCacheSignature, 'function');
+assert.equal(typeof appContract.normalizeCompletedChunkIndexes, 'function');
+assert.equal(typeof appContract.createChapterCommentCachePayload, 'function');
+assert.equal(typeof appContract.isCompleteChapterCommentCache, 'function');
+assert.equal(typeof appContract.getStartupParagraphs, 'function');
+assert.equal(typeof appContract.chunkStartupParagraphs, 'function');
+assert.equal(typeof appContract.buildFirstChapterBundlePrompt, 'function');
+assert.equal(typeof appContract.validateFirstChapterBundle, 'function');
+assert.equal(typeof appContract.buildAiComment, 'function');
+assert.equal(typeof appContract.createReaderComment, 'function');
 assert.equal(typeof appContract.createPrebuildState, 'function');
 assert.equal(typeof appContract.planPrebuildWindow, 'function');
 assert.equal(typeof appContract.createEmptyThread, 'function');
@@ -110,6 +181,33 @@ assert.equal(appContract.buildChapterThreadKey('book-1', 3), 'chapter:book-1:3')
 assert.equal(appContract.buildParagraphThreadKey('book-1', 3, 7), 'paragraph:book-1:3:7');
 assert.equal(appContract.STORAGE_KEYS.aiThreads, 'rwm_ai_threads');
 assert.equal(appContract.STORAGE_KEYS.aiPrebuildState, 'rwm_ai_prebuild_state');
+
+const traditionalComment = '這裡的節奏讓人覺得關係變複雜，後續應該會更有戲。';
+assert.equal(appContract.toSimplifiedChinese(traditionalComment), '这里的节奏让人觉得关系变复杂，后续应该会更有戏。');
+assert.equal(appContract.normalizeCommentText('  「這個轉折」讓角色關係變複雜。  '), '「这个转折」让角色关系变复杂。');
+const simplifiedAiComment = appContract.buildAiComment(
+  { id: 'fenxi', name: '分析菌', tag: '分析', color: '#d6e1cf', avatar: '析' },
+  '0-0',
+  0,
+  traditionalComment,
+  'profile-1',
+);
+assert.equal(simplifiedAiComment.text, '这里的节奏让人觉得关系变复杂，后续应该会更有戏。');
+const simplifiedReaderComment = appContract.createReaderComment(traditionalComment, { id: 'reader-1' });
+assert.equal(simplifiedReaderComment.text, '这里的节奏让人觉得关系变复杂，后续应该会更有戏。');
+
+const personaPool = [
+  { id: 'tucao', name: 'Tucao', enabled: true },
+  { id: 'fenxi', name: 'Analysis', enabled: true },
+  { id: 'disabled', name: 'Disabled', enabled: false },
+];
+assert.equal(appContract.hasBookPersonaOverride({}), false);
+assert.equal(appContract.hasBookPersonaOverride({ allowedPersonaIds: ['tucao'] }), true);
+assert.deepEqual(appContract.normalizeBookPersonaIds(['tucao', 'fenxi', 'tucao', '', null]), ['tucao', 'fenxi']);
+assert.deepEqual(appContract.getBookPersonas(personaPool, {}).map(persona => persona.id), ['tucao', 'fenxi']);
+assert.deepEqual(appContract.getBookPersonas(personaPool, { allowedPersonaIds: ['fenxi'] }).map(persona => persona.id), ['fenxi']);
+assert.deepEqual(appContract.getBookPersonas(personaPool, { allowedPersonaIds: ['disabled'] }).map(persona => persona.id), []);
+assert.deepEqual(appContract.getBookPersonas(personaPool, { allowedPersonaIds: [] }).map(persona => persona.id), []);
 
 assert.deepEqual(
   normalize(appContract.normalizeReadingPersona({
@@ -155,6 +253,47 @@ assert.equal(committedArtifact.novelId, artifact.novelId);
 assert.equal(committedArtifact.chapterIndex, artifact.chapterIndex);
 assert.deepEqual(normalize(committedArtifact.payload), validCandidate);
 
+const legacyScrollNovel = { lastScrollPos: 120, chapterScrollPositions: { 1: 240 } };
+assert.deepEqual(normalize(appContract.getChapterScrollPositions(legacyScrollNovel)), { 0: 120, 1: 240 });
+assert.equal(appContract.getChapterScrollPos(legacyScrollNovel, 0), 120);
+assert.equal(appContract.getChapterScrollPos(legacyScrollNovel, 1), 240);
+assert.equal(appContract.getChapterScrollPos(legacyScrollNovel, 2), 0);
+assert.deepEqual(
+  normalize(appContract.getChapterScrollPositions({ lastReadChapter: 4, lastScrollPos: 420 })),
+  { 4: 420 }
+);
+
+const progressNovel = {
+  lastReadChapter: 0,
+  maxReadChapter: 0,
+  lastScrollPos: 300,
+  chapterScrollPositions: { 0: 300 },
+};
+assert.deepEqual(
+  normalize(appContract.updateChapterScrollProgress(progressNovel, 1)),
+  {
+    lastReadChapter: 1,
+    maxReadChapter: 1,
+    lastScrollPos: 0,
+    chapterScrollPositions: { 0: 300 },
+  }
+);
+assert.deepEqual(
+  normalize(appContract.updateChapterScrollProgress(progressNovel, 1, 80)),
+  {
+    lastReadChapter: 1,
+    maxReadChapter: 1,
+    lastScrollPos: 80,
+    chapterScrollPositions: { 0: 300, 1: 80 },
+  }
+);
+assert.equal(appContract.getAiGeneratedThrough({}, 10), -1);
+assert.equal(appContract.getAiGeneratedThrough({ aiGeneratedThrough: 4 }, 10), 4);
+assert.equal(appContract.getAiGeneratedThrough({ aiGeneratedThrough: 99 }, 10), 9);
+assert.equal(appContract.getAiPregenTarget(0, 10, 5), 5);
+assert.equal(appContract.getAiPregenTarget(5, 10, 20), 9);
+assert.equal(appContract.getAiPregenTarget(-1, 0, 5), -1);
+
 assert.equal(
   appContract.stripJsonFence('```json\n{"chapterIndex":2}\n```'),
   '{"chapterIndex":2}'
@@ -180,11 +319,93 @@ assert.deepEqual(
   { ok: true }
 );
 
+const noThinkingBody = appContract.disableModelThinking({
+  model: 'fast-8b',
+  messages: [{ role: 'user', content: 'hello' }],
+});
+assert.deepEqual(normalize(noThinkingBody.reasoning), { enabled: false, effort: 'none', exclude: true });
+assert.equal(noThinkingBody.think, false);
+assert.equal(noThinkingBody.include_reasoning, false);
+assert.equal(noThinkingBody.messages[0].content.includes('/no_think'), true);
+assert.equal(noThinkingBody.messages[0].content.includes('Do not reason step by step'), true);
+
+assert.deepEqual(
+  normalize(appContract.getStartupParagraphs(['a', 'b', 'c'], 2)),
+  [{ paragraphIndex: 0, text: 'a' }, { paragraphIndex: 1, text: 'b' }]
+);
+assert.deepEqual(
+  normalize(appContract.chunkStartupParagraphs(['a', 'b', 'c', 'd', 'e'], 5, 2)),
+  [
+    [{ paragraphIndex: 0, text: 'a' }, { paragraphIndex: 1, text: 'b' }],
+    [{ paragraphIndex: 2, text: 'c' }, { paragraphIndex: 3, text: 'd' }],
+    [{ paragraphIndex: 4, text: 'e' }],
+  ]
+);
+
+const longChapterParagraphs = Array.from({ length: 81 }, (_, index) => `paragraph ${index}`);
+const longChapterChunks = appContract.chunkParagraphs(longChapterParagraphs, 8);
+assert.equal(longChapterChunks.length, 11);
+assert.equal(longChapterChunks[10][0].paragraphIndex, 80);
+
+assert.deepEqual(
+  normalize(appContract.getChapterCommentCacheSignature(longChapterParagraphs, 8)),
+  { paragraphCount: 81, chunkSize: 8, expectedChunkCount: 11 }
+);
+assert.deepEqual(
+  normalize(appContract.normalizeCompletedChunkIndexes([2, 1, 2, -1, 11, 'x'], 11)),
+  [1, 2]
+);
+const completeChapterCommentCache = appContract.createChapterCommentCachePayload({
+  commentsByKey: { '0-80': [{ text: 'last paragraph comment' }] },
+  fingerprint: 'fp-1',
+  paragraphs: longChapterParagraphs,
+  completedChunkIndexes: Array.from({ length: 11 }, (_, index) => index),
+  complete: true,
+});
+assert.equal(completeChapterCommentCache.complete, true);
+assert.equal(appContract.isCompleteChapterCommentCache(completeChapterCommentCache, longChapterParagraphs, 'fp-1'), true);
+assert.equal(
+  appContract.isCompleteChapterCommentCache({ commentsByKey: completeChapterCommentCache.commentsByKey }, longChapterParagraphs, 'fp-1'),
+  false
+);
+assert.equal(
+  appContract.isCompleteChapterCommentCache({ ...completeChapterCommentCache, completedChunkIndexes: [0, 1, 2] }, longChapterParagraphs, 'fp-1'),
+  false
+);
+
+const startupPrompt = appContract.buildFirstChapterBundlePrompt({
+  novelTitle: 'Book',
+  chapterTitle: 'Chapter 1',
+  chapterText: 'full chapter text',
+  paragraphs: ['first paragraph', 'second paragraph', 'third paragraph'],
+  personas: [{ id: 'p1', name: 'Reader', tag: 'tag', stylePrompt: 'short' }],
+  paragraphLimit: 3,
+});
+assert.equal(startupPrompt.includes('"summary"'), true);
+assert.equal(startupPrompt.includes('"chapterComments"'), true);
+assert.equal(startupPrompt.includes('"paragraphComments"'), false);
+assert.equal(startupPrompt.includes('full chapter text'), true);
+assert.equal(startupPrompt.includes('Chapter paragraph count: 3'), true);
+assert.equal(startupPrompt.includes('later request'), true);
+
+const validStartupBundle = {
+  summary: { ...validCandidate, chapterIndex: 0 },
+  chapterComments: [{ personaId: 'p1', text: '章评', discussionMode: 'open' }],
+};
+assert.deepEqual(normalize(appContract.validateFirstChapterBundle(validStartupBundle, 2)), { ok: true });
+assert.deepEqual(
+  normalize(appContract.validateFirstChapterBundle({ ...validStartupBundle, chapterComments: [] }, 2)),
+  { ok: false, reason: 'empty-chapter-comments' }
+);
+
 assert.deepEqual(normalize(appContract.createPrebuildState()), {
   queuedChapters: [],
   running: false,
   lastCompletedChapter: -1,
   lastError: '',
+  startupStatus: 'idle',
+  startupError: '',
+  startupCompleted: false,
 });
 
 const chapters = Array.from({ length: 8 }, (_, index) => ({ title: `Chapter ${index + 1}` }));

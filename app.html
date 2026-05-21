@@ -777,6 +777,208 @@ textarea {
   box-shadow: 0 8px 18px rgba(124, 66, 19, 0.14);
 }
 
+.ai-pregen-card {
+  margin: -2px 0 22px;
+  padding: 14px 16px;
+  border: 1px solid rgba(116, 89, 58, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 251, 245, 0.72);
+}
+
+.ai-pregen-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ai-pregen-title {
+  color: #2f261d;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.ai-pregen-meta {
+  display: block;
+  margin-top: 5px;
+  color: #8d8174;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.ai-pregen-status {
+  flex: 0 0 auto;
+  color: #9b6b36;
+  font-size: 12px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.ai-pregen-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.ai-pregen-actions button {
+  min-height: 34px;
+  padding: 0 10px;
+  color: #4a3827;
+  border: 1px solid rgba(116, 89, 58, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.ai-pregen-actions button:disabled {
+  color: #b6afa7;
+  background: rgba(240, 234, 226, 0.46);
+}
+
+.ai-pregen-dialog .dialog-card {
+  max-width: 320px;
+}
+
+.ai-comment-pregen-dialog .dialog-card {
+  max-width: 360px;
+  background: #fffaf5;
+}
+
+.ai-comment-pregen-dialog .ai-pregen-card {
+  margin: 0;
+  background: #fffaf5;
+  border-color: rgba(116, 89, 58, 0.14);
+}
+
+.ai-comment-pregen-dialog .ai-pregen-actions button {
+  background: #fff;
+}
+
+.ai-comment-pregen-dialog .ai-pregen-actions button:disabled {
+  background: #f1ece5;
+}
+
+.ai-pregen-input {
+  width: 100%;
+  height: 42px;
+  margin-top: 12px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  font-size: 14px;
+}
+
+.book-personas-card {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(116, 89, 58, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 252, 247, 0.78);
+}
+
+.book-personas-open {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 42px;
+  color: #2f261d;
+  text-align: left;
+}
+
+.book-personas-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.book-personas-meta {
+  display: block;
+  margin-top: 5px;
+  color: #8d8174;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.book-personas-count {
+  flex: 0 0 auto;
+  color: #9b6b36;
+  font-size: 12px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.book-personas-dialog .dialog-card {
+  max-width: 360px;
+  overflow: hidden;
+}
+
+.book-personas-tools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.book-personas-tools button {
+  min-height: 32px;
+  color: #6f5234;
+  font-size: 12px;
+  font-weight: 850;
+  border-radius: 8px;
+  background: rgba(126, 86, 46, 0.08);
+}
+
+.book-personas-list {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  max-height: 340px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.book-persona-row {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+  min-height: 54px;
+  padding: 9px 10px;
+  text-align: left;
+  box-sizing: border-box;
+  border: 1px solid rgba(116, 89, 58, 0.1);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.book-persona-row > div:not(.avatar) {
+  min-width: 0;
+}
+
+.book-persona-row .persona-title,
+.book-persona-row .persona-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-persona-row .check-box {
+  display: none;
+}
+
+.book-persona-row[data-selected="true"] {
+  border-color: rgba(145, 92, 39, 0.42);
+  background: #fff1df;
+}
+
 .volume-title {
   display: flex;
   align-items: center;
@@ -943,6 +1145,105 @@ textarea {
   background: var(--accent);
 }
 
+.chapter-end-discussion {
+  margin: 38px 0 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(100, 84, 62, 0.16);
+}
+
+.chapter-end-discussion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  color: #342a20;
+  text-align: left;
+}
+
+.chapter-end-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.chapter-end-count {
+  color: #9b6b36;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.chapter-end-meta {
+  margin-top: 8px;
+  color: #9b907f;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.chapter-end-preview-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.chapter-end-preview {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 9px;
+  align-items: flex-start;
+  padding: 11px 0;
+  text-align: left;
+  border-top: 1px solid rgba(100, 84, 62, 0.1);
+}
+
+.chapter-end-preview-avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  border-radius: 50%;
+  background: var(--avatar-bg, var(--accent));
+}
+
+.chapter-end-preview-name {
+  display: block;
+  color: #6d5f4d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.chapter-end-preview-text {
+  display: block;
+  margin-top: 3px;
+  color: #3e3429;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.chapter-end-composer {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 12px;
+  padding: 0 14px;
+  color: #9b907f;
+  text-align: left;
+  font-size: 13px;
+  border: 1px solid rgba(100, 84, 62, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 250, 244, 0.54);
+}
+
+.reader-article > .legacy-chapter-discussion {
+  display: none;
+}
+
 .reader-progress {
   position: absolute;
   left: 18px;
@@ -957,6 +1258,44 @@ textarea {
 
 .chapter-jump-panel {
   padding: 10px 18px 18px;
+}
+
+.reader-paragraph-wrap {
+  position: relative;
+}
+
+.paragraph-action-bar {
+  position: absolute;
+  left: 2em;
+  top: calc(100% - 18px);
+  z-index: 14;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: calc(100% - 2em);
+  margin: 0;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+
+.paragraph-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .jump-head {
@@ -1255,7 +1594,29 @@ textarea {
   grid-template-columns: 42px 1fr 34px;
   gap: 12px;
   padding: 14px 0;
+  border-bottom: 1px solid rgba(95, 78, 57, 0.08);
+}
+
+.comment-thread {
   border-bottom: 1px solid var(--hairline);
+}
+
+.comment-thread > .comment-item {
+  border-bottom: 0;
+}
+
+.comment-item.reply {
+  grid-template-columns: 30px minmax(0, 1fr) 32px;
+  gap: 9px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 0;
+}
+
+.comment-item.reply .avatar {
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
 }
 
 .avatar {
@@ -1307,14 +1668,81 @@ textarea {
   line-height: 1.55;
 }
 
+.comment-reply-to {
+  color: #a06225;
+  font-weight: 800;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.comment-action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 24px;
+  padding: 0;
+  color: #8b7e70;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.comment-replies {
+  margin: -4px 0 10px 54px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(180, 130, 73, 0.16);
+}
+
+.reply-more-button {
+  min-height: 30px;
+  margin: 0 0 8px;
+  color: #9b6b36;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.replying-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 16px 0;
+  color: #8b7e70;
+  font-size: 12px;
+  font-weight: 800;
+  background: rgba(255, 252, 247, 0.96);
+}
+
+.replying-strip strong {
+  color: #9b6b36;
+}
+
+.replying-strip button {
+  color: #8b7e70;
+  font-weight: 900;
+}
+
 .like-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #6f6b66;
   font-size: 11px;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.like-box.liked {
+  color: #a66328;
 }
 
 .comment-input {
@@ -1995,9 +2423,19 @@ const STORAGE_KEYS = {
   aiPrebuildState: 'rwm_ai_prebuild_state',
 };
 
+const DEMO_MODE = false;
+const DEMO_BOOK_ID = 'water-margin-showcase';
+const DEMO_BOOK_TITLE = '水浒传';
+const DEMO_BOOK_PATH = './水浒传.txt';
 const DEFAULT_PROXY_URL = 'http://127.0.0.1:11435';
-const DEFAULT_PROMPT_VERSION = 'v2';
+const DEFAULT_PROMPT_VERSION = 'v3';
 const PERSONA_SCHEMA_VERSION = 'ai-friends-flow-2026-05';
+const FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS = 2000;
+const FIRST_CHAPTER_COMMENT_CHUNK_SIZE = 5;
+const CHAPTER_COMMENT_CHUNK_SIZE = 8;
+const AI_REQUEST_CONCURRENCY = 4;
+const AI_CHAPTER_PREBUILD_CONCURRENCY = 2;
+const CHAPTER_DISCUSSION_TEXT_LIMIT = 6000;
 
 const DEFAULT_LIVE_SETTINGS = {
   enabled: false,
@@ -2104,6 +2542,27 @@ function clamp(n, min, max) {
   return Math.min(max, Math.max(min, n));
 }
 
+async function mapWithConcurrency(items, limit, fn) {
+  const list = Array.isArray(items) ? items : [];
+  const results = new Array(list.length);
+  if (!list.length) return results;
+  const cap = Math.max(1, Math.min(Number(limit) || 1, list.length));
+  let cursor = 0;
+  const workers = Array.from({ length: cap }, async () => {
+    while (true) {
+      const index = cursor++;
+      if (index >= list.length) return;
+      try {
+        results[index] = { status: 'fulfilled', value: await fn(list[index], index) };
+      } catch (error) {
+        results[index] = { status: 'rejected', reason: error };
+      }
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+
 function lsGet(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -2136,6 +2595,80 @@ function sessionSet(key, value) {
 
 function normalizeText(text) {
   return String(text || '').replace(/\r\n/g, '\n').trim();
+}
+
+function toSimplifiedChinese(text) {
+  const phrasePairs = [
+    ['看著', '看着'],
+    ['盯著', '盯着'],
+    ['跟著', '跟着'],
+    ['隨著', '随着'],
+    ['接著', '接着'],
+    ['撐著', '撑着'],
+    ['壓著', '压着'],
+    ['藏著', '藏着'],
+    ['留著', '留着'],
+    ['帶著', '带着'],
+    ['說著', '说着'],
+    ['寫著', '写着'],
+    ['讀著', '读着'],
+    ['聽著', '听着'],
+    ['關係', '关系'],
+    ['後續', '后续'],
+    ['節奏', '节奏'],
+    ['轉折', '转折'],
+    ['鋪墊', '铺垫'],
+    ['細節', '细节'],
+    ['複雜', '复杂'],
+    ['應該', '应该'],
+    ['氣氛', '气氛'],
+    ['懸念', '悬念'],
+    ['劇情', '剧情'],
+    ['對話', '对话'],
+    ['角色', '角色'],
+    ['讀者', '读者'],
+    ['評論', '评论'],
+  ];
+  const charPairs = [
+    ['這', '这'], ['裡', '里'], ['裏', '里'], ['個', '个'], ['點', '点'], ['覺', '觉'],
+    ['讓', '让'], ['會', '会'], ['還', '还'], ['開', '开'], ['關', '关'], ['說', '说'],
+    ['話', '话'], ['對', '对'], ['於', '于'], ['與', '与'], ['為', '为'], ['麼', '么'],
+    ['麼', '么'], ['嗎', '吗'], ['呢', '呢'], ['後', '后'], ['前', '前'], ['現', '现'],
+    ['場', '场'], ['種', '种'], ['樣', '样'], ['實', '实'], ['虛', '虚'], ['線', '线'],
+    ['索', '索'], ['細', '细'], ['節', '节'], ['變', '变'], ['複', '复'], ['雜', '杂'],
+    ['續', '续'], ['該', '该'], ['戲', '戏'], ['劇', '剧'], ['構', '构'], ['鋪', '铺'],
+    ['墊', '垫'], ['張', '张'], ['緊', '紧'], ['壓', '压'], ['氣', '气'], ['氛', '氛'],
+    ['懸', '悬'], ['念', '念'], ['訊', '讯'], ['息', '息'], ['顯', '显'], ['邏', '逻'],
+    ['輯', '辑'], ['觀', '观'], ['態', '态'], ['狀', '状'], ['內', '内'], ['從', '从'],
+    ['側', '侧'], ['邊', '边'], ['遠', '远'], ['近', '近'], ['輕', '轻'], ['重', '重'],
+    ['強', '强'], ['弱', '弱'], ['無', '无'], ['沒', '没'], ['過', '过'], ['進', '进'],
+    ['退', '退'], ['選', '选'], ['擇', '择'], ['寫', '写'], ['讀', '读'], ['聽', '听'],
+    ['問', '问'], ['題', '题'], ['發', '发'], ['聲', '声'], ['異', '异'], ['常', '常'],
+    ['時', '时'], ['間', '间'], ['長', '长'], ['短', '短'], ['層', '层'], ['樓', '楼'],
+    ['條', '条'], ['條', '条'], ['們', '们'], ['兒', '儿'], ['書', '书'], ['友', '友'],
+    ['評', '评'], ['論', '论'], ['頁', '页'], ['區', '区'], ['標', '标'], ['籤', '签'],
+    ['儘', '尽'], ['盡', '尽'], ['幾', '几'], ['啟', '启'], ['動', '动'], ['確', '确'],
+    ['認', '认'], ['離', '离'], ['單', '单'], ['獨', '独'], ['彈', '弹'], ['窗', '窗'],
+    ['顏', '颜'], ['色', '色'], ['輸', '输'], ['入', '入'], ['輸', '输'], ['出', '出'],
+    ['權', '权'], ['勢', '势'], ['謎', '谜'], ['團', '团'], ['價', '价'], ['值', '值'],
+    ['傷', '伤'], ['護', '护'], ['殺', '杀'], ['戰', '战'], ['準', '准'], ['備', '备'],
+    ['帶', '带'], ['總', '总'], ['結', '结'], ['終', '终'], ['終', '终'], ['點', '点'],
+    ['滿', '满'], ['處', '处'], ['壞', '坏'], ['聰', '聪'], ['謹', '谨'], ['嚴', '严'],
+    ['陽', '阳'], ['陰', '阴'], ['龍', '龙'], ['風', '风'], ['雲', '云'], ['夢', '梦'],
+    ['驚', '惊'], ['靜', '静'], ['爭', '争'], ['鬥', '斗'], ['斷', '断'], ['絕', '绝'],
+    ['義', '义'], ['愛', '爱'], ['親', '亲'], ['敵', '敌'], ['復', '复'], ['詭', '诡'],
+    ['計', '计'], ['謀', '谋'], ['記', '记'], ['憶', '忆'], ['歷', '历'], ['練', '练'],
+  ];
+  let output = String(text || '');
+  phrasePairs.forEach(([from, to]) => {
+    output = output.split(from).join(to);
+  });
+  const charMap = new Map(charPairs);
+  return Array.from(output).map(char => charMap.get(char) || char).join('');
+}
+
+function normalizeCommentText(text) {
+  return toSimplifiedChinese(normalizeText(text));
 }
 
 const CHINESE_DIGITS = {
@@ -2297,6 +2830,21 @@ function titleFromFileName(name) {
   return String(name || '').replace(/\.(txt|text|epub)$/i, '').trim() || '未命名小说';
 }
 
+function createDemoNovelMeta(chapters = []) {
+  return {
+    id: DEMO_BOOK_ID,
+    title: DEMO_BOOK_TITLE,
+    fileName: '水浒传.txt',
+    totalChapters: Math.max(1, chapters.length || 1),
+    lastReadChapter: 0,
+    maxReadChapter: 0,
+    lastScrollPos: 0,
+    chapterScrollPositions: {},
+    addedAt: Date.now(),
+    coverTheme: 4,
+  };
+}
+
 function hashText(text) {
   let hash = 2166136261;
   for (let i = 0; i < text.length; i++) {
@@ -2304,6 +2852,77 @@ function hashText(text) {
     hash = Math.imul(hash, 16777619);
   }
   return Math.abs(hash >>> 0);
+}
+
+function createDemoSummaryPayload({ chapterIndex = 0, chapterTitle = '', chapterText = '' } = {}) {
+  const cleanTitle = normalizeText(chapterTitle) || `第 ${chapterIndex + 1} 章`;
+  const cleanText = normalizeText(chapterText).replace(/\s+/g, ' ');
+  const excerpt = cleanText.slice(0, 42);
+  return {
+    chapterIndex,
+    plotSummary: `演示记忆：${cleanTitle} 已进入本地阅读流。${excerpt ? `当前段落从“${excerpt}”展开。` : ''}`,
+    majorCharacters: [],
+    relationships: [],
+    openQuestions: [],
+    worldFacts: [],
+  };
+}
+
+function createDemoParagraphComments({ chapterTitle = '', chunk = [], personas = [] } = {}) {
+  const activePersonas = (Array.isArray(personas) ? personas : []).filter(persona => persona?.enabled !== false);
+  if (!activePersonas.length) return [];
+  const templates = [
+    '演示段评：这段先把局面立住，读起来有明显的推进感。',
+    '演示段评：这里的信息很密，人物和局势都在往前挤。',
+    '演示段评：这一笔不急着解释，反而把后面的悬念托出来了。',
+    '演示段评：章法很会收放，刚铺开的气氛已经能带着往下读。',
+  ];
+  return (Array.isArray(chunk) ? chunk : [])
+    .filter(item => Number.isInteger(Number(item?.paragraphIndex)) && normalizeText(item?.text))
+    .map((item, index) => {
+      const paragraphIndex = Number(item.paragraphIndex);
+      const persona = activePersonas[index % activePersonas.length];
+      const template = templates[hashText(`${chapterTitle}-${paragraphIndex}-${item.text}`) % templates.length];
+      return {
+        paragraphIndex,
+        personaId: persona.id,
+        text: template,
+        discussionMode: index % 4 === 0 ? 'inviting' : 'open',
+      };
+    });
+}
+
+function createDemoFirstChapterBundle({ chapterTitle = '', chapterText = '', paragraphs = [], personas = [] } = {}) {
+  const paragraphItems = (Array.isArray(paragraphs) ? paragraphs : [])
+    .map((text, paragraphIndex) => ({ paragraphIndex, text }))
+    .filter(item => normalizeText(item.text));
+  const seeds = createDemoParagraphComments({
+    chapterTitle,
+    chunk: paragraphItems.length ? paragraphItems.slice(0, 2) : [{ paragraphIndex: 0, text: chapterText || chapterTitle }],
+    personas,
+  });
+  return {
+    summary: createDemoSummaryPayload({
+      chapterIndex: 0,
+      chapterTitle,
+      chapterText,
+    }),
+    chapterComments: seeds.map((seed, index) => ({
+      personaId: seed.personaId,
+      text: index === 0
+        ? '演示章评：开篇已经把气口、任务和悬念一并摆出来了。'
+        : '演示章评：这一章适合边读边聊，细节里有不少可追的线头。',
+      discussionMode: 'open',
+    })),
+  };
+}
+
+function createDemoReplyText({ persona = {}, paragraphText = '', userMessage = '', targetComment = null } = {}) {
+  const name = normalizeText(persona.name) || 'AI 书友';
+  const excerpt = normalizeText(paragraphText).replace(/\s+/g, ' ').slice(0, 24);
+  const prompt = normalizeText(userMessage || targetComment?.text || '');
+  const focus = prompt ? `你提到的“${prompt.slice(0, 18)}”` : '这一处';
+  return `演示回复：${name}觉得${focus}值得接着看${excerpt ? `，因为它正贴着“${excerpt}”往下展开` : ''}。`;
 }
 
 function safeJsonParse(text, fallback = null) {
@@ -2336,6 +2955,28 @@ function parseStructuredPayload(rawText, repair = value => value) {
       return { ok: false, error: repairError };
     }
   }
+}
+
+function disableModelThinking(body = {}) {
+  const messages = Array.isArray(body.messages) ? body.messages.map((message, index) => {
+    if (!message || typeof message !== 'object') return message;
+    if (index !== 0) return { ...message };
+    const content = String(message.content || '');
+    const noThinkingPrefix = '/no_think\nDo not reason step by step. Do not output thinking. Return only the final answer.';
+    return {
+      ...message,
+      content: content.includes('/no_think') || content.includes('Do not reason step by step')
+        ? content
+        : `${noThinkingPrefix}\n${content}`,
+    };
+  }) : body.messages;
+  return {
+    ...body,
+    messages,
+    reasoning: { enabled: false, effort: 'none', exclude: true },
+    think: false,
+    include_reasoning: false,
+  };
 }
 
 function extractJsonBlock(text) {
@@ -2496,6 +3137,36 @@ function buildParagraphThreadKey(bookId, chapterIndex, paragraphIndex) {
   return `paragraph:${bookId}:${chapterIndex}:${paragraphIndex}`;
 }
 
+function hasBookPersonaOverride(novel = {}) {
+  return Array.isArray(novel?.allowedPersonaIds);
+}
+
+function normalizeBookPersonaIds(ids = []) {
+  const seen = new Set();
+  return (Array.isArray(ids) ? ids : [])
+    .map(id => String(id || '').trim())
+    .filter(id => {
+      if (!id || seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+}
+
+function getBookPersonas(personas = [], novel = {}) {
+  const enabled = (Array.isArray(personas) ? personas : []).filter(persona => persona?.enabled);
+  if (!hasBookPersonaOverride(novel)) return enabled;
+  const allowedIds = new Set(normalizeBookPersonaIds(novel.allowedPersonaIds));
+  return enabled.filter(persona => allowedIds.has(persona.id));
+}
+
+function buildCommentRepliesStorageKey(bookId) {
+  return `rwm_comment_replies_${bookId}`;
+}
+
+function buildCommentLikesStorageKey(bookId) {
+  return `rwm_comment_likes_${bookId}`;
+}
+
 function createEmptyThread(threadId) {
   return {
     threadId,
@@ -2503,6 +3174,56 @@ function createEmptyThread(threadId) {
     summary: '',
     updatedAt: 0,
   };
+}
+
+function createReaderComment(text, patch = {}) {
+  const normalizedText = normalizeCommentText(text);
+  return {
+    id: patch.id || uid(),
+    personaId: patch.personaId || 'reader',
+    personaName: patch.personaName || '我',
+    personaTag: patch.personaTag || '读者',
+    personaColor: patch.personaColor || '#e8dde5',
+    personaAvatar: patch.personaAvatar || '我',
+    text: normalizedText,
+    likes: Number.isFinite(patch.likes) ? patch.likes : 0,
+    liked: Boolean(patch.liked),
+    source: patch.source || 'reader',
+    createdAt: patch.createdAt || Date.now(),
+    replyToCommentId: patch.replyToCommentId || null,
+    replyToName: patch.replyToName || '',
+  };
+}
+
+function buildCommentTree(comments = [], replyBuckets = {}) {
+  const commentIds = new Set((comments || []).map(comment => comment?.id).filter(Boolean));
+  const topLevel = [];
+  const repliesByParent = {};
+  (comments || []).forEach(comment => {
+    if (!comment) return;
+    const parentId = comment.replyToCommentId;
+    if (parentId && commentIds.has(parentId)) {
+      repliesByParent[parentId] = [...(repliesByParent[parentId] || []), comment];
+      return;
+    }
+    topLevel.push(comment);
+  });
+  topLevel.forEach(comment => {
+    const id = comment?.id;
+    if (!id) return;
+    repliesByParent[id] = [
+      ...(repliesByParent[id] || []),
+      ...((replyBuckets && Array.isArray(replyBuckets[id])) ? replyBuckets[id] : []),
+    ];
+  });
+  return { topLevel, repliesByParent };
+}
+
+function countCommentTree(comments = [], replyBuckets = {}) {
+  const tree = buildCommentTree(comments, replyBuckets);
+  return tree.topLevel.reduce((total, comment) => {
+    return total + 1 + ((tree.repliesByParent[comment.id] || []).length);
+  }, 0);
 }
 
 function summarizeThreadTurns(turns = []) {
@@ -2558,12 +3279,62 @@ function promoteSummaryArtifact(artifact) {
   return { ...artifact, state: 'committed' };
 }
 
+function getChapterScrollPositions(novel = {}) {
+  const saved = novel && typeof novel.chapterScrollPositions === 'object' && novel.chapterScrollPositions
+    ? { ...novel.chapterScrollPositions }
+    : {};
+  const legacyPos = Number(novel?.lastScrollPos || 0);
+  const legacyChapter = Math.max(0, Number(novel?.lastReadChapter || 0) || 0);
+  if (legacyPos > 0 && saved[legacyChapter] == null) saved[legacyChapter] = legacyPos;
+  return saved;
+}
+
+function getChapterScrollPos(novel = {}, chapterIndex = 0) {
+  const positions = getChapterScrollPositions(novel);
+  const value = Number(positions[chapterIndex]);
+  return Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function updateChapterScrollProgress(novel = {}, chapterIndex = 0, scrollPos = null) {
+  const positions = getChapterScrollPositions(novel);
+  const nextScrollPos = scrollPos != null
+    ? Math.max(0, Number(scrollPos) || 0)
+    : getChapterScrollPos(novel, chapterIndex);
+  const nextPositions = scrollPos != null
+    ? { ...positions, [chapterIndex]: nextScrollPos }
+    : positions;
+  return {
+    lastReadChapter: chapterIndex,
+    maxReadChapter: Math.max(novel.maxReadChapter || 0, chapterIndex),
+    lastScrollPos: nextScrollPos,
+    chapterScrollPositions: nextPositions,
+  };
+}
+
+function getAiGeneratedThrough(novel = {}, chapterCount = 0) {
+  const raw = Number(novel?.aiGeneratedThrough);
+  if (!Number.isFinite(raw)) return -1;
+  return clamp(Math.floor(raw), -1, Math.max(-1, chapterCount - 1));
+}
+
+function getAiPregenTarget(currentThrough, chapterCount, step) {
+  const count = Math.max(0, Number(chapterCount) || 0);
+  if (!count) return -1;
+  const rawStart = Number(currentThrough);
+  const start = clamp(Number.isFinite(rawStart) ? rawStart : -1, -1, count - 1);
+  const next = start + Math.max(1, Number(step) || 1);
+  return clamp(next, 0, count - 1);
+}
+
 function createPrebuildState() {
   return {
     queuedChapters: [],
     running: false,
     lastCompletedChapter: -1,
     lastError: '',
+    startupStatus: 'idle',
+    startupError: '',
+    startupCompleted: false,
   };
 }
 
@@ -2608,7 +3379,7 @@ function createFallbackSummaryPayload({ chapterIndex, chapterTitle, chapterText,
   };
 }
 
-function chunkParagraphs(paragraphs, chunkSize = 8) {
+function chunkParagraphs(paragraphs, chunkSize = CHAPTER_COMMENT_CHUNK_SIZE) {
   const chunks = [];
   for (let i = 0; i < paragraphs.length; i += chunkSize) {
     chunks.push(paragraphs.slice(i, i + chunkSize).map((text, offset) => ({
@@ -2616,7 +3387,57 @@ function chunkParagraphs(paragraphs, chunkSize = 8) {
       text: text.slice(0, 900),
     })));
   }
-  return chunks.slice(0, 8);
+  return chunks;
+}
+
+function getChapterCommentCacheSignature(paragraphs = [], chunkSize = CHAPTER_COMMENT_CHUNK_SIZE) {
+  const count = Array.isArray(paragraphs) ? paragraphs.length : 0;
+  const size = Math.max(1, Number(chunkSize) || CHAPTER_COMMENT_CHUNK_SIZE);
+  return {
+    paragraphCount: count,
+    chunkSize: size,
+    expectedChunkCount: Math.ceil(count / size),
+  };
+}
+
+function normalizeCompletedChunkIndexes(indexes = [], expectedChunkCount = Infinity) {
+  const max = Number.isFinite(Number(expectedChunkCount)) ? Number(expectedChunkCount) : Infinity;
+  const seen = new Set();
+  return (Array.isArray(indexes) ? indexes : [])
+    .map(index => Number(index))
+    .filter(index => Number.isInteger(index) && index >= 0 && index < max && !seen.has(index) && seen.add(index))
+    .sort((a, b) => a - b);
+}
+
+function createChapterCommentCachePayload({
+  commentsByKey = {},
+  fingerprint = '',
+  paragraphs = [],
+  chunkSize = CHAPTER_COMMENT_CHUNK_SIZE,
+  completedChunkIndexes = [],
+  complete = false,
+} = {}) {
+  const signature = getChapterCommentCacheSignature(paragraphs, chunkSize);
+  const completed = normalizeCompletedChunkIndexes(completedChunkIndexes, signature.expectedChunkCount);
+  const allChunksDone = signature.expectedChunkCount === 0 || completed.length >= signature.expectedChunkCount;
+  return {
+    commentsByKey: commentsByKey || {},
+    generatedAt: Date.now(),
+    fingerprint,
+    ...signature,
+    completedChunkIndexes: completed,
+    complete: Boolean(complete && allChunksDone),
+  };
+}
+
+function isCompleteChapterCommentCache(cached, paragraphs = [], fingerprint = '', chunkSize = CHAPTER_COMMENT_CHUNK_SIZE) {
+  if (!cached || cached.complete !== true || cached.fingerprint !== fingerprint || !cached.commentsByKey) return false;
+  const signature = getChapterCommentCacheSignature(paragraphs, chunkSize);
+  if (Number(cached.paragraphCount) !== signature.paragraphCount) return false;
+  if (Number(cached.chunkSize) !== signature.chunkSize) return false;
+  if (Number(cached.expectedChunkCount) !== signature.expectedChunkCount) return false;
+  const completed = normalizeCompletedChunkIndexes(cached.completedChunkIndexes, signature.expectedChunkCount);
+  return signature.expectedChunkCount === 0 || completed.length >= signature.expectedChunkCount;
 }
 
 function buildChapterMemoryPrompt({ novelTitle, chapterIndex, chapterTitle, previousSummary, chapterText }) {
@@ -2640,6 +3461,7 @@ function buildParagraphFirstCommentPrompt({ chapterTitle, chunk, personas, memor
   return [
     'You generate first-pass paragraph comments for a Chinese web-fiction reading app.',
     'Write all comment text in concise Simplified Chinese.',
+    'Even if the source novel text is Traditional Chinese, every generated comment must be Simplified Chinese.',
     'Requirements:',
     '1. At most one comment per paragraph; some paragraphs may have no comment.',
     '2. Keep comments short, specific, and tightly grounded in the paragraph.',
@@ -2657,6 +3479,7 @@ function buildParagraphFollowUpPrompt({ novelTitle, chapterTitle, paragraphText,
   return [
     'You are an AI reading companion for Chinese web fiction.',
     'Respond in concise Simplified Chinese only.',
+    'Even if the source novel text is Traditional Chinese, your reply must be Simplified Chinese.',
     'Answer exactly this follow-up. Do not output JSON. Do not self-introduce. Do not spoil unread content.',
     'Keep the reply to 2-4 sentences and continue the thread like a book friend.',
     `Novel: ${novelTitle || ''}`,
@@ -2673,6 +3496,7 @@ function buildChapterDiscussionPrompt({ novelTitle, chapterTitle, chapterText, m
   return [
     'You are an AI book friend posting in a chapter discussion area.',
     'Write all content in concise Simplified Chinese.',
+    'Even if the source novel text is Traditional Chinese, every generated comment must be Simplified Chinese.',
     'Sound like a real reader leaving a short chapter-end discussion starter.',
     'Requirements:',
     '1. Focus on character shifts, emotional movement, pacing, suspense, or relationship progression in this chapter.',
@@ -2682,8 +3506,90 @@ function buildChapterDiscussionPrompt({ novelTitle, chapterTitle, chapterText, m
     `Chapter: ${chapterTitle || ''}`,
     `Shared memory: ${memorySummary || 'none'}`,
     `Available personas: ${(personas || []).map(p => `${p.id}=${p.name}/${p.tag}/interaction=${p.interactionTendency || 'responsive'}/disagreement=${p.disagreementStyle || 'gentle'}/${p.stylePrompt}`).join('; ')}`,
-    `Chapter text: ${chapterText || ''}`,
+    `Chapter text: ${String(chapterText || '').slice(0, CHAPTER_DISCUSSION_TEXT_LIMIT)}`,
   ].join('\n');
+}
+
+function getStartupParagraphs(paragraphs, limit = FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS) {
+  return (paragraphs || [])
+    .slice(0, Math.max(1, Number(limit) || FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS))
+    .map((text, paragraphIndex) => ({
+      paragraphIndex,
+      text: String(text || '').slice(0, 900),
+    }));
+}
+
+function chunkStartupParagraphs(paragraphs, limit = FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS, chunkSize = FIRST_CHAPTER_COMMENT_CHUNK_SIZE) {
+  const items = getStartupParagraphs(paragraphs, limit);
+  const size = Math.max(1, Number(chunkSize) || FIRST_CHAPTER_COMMENT_CHUNK_SIZE);
+  const chunks = [];
+  for (let index = 0; index < items.length; index += size) {
+    chunks.push(items.slice(index, index + size));
+  }
+  return chunks;
+}
+
+function buildFirstChapterBundlePrompt({
+  novelTitle,
+  chapterTitle,
+  chapterText,
+  paragraphs,
+  personas,
+  paragraphLimit = FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS,
+}) {
+  const startupParagraphs = getStartupParagraphs(paragraphs, paragraphLimit);
+  const minimumCommentCount = Math.max(1, Math.ceil(startupParagraphs.length * 0.7));
+  return [
+    'You are preparing the first visible AI companion content for a Chinese web-fiction reader.',
+    'Output strict JSON only. No Markdown. No extra text.',
+    'All generated strings must be concise Simplified Chinese.',
+    'Even if the source novel text is Traditional Chinese, generated comments must be Simplified Chinese.',
+    'Do not spoil content beyond this chapter.',
+    'Return exactly this top-level shape:',
+    '{"summary":{"chapterIndex":0,"plotSummary":"...","majorCharacters":[],"relationships":[],"openQuestions":[],"worldFacts":[]},"chapterComments":[{"personaId":"...","text":"...","discussionMode":"open"}]}',
+    'summary must describe only chapter 1 and use chapterIndex 0.',
+    'chapterComments should contain 2-4 short chapter-end comments.',
+    `Do not generate paragraphComments in this response. A later request will generate at least ${minimumCommentCount} paragraph comments across the ${startupParagraphs.length} provided paragraphs.`,
+    'Use only personaId values from Available personas.',
+    'discussionMode must be one of: closed, open, inviting.',
+    `Novel: ${novelTitle || ''}`,
+    `Chapter: ${chapterTitle || ''}`,
+    `Available personas: ${(personas || []).map(p => `${p.id}=${p.name}/${p.tag}/interaction=${p.interactionTendency || 'responsive'}/disagreement=${p.disagreementStyle || 'gentle'}/${p.stylePrompt}`).join('; ')}`,
+    `Chapter paragraph count: ${startupParagraphs.length}`,
+    `Chapter text for context: ${String(chapterText || '').slice(0, 8000)}`,
+  ].join('\n');
+}
+
+function validateFirstChapterBundle(candidate, paragraphLimit = FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS) {
+  if (!candidate || typeof candidate !== 'object') return { ok: false, reason: 'not-object' };
+  const summaryCheck = validateSummaryCandidate(candidate.summary, 0);
+  if (!summaryCheck.ok) return { ok: false, reason: `summary-${summaryCheck.reason}` };
+  if (!Array.isArray(candidate.chapterComments)) return { ok: false, reason: 'missing-chapter-comments' };
+  const validChapterComments = candidate.chapterComments.filter(item => normalizeText(item?.text || ''));
+  if (!validChapterComments.length) return { ok: false, reason: 'empty-chapter-comments' };
+  return { ok: true };
+}
+
+function normalizeBundleChapterComments(rawComments, personas, chapterIndex, profileId) {
+  const personaMap = new Map((personas || []).filter(p => p.enabled).map(p => [p.id, p]));
+  return (rawComments || []).map((item, index) => {
+    const text = normalizeText(item?.text || '');
+    if (!text) return null;
+    const persona = personaMap.get(item?.personaId)
+      || choosePersonaForParagraph(personas || [], index, 0);
+    if (!persona) return null;
+    return buildAiComment(persona, `chapter-${chapterIndex}`, chapterIndex, text, profileId, {
+      discussionMode: item?.discussionMode,
+    });
+  }).filter(Boolean);
+}
+
+function normalizeBundleParagraphComments(rawComments, personas, chapterIndex, profileId, paragraphLimit = FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS) {
+  const filtered = (rawComments || []).filter(item => {
+    const paragraphIndex = Number(item?.paragraphIndex);
+    return Number.isInteger(paragraphIndex) && paragraphIndex >= 0 && paragraphIndex < paragraphLimit;
+  });
+  return normalizeGeneratedComments(filtered, personas || [], chapterIndex, profileId, 0);
 }
 function buildGenerationPrompt({ chapterTitle, chunk, personas, memorySummary }) {
   return buildParagraphFirstCommentPrompt({ chapterTitle, chunk, personas, memorySummary });
@@ -2700,6 +3606,54 @@ function buildThreadReplyPrompt({ novelTitle, chapterTitle, paragraphText, memor
     userMessage,
     persona,
   });
+}
+
+function buildCommentReplyPrompt({ novelTitle, chapterTitle, paragraphText, memorySummary, parentComment, targetComment, recentReplies, userMessage, persona }) {
+  return [
+    'You reply to a reader comment in a Chinese web-fiction comment section.',
+    'Respond in concise Simplified Chinese only. Do not output JSON or Markdown.',
+    'Even if the source novel text is Traditional Chinese, your reply must be Simplified Chinese.',
+    'Sound like a real book friend replying in a nested comment, not a chat assistant.',
+    'Do not spoil unread future content.',
+    'Keep the reply short: 1-3 sentences.',
+    `Novel: ${novelTitle || ''}`,
+    `Chapter: ${chapterTitle || ''}`,
+    `Current context: ${paragraphText || ''}`,
+    `Chapter memory: ${memorySummary || 'none'}`,
+    `Parent comment: ${JSON.stringify({
+      name: parentComment?.personaName || '',
+      tag: parentComment?.personaTag || '',
+      text: parentComment?.text || '',
+    })}`,
+    `Reply target: ${JSON.stringify({
+      name: targetComment?.personaName || '',
+      tag: targetComment?.personaTag || '',
+      text: targetComment?.text || '',
+    })}`,
+    `Recent replies: ${JSON.stringify((recentReplies || []).slice(-4).map(reply => ({
+      name: reply.personaName || '',
+      tag: reply.personaTag || '',
+      text: reply.text || '',
+      replyToName: reply.replyToName || '',
+    })))}`,
+    `Persona: ${persona ? `${persona.name}/${persona.tag}/interaction=${persona.interactionTendency || 'responsive'}/disagreement=${persona.disagreementStyle || 'gentle'}/relationship=${persona.relationshipFeel || 'book-friend'}/${persona.stylePrompt}` : 'default-book-friend'}`,
+    `Reader comment to answer: ${userMessage || targetComment?.text || ''}`,
+  ].join('\n');
+}
+
+function buildSummonedParagraphCommentPrompt({ novelTitle, chapterTitle, paragraphText, memorySummary, persona }) {
+  return [
+    'You are an AI book friend summoned by the reader to comment on one paragraph.',
+    'Write one natural short paragraph comment in Simplified Chinese.',
+    'Even if the source novel text is Traditional Chinese, the comment must be Simplified Chinese.',
+    'Do not output JSON or Markdown.',
+    'Stay anchored to the paragraph. Do not invent later plot.',
+    `Novel: ${novelTitle || ''}`,
+    `Chapter: ${chapterTitle || ''}`,
+    `Shared memory: ${memorySummary || 'none'}`,
+    `Persona: ${persona?.name || ''} / ${persona?.tag || ''} / ${persona?.stylePrompt || ''}`,
+    `Paragraph: ${paragraphText || ''}`,
+  ].join('\n');
 }
 
 const aiClient = {
@@ -2738,7 +3692,7 @@ const aiClient = {
     const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body }),
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body: disableModelThinking(body) }),
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data?.error?.message || data?.error || `Summary generation failed: ${res.status}`);
@@ -2747,16 +3701,42 @@ const aiClient = {
     if (!parsed.ok) throw parsed.error || new Error('Summary payload parse failed');
     return parsed.value;
   },
+  async generateFirstChapterBundle(proxyUrl, profile, apiKey, body) {
+    const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body: disableModelThinking(body) }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data?.error?.message || data?.error || `Startup bundle generation failed: ${res.status}`);
+    const content = data?.choices?.[0]?.message?.content || '';
+    const parsed = parseStructuredPayload(content, repairLooseJson);
+    if (!parsed.ok) throw parsed.error || new Error('Startup bundle payload parse failed');
+    const validation = validateFirstChapterBundle(parsed.value);
+    if (!validation.ok) throw new Error(`Startup bundle schema invalid: ${validation.reason}`);
+    return parsed.value;
+  },
   async generateChunk(proxyUrl, profile, apiKey, chapterTitle, chunk, personas, memorySummary = '') {
-    const body = {
+    if (DEMO_MODE) {
+      return createDemoParagraphComments({
+        chapterTitle,
+        chunk,
+        personas,
+      });
+    }
+    const chunkLength = Array.isArray(chunk) ? chunk.length : 0;
+    const personaCount = Array.isArray(personas) ? personas.length : 1;
+    const tokensFloor = Math.max(1600, 220 * chunkLength + 120 * personaCount);
+    const requestedTokens = Math.max(tokensFloor, Number(profile.maxOutputTokens) || tokensFloor);
+    const body = disableModelThinking({
       model: profile.model,
       temperature: profile.temperature,
-      max_tokens: profile.maxOutputTokens,
+      max_tokens: requestedTokens,
       messages: [
         { role: 'system', content: 'Output JSON only. Do not use Markdown.' },
         { role: 'user', content: buildGenerationPrompt({ chapterTitle, chunk, personas, memorySummary }) },
       ],
-    };
+    });
     const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2765,14 +3745,18 @@ const aiClient = {
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data?.error?.message || data?.error || `Generation failed: ${res.status}`);
     const content = data?.choices?.[0]?.message?.content || '';
-    const parsed = safeJsonParse(extractJsonBlock(content), { comments: [] });
-    return Array.isArray(parsed?.comments) ? parsed.comments : [];
+    const parsed = parseStructuredPayload(extractJsonBlock(content), repairLooseJson);
+    if (!parsed.ok) {
+      throw new Error(`Chunk JSON parse failed: ${parsed.error?.message || 'malformed payload'}`);
+    }
+    const value = parsed.value;
+    return Array.isArray(value?.comments) ? value.comments : [];
   },
   async generateThreadReply(proxyUrl, profile, apiKey, body) {
     const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body }),
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body: disableModelThinking(body) }),
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data?.error?.message || data?.error || `追问回复失败：${res.status}`);
@@ -2790,18 +3774,19 @@ function choosePersonaForParagraph(personas, paragraphIndex, salt = 0) {
   return enabled[(paragraphIndex + salt) % enabled.length];
 }
 
-function buildAiComment(persona, paragraphKey, chapterIndex, text, profileId = 'demo', extra = {}) {
+function buildAiComment(persona, paragraphKey, chapterIndex, text, profileId = 'ai', extra = {}) {
+  const normalizedText = normalizeCommentText(text);
   return {
-    id: `${profileId}-${chapterIndex}-${paragraphKey}-${hashText(text)}`,
+    id: `${profileId}-${chapterIndex}-${paragraphKey}-${hashText(normalizedText)}`,
     personaId: persona.id,
     personaName: persona.name,
     personaTag: persona.tag,
     personaColor: persona.color,
     personaAvatar: persona.avatar,
-    text,
-    likes: 16 + (hashText(text) % 96),
+    text: normalizedText,
+    likes: 16 + (hashText(normalizedText) % 96),
     liked: false,
-    source: profileId === 'demo' ? 'demo' : 'llm',
+    source: 'llm',
     modelProfileId: profileId,
     createdAt: Date.now(),
     discussionMode: ['closed', 'open', 'inviting'].includes(extra.discussionMode) ? extra.discussionMode : 'open',
@@ -2856,27 +3841,6 @@ function mergeCommentsByKey(target, source) {
     target[key] = [...(target[key] || []), ...(Array.isArray(comments) ? comments : [])];
   });
   return target;
-}
-
-function generateDemoComments(paragraphText, paragraphIndex, chapterIndex, personas = DEFAULT_PERSONAS) {
-  const h = hashText(`${paragraphText}-${paragraphIndex}-${chapterIndex}`);
-  if (h % 5 === 0) return [];
-  const enabled = personas.filter(p => p.enabled);
-  if (!enabled.length) return [];
-  const templates = [
-    '这句的画面感很强，像镜头突然推进了一格。',
-    '这里明显在压节奏，后面大概率要接一个反转。',
-    '这个细节不是随手写的，感觉会回收伏笔。',
-    '人物说得轻，但信息量其实很重。',
-    '这段读起来像弹簧被慢慢压紧了。',
-    '懂了，作者在这里偷偷把氛围拧暗了。',
-  ];
-  const count = 1 + (h % 2);
-  return Array.from({ length: count }, (_, i) => {
-    const persona = enabled[(h + i + paragraphIndex) % enabled.length];
-    const text = templates[(h + i) % templates.length];
-    return buildAiComment(persona, `${chapterIndex}-${paragraphIndex}`, chapterIndex, text, 'demo');
-  });
 }
 
 function ensureLocalLibrary() {
@@ -3011,13 +3975,15 @@ function BottomNav({ active, onNavigate }) {
   );
 }
 
-function BookActionSheet({ novel, onClose, onContinue, onRename, onDelete }) {
+function BookActionSheet({ novel, onClose, onContinue, onRename, onDelete, onManagePersonas, onPreGenerate }) {
   if (!novel) return null;
   return (
     <>
       <div className="bottom-sheet-backdrop" onClick={onClose} />
       <div className="sheet-panel">
         <button className="action-row" onClick={onContinue}><Icon name="play" size={21} />继续阅读</button>
+        {onManagePersonas && <button className="action-row" data-book-action="personas" onClick={onManagePersonas}><Icon name="users" size={20} />本书 AI 书友</button>}
+        {onPreGenerate && <button className="action-row" data-book-action="ai-pregen" onClick={onPreGenerate}><Icon name="comment" size={20} />AI 评论预生成</button>}
         <button className="action-row" onClick={onRename}><Icon name="pencil" size={20} />重命名</button>
         <button className="action-row danger" onClick={onDelete}><Icon name="trash" size={20} />删除书籍</button>
         <button className="action-cancel" onClick={onClose}>取消</button>
@@ -3178,10 +4144,278 @@ function BookshelfScreen({ novels, onSelectNovel, onImport, onDeleteNovel, onRen
   );
 }
 
-function ChapterListScreen({ novel, chapters, onSelectChapter, onBack, onContinue, onDeleteNovel, onRenameNovel, toast }) {
+function BookPersonaCard({ novel, personas, onChange, dialogOpen = false, onDialogClose }) {
+  const isControlledDialog = typeof onDialogClose === 'function';
+  const [internalOpen, setInternalOpen] = useState(false);
+  const [draftIds, setDraftIds] = useState([]);
+  const [draftMode, setDraftMode] = useState('global');
+  const enabledPersonas = useMemo(() => (personas || []).filter(persona => persona.enabled), [personas]);
+  const isCustom = hasBookPersonaOverride(novel);
+  const selectedPersonas = getBookPersonas(enabledPersonas, novel);
+  const selectedCount = selectedPersonas.length;
+  const totalCount = enabledPersonas.length;
+  const modeLabel = isCustom ? '本书单独设置' : '跟随全局书友';
+  const open = isControlledDialog ? dialogOpen : internalOpen;
+
+  const resetDraft = () => {
+    setDraftMode(isCustom ? 'custom' : 'global');
+    setDraftIds(isCustom ? normalizeBookPersonaIds(novel.allowedPersonaIds) : enabledPersonas.map(persona => persona.id));
+  };
+
+  useEffect(() => {
+    if (open) resetDraft();
+  }, [open, isCustom, novel.allowedPersonaIds, enabledPersonas]);
+
+  const openDialog = () => {
+    resetDraft();
+    setInternalOpen(true);
+  };
+  const closeDialog = () => {
+    if (isControlledDialog) {
+      onDialogClose();
+      return;
+    }
+    setInternalOpen(false);
+  };
+  const togglePersona = (personaId) => {
+    setDraftMode('custom');
+    setDraftIds(prev => prev.includes(personaId)
+      ? prev.filter(id => id !== personaId)
+      : [...prev, personaId]);
+  };
+  const idsEqual = (a = [], b = []) => {
+    const left = normalizeBookPersonaIds(a);
+    const right = normalizeBookPersonaIds(b);
+    return left.length === right.length && left.every((id, index) => id === right[index]);
+  };
+  const applyDraft = () => {
+    if (typeof onChange === 'function') {
+      if (draftMode === 'global') {
+        if (isCustom) onChange(null);
+      } else if (!isCustom || !idsEqual(draftIds, novel.allowedPersonaIds)) {
+        onChange(draftIds);
+      }
+    }
+    closeDialog();
+  };
+  const followGlobal = () => {
+    if (isCustom && typeof onChange === 'function') onChange(null);
+    closeDialog();
+  };
+
+  return (
+    <>
+      {!isControlledDialog && (
+        <div
+          className="book-personas-card"
+          data-book-personas-card
+          data-book-personas-mode={isCustom ? 'custom' : 'global'}
+          data-book-personas-selected-count={selectedCount}
+        >
+          <button className="book-personas-open" type="button" data-book-personas-open onClick={openDialog}>
+            <span>
+              <span className="book-personas-title">本书 AI 书友</span>
+              <span className="book-personas-meta" data-book-personas-meta>
+                {modeLabel}，当前可出现 {selectedCount} / {totalCount} 位
+              </span>
+            </span>
+            <span className="book-personas-count">{selectedCount} 位</span>
+            <Icon name="chevronRight" size={18} strokeWidth={1.9} />
+          </button>
+        </div>
+      )}
+      {open && (
+        <div className="delete-dialog book-personas-dialog" data-book-personas-dialog onClick={closeDialog}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>本书 AI 书友</h3>
+            <p>选择哪些 AI 书友可以在这本书里出现。未单独设置时会跟随全局启用状态。</p>
+            <div className="book-personas-tools">
+              <button type="button" data-book-personas-action="follow-global" onClick={followGlobal}>跟随全局</button>
+              <button type="button" data-book-personas-action="select-all" onClick={() => { setDraftMode('custom'); setDraftIds(enabledPersonas.map(persona => persona.id)); }}>全选</button>
+              <button type="button" data-book-personas-action="clear" onClick={() => { setDraftMode('custom'); setDraftIds([]); }}>清空</button>
+            </div>
+            <div className="book-personas-list">
+              {enabledPersonas.map(persona => {
+                const checked = draftIds.includes(persona.id);
+                return (
+                  <button
+                    className="book-persona-row"
+                    type="button"
+                    key={persona.id}
+                    data-book-persona-row={persona.id}
+                    data-selected={checked ? 'true' : 'false'}
+                    onClick={() => togglePersona(persona.id)}
+                  >
+                    <div className="avatar" style={{ '--avatar-bg': persona.color }}>{persona.avatar}</div>
+                    <div>
+                      <div className="persona-title">{persona.name}</div>
+                      <div className="persona-desc">{persona.description || persona.stylePrompt}</div>
+                    </div>
+                    <span className={`check-box ${checked ? 'on' : ''}`}><Icon name="check" size={14} strokeWidth={3} /></span>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={closeDialog}>取消</button>
+              <button className="btn btn-primary" data-book-personas-action="done" onClick={applyDraft}>保存</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function AiPreGenerationCard({ novel, chapterCount, liveEnabled, onStartGeneration, dialogOpen = false, onDialogClose }) {
+  const [showTargetDialog, setShowTargetDialog] = useState(false);
+  const isControlledDialog = typeof onDialogClose === 'function';
+  const frontier = getAiGeneratedThrough(novel, chapterCount);
+  const generatedDisplay = frontier >= 0 ? `第 ${frontier + 1} 章` : '尚未生成';
+  const job = novel.aiGenerationJob || {};
+  const isRunning = Boolean(job.running);
+  const nextChapterDisplay = Math.min(frontier + 2, chapterCount);
+  const defaultTarget = Math.min(chapterCount, Math.max(nextChapterDisplay, frontier + 6));
+  const [targetChapter, setTargetChapter] = useState(defaultTarget);
+
+  useEffect(() => {
+    if (!showTargetDialog) setTargetChapter(defaultTarget);
+  }, [defaultTarget, showTargetDialog]);
+
+  const startTo = (targetIndex) => {
+    if (typeof onStartGeneration === 'function') {
+      onStartGeneration(targetIndex);
+    }
+  };
+  const openTargetDialog = () => {
+    setTargetChapter(defaultTarget);
+    setShowTargetDialog(true);
+  };
+  const normalizedTargetChapter = clamp(Number(targetChapter) || nextChapterDisplay, 1, Math.max(1, chapterCount));
+  const normalizedTargetIndex = normalizedTargetChapter - 1;
+  const estimatedCount = Math.max(0, normalizedTargetIndex - frontier);
+  const canGenerate = liveEnabled && !isRunning && frontier < chapterCount - 1;
+  const statusText = isRunning
+    ? `正在生成第 ${Math.max(1, (job.currentChapterIndex ?? frontier + 1) + 1)} 章`
+    : job.lastError
+      ? '上次中断'
+      : frontier >= chapterCount - 1
+        ? '已完成'
+        : '空闲';
+  const runningMeta = isRunning && Number.isFinite(job.targetChapterIndex)
+    ? `，目标第 ${job.targetChapterIndex + 1} 章`
+    : '';
+  const targetStartChapter = frontier + 2;
+  const panelBody = (
+    <>
+      <div className="ai-pregen-head">
+        <div>
+          <div className="ai-pregen-title" data-ai-pregen-title>AI 评论预生成</div>
+          <span className="ai-pregen-meta" data-ai-frontier-meta>
+            AI 评论已生成至：{generatedDisplay} / 共 {chapterCount} 章
+          </span>
+          <span className="ai-pregen-meta" data-ai-task-meta>
+            当前任务：{statusText}{runningMeta}
+          </span>
+          {job.lastError && !isRunning && (
+            <span className="ai-pregen-meta">失败原因：{job.lastError}</span>
+          )}
+        </div>
+        <span className="ai-pregen-status">{liveEnabled ? statusText : '未启用 AI'}</span>
+      </div>
+      <div className="ai-pregen-actions">
+        <button
+          type="button"
+          data-ai-pregen-action="next-5"
+          disabled={!canGenerate}
+          onClick={() => startTo(getAiPregenTarget(frontier, chapterCount, 5))}
+        >
+          继续 5 章
+        </button>
+        <button
+          type="button"
+          data-ai-pregen-action="next-20"
+          disabled={!canGenerate}
+          onClick={() => startTo(getAiPregenTarget(frontier, chapterCount, 20))}
+        >
+          继续 20 章
+        </button>
+        <button
+          type="button"
+          data-ai-pregen-action="target"
+          disabled={!canGenerate}
+          onClick={openTargetDialog}
+        >
+          生成到指定章节
+        </button>
+        <button
+          type="button"
+          data-ai-pregen-action="all"
+          disabled={!canGenerate}
+          onClick={() => startTo(chapterCount - 1)}
+        >
+          生成整本书
+        </button>
+      </div>
+    </>
+  );
+
+  return (
+    <>
+      {isControlledDialog ? (
+        dialogOpen && (
+          <div className="delete-dialog ai-comment-pregen-dialog" data-ai-pregen-dialog onClick={onDialogClose}>
+            <div className="dialog-card ai-pregen-card" data-ai-pregen-card onClick={event => event.stopPropagation()}>
+              {panelBody}
+            </div>
+          </div>
+        )
+      ) : (
+        <div className="ai-pregen-card" data-ai-pregen-card>
+          {panelBody}
+        </div>
+      )}
+      {showTargetDialog && (
+        <div className="delete-dialog ai-pregen-dialog" onClick={() => setShowTargetDialog(false)}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>生成到第几章？</h3>
+            <p>
+              将从第 {targetStartChapter} 章生成到第 {normalizedTargetChapter} 章，共 {estimatedCount} 章。
+            </p>
+            <input
+              className="ai-pregen-input"
+              type="number"
+              min={targetStartChapter}
+              max={chapterCount}
+              value={targetChapter}
+              onChange={event => setTargetChapter(event.target.value)}
+            />
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setShowTargetDialog(false)}>取消</button>
+              <button
+                className="btn btn-primary"
+                disabled={estimatedCount <= 0}
+                onClick={() => {
+                  setShowTargetDialog(false);
+                  startTo(normalizedTargetIndex);
+                }}
+              >
+                开始生成
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function ChapterListScreen({ novel, chapters, personas, onSelectChapter, onBack, onContinue, onDeleteNovel, onRenameNovel, onStartAiGeneration, onUpdateBookPersonas, liveEnabled, toast }) {
   const [showActions, setShowActions] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [showRename, setShowRename] = useState(false);
+  const [showBookPersonas, setShowBookPersonas] = useState(false);
+  const [showAiPreGeneration, setShowAiPreGeneration] = useState(false);
   const chapterCount = novel.displayChapterCount || chapters.length;
   return (
     <div className="app-screen">
@@ -3189,7 +4423,7 @@ function ChapterListScreen({ novel, chapters, onSelectChapter, onBack, onContinu
       <TopBar
         title={novel.title}
         left={<button className="round-button" onClick={onBack} aria-label="返回书架"><Icon name="chevronLeft" size={21} strokeWidth={1.9} /></button>}
-        right={<button className="round-button" onClick={() => setShowActions(true)} aria-label="书籍操作菜单"><Icon name="more" size={22} /></button>}
+        right={<button className="round-button" data-book-actions-open onClick={() => setShowActions(true)} aria-label="书籍操作菜单"><Icon name="more" size={22} /></button>}
       />
       <div className="scroll-area book-detail-body">
         <div className="book-summary">
@@ -3229,8 +4463,25 @@ function ChapterListScreen({ novel, chapters, onSelectChapter, onBack, onContinu
         novel={showActions ? novel : null}
         onClose={() => setShowActions(false)}
         onContinue={() => { setShowActions(false); onContinue(); }}
+        onManagePersonas={() => { setShowActions(false); setShowBookPersonas(true); }}
+        onPreGenerate={() => { setShowActions(false); setShowAiPreGeneration(true); }}
         onRename={() => { setShowActions(false); setShowRename(true); }}
         onDelete={() => { setShowActions(false); setShowDelete(true); }}
+      />
+      <BookPersonaCard
+        novel={novel}
+        personas={personas}
+        dialogOpen={showBookPersonas}
+        onDialogClose={() => setShowBookPersonas(false)}
+        onChange={(allowedPersonaIds) => onUpdateBookPersonas?.(novel.id, allowedPersonaIds)}
+      />
+      <AiPreGenerationCard
+        novel={novel}
+        chapterCount={chapterCount}
+        liveEnabled={liveEnabled}
+        onStartGeneration={onStartAiGeneration}
+        dialogOpen={showAiPreGeneration}
+        onDialogClose={() => setShowAiPreGeneration(false)}
       />
       <RenameDialog
         novel={showRename ? novel : null}
@@ -3262,46 +4513,195 @@ function CommentBadge({ count, active, onClick }) {
   );
 }
 
-function CommentItem({ comment }) {
+function CommentActions({ comment, parentComment, onReply, onSummonAiReply }) {
   return (
-    <div className="comment-item">
-      <div className="avatar" style={{ '--avatar-bg': comment.personaColor }}>{comment.personaAvatar}</div>
-      <div className="comment-main">
-        <div className="comment-meta">
-          <span className="comment-name">{comment.personaName}</span>
-          <span className="tag">{comment.personaTag}</span>
-        </div>
-        <div className="comment-text">{comment.text}</div>
-      </div>
-      <div className="like-box">
-        <Icon name="thumbs" size={20} strokeWidth={1.8} />
-        <span>{comment.likes}</span>
-      </div>
+    <div className="comment-actions">
+      <button
+        className="comment-action-button"
+        type="button"
+        data-comment-action="reply"
+        onClick={() => onReply?.({ parentComment: parentComment || comment, targetComment: comment })}
+      >
+        <Icon name="comment" size={13} strokeWidth={2} />
+        回复
+      </button>
+      <button
+        className="comment-action-button"
+        type="button"
+        data-comment-action="summon-reply"
+        onClick={() => onSummonAiReply?.({ parentComment: parentComment || comment, targetComment: comment })}
+      >
+        <Icon name="users" size={13} strokeWidth={2} />
+        召唤书友
+      </button>
     </div>
   );
 }
 
-function CommentPanel({ comments, userComments, thread, onAddUserComment, onSendThreadMessage, onClose }) {
+function CommentLikeButton({ comment, likeState, onToggleLike }) {
+  const likes = Math.max(0, Number(likeState?.likes) || 0);
+  const liked = Boolean(likeState?.liked);
+  return (
+    <button
+      className={`like-box ${liked ? 'liked' : ''}`}
+      type="button"
+      data-comment-action="like"
+      aria-pressed={liked ? 'true' : 'false'}
+      onClick={() => onToggleLike?.(comment)}
+    >
+      <Icon name="thumbs" size={20} strokeWidth={1.8} />
+      <span data-like-count>{likes}</span>
+    </button>
+  );
+}
+
+function CommentItem({ comment, replies = [], expanded = false, getLikeState, onToggleLike, onToggleReplies, onReply, onSummonAiReply }) {
+  const visibleReplies = expanded ? replies : replies.slice(0, 2);
+  const hiddenCount = Math.max(0, replies.length - visibleReplies.length);
+  const commentLikeState = getLikeState?.(comment) || { likes: comment.likes, liked: comment.liked };
+  return (
+    <div className="comment-thread">
+      <div className="comment-item" data-comment-level="root" data-comment-source={comment.source || 'llm'} data-comment-id={comment.id}>
+        <div className="avatar" style={{ '--avatar-bg': comment.personaColor }}>{comment.personaAvatar}</div>
+        <div className="comment-main">
+          <div className="comment-meta">
+            <span className="comment-name">{comment.personaName}</span>
+            <span className="tag">{comment.personaTag}</span>
+          </div>
+          <div className="comment-text">{normalizeCommentText(comment.text)}</div>
+          <CommentActions comment={comment} onReply={onReply} onSummonAiReply={onSummonAiReply} />
+        </div>
+        <CommentLikeButton comment={comment} likeState={commentLikeState} onToggleLike={onToggleLike} />
+      </div>
+      {visibleReplies.length > 0 && (
+        <div className="comment-replies" data-comment-replies={comment.id}>
+          {visibleReplies.map((reply, index) => {
+            const replyLikeState = getLikeState?.(reply) || { likes: reply.likes, liked: reply.liked };
+            return (
+              <div
+                className="comment-item reply"
+                key={reply.id || `${comment.id}-reply-${index}`}
+                data-comment-reply="true"
+                data-comment-source={reply.source || 'llm'}
+                data-comment-id={reply.id}
+              >
+                <div className="avatar" style={{ '--avatar-bg': reply.personaColor }}>{reply.personaAvatar}</div>
+                <div className="comment-main">
+                  <div className="comment-meta">
+                    <span className="comment-name">{reply.personaName}</span>
+                    <span className="tag">{reply.personaTag}</span>
+                  </div>
+                  <div className="comment-text">
+                    {reply.replyToName && <span className="comment-reply-to" data-comment-reply-to={`@${reply.replyToName}`}>@{reply.replyToName} </span>}
+                    {normalizeCommentText(reply.text)}
+                  </div>
+                  <CommentActions
+                    comment={reply}
+                    parentComment={comment}
+                    onReply={onReply}
+                    onSummonAiReply={onSummonAiReply}
+                  />
+                </div>
+                <CommentLikeButton comment={reply} likeState={replyLikeState} onToggleLike={onToggleLike} />
+              </div>
+            );
+          })}
+          {hiddenCount > 0 && (
+            <button className="reply-more-button" type="button" onClick={() => onToggleReplies?.(comment.id)}>
+              查看 {hiddenCount} 条回复
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CommentPanel({ comments, userComments, commentReplies = {}, personas = [], commentLikes = {}, onAddUserComment, onSubmitComment, onSummonAiReply, onToggleCommentLike, onClose }) {
   const [inputText, setInputText] = useState('');
   const [isSending, setIsSending] = useState(false);
+  const [replyTarget, setReplyTarget] = useState(null);
+  const [summonTarget, setSummonTarget] = useState(null);
+  const [summonSelectedIds, setSummonSelectedIds] = useState([]);
+  const [expandedReplies, setExpandedReplies] = useState({});
   const allComments = [...comments, ...userComments];
-  const threadTurns = Array.isArray(thread?.turns) ? thread.turns : [];
+  const commentTree = buildCommentTree(allComments, commentReplies);
+  const availablePersonas = useMemo(() => (personas || []).filter(persona => persona?.enabled !== false), [personas]);
+  const availablePersonaIds = useMemo(() => availablePersonas.map(persona => persona.id), [availablePersonas]);
+  const getLikeState = useCallback((comment) => {
+    const saved = comment?.id ? commentLikes?.[comment.id] : null;
+    if (saved) {
+      return {
+        likes: Math.max(0, Number(saved.likes) || 0),
+        liked: Boolean(saved.liked),
+      };
+    }
+    return {
+      likes: Math.max(0, Number(comment?.likes) || 0),
+      liked: Boolean(comment?.liked),
+    };
+  }, [commentLikes]);
+
+  useEffect(() => {
+    if (!summonTarget) return;
+    setSummonSelectedIds(prev => {
+      const kept = prev.filter(id => availablePersonaIds.includes(id));
+      return kept.length ? kept : availablePersonaIds.slice(0, 2);
+    });
+  }, [availablePersonaIds, summonTarget]);
 
   const handleSubmit = async () => {
     const text = inputText.trim();
     if (!text) return;
-    if (typeof onSendThreadMessage === 'function') {
+    setInputText('');
+    const target = replyTarget;
+    setReplyTarget(null);
+    if (typeof onSubmitComment === 'function') {
       setIsSending(true);
       try {
-        await onSendThreadMessage(text);
-        setInputText('');
+        await onSubmitComment({ text, replyTarget: target });
       } finally {
         setIsSending(false);
       }
       return;
     }
     onAddUserComment(text);
-    setInputText('');
+  };
+
+  const handleReply = ({ parentComment, targetComment }) => {
+    setReplyTarget({
+      parentComment,
+      targetComment,
+      parentId: parentComment?.id || targetComment?.id,
+      targetName: targetComment?.personaName || '这条评论',
+    });
+  };
+
+  const handleSummonAiReply = ({ parentComment, targetComment }) => {
+    if (typeof onSummonAiReply !== 'function') return;
+    setSummonTarget({ parentComment, targetComment });
+    setSummonSelectedIds(availablePersonaIds.slice(0, 2));
+  };
+
+  const toggleSummonReplyPersona = (personaId) => {
+    setSummonSelectedIds(prev => (
+      prev.includes(personaId)
+        ? prev.filter(id => id !== personaId)
+        : [...prev, personaId]
+    ));
+  };
+
+  const generateSummonReply = () => {
+    if (!summonTarget || typeof onSummonAiReply !== 'function') return;
+    const selectedPersonas = availablePersonas.filter(persona => summonSelectedIds.includes(persona.id));
+    if (!selectedPersonas.length) return;
+    const target = summonTarget;
+    setSummonTarget(null);
+    Promise.resolve(onSummonAiReply({
+      parentComment: target.parentComment,
+      targetComment: target.targetComment,
+      personas: selectedPersonas,
+    })).catch(() => {});
   };
 
   return (
@@ -3318,7 +4718,7 @@ function CommentPanel({ comments, userComments, thread, onAddUserComment, onSend
             <Icon name="x" size={22} strokeWidth={2.1} />
           </button>
         </div>
-        <div className="sheet-tabs">
+        {false && <div className="sheet-tabs">
           <div className="sheet-tab-group">
             <span>推荐排序</span>
           </div>
@@ -3328,39 +4728,35 @@ function CommentPanel({ comments, userComments, thread, onAddUserComment, onSend
             <span>最新</span>
           </div>
         </div>
+        }
         <div className="comments-list">
-          {allComments.length === 0 ? (
+          {commentTree.topLevel.length === 0 ? (
             <div className="empty-state">
               <h3>还没有评论</h3>
               <p>写下你的想法，给后面的自己留个批注。</p>
             </div>
           ) : (
-            allComments.map((comment, index) => <CommentItem key={comment.id || index} comment={comment} />)
-          )}
-          {threadTurns.length > 0 && (
-            <div style={{ marginTop: 12, borderTop: '1px solid rgba(95, 78, 57, 0.12)', paddingTop: 12 }}>
-              <div className="muted" style={{ marginBottom: 8 }}>继续讨论</div>
-              {threadTurns.map((turn, index) => (
-                <div
-                  key={turn.id || `${turn.role}-${index}`}
-                  style={{
-                    marginBottom: 10,
-                    padding: '10px 12px',
-                    borderRadius: 14,
-                    background: turn.role === 'user' ? 'rgba(197, 165, 122, 0.12)' : '#fff',
-                    border: '1px solid rgba(95, 78, 57, 0.08)',
-                  }}
-                >
-                  <div className="comment-meta" style={{ marginBottom: 4 }}>
-                    <span className="comment-name">{turn.role === 'user' ? '你' : (turn.personaName || 'AI 书友')}</span>
-                    {turn.personaTag && turn.role !== 'user' && <span className="tag">{turn.personaTag}</span>}
-                  </div>
-                  <div className="comment-text">{turn.text}</div>
-                </div>
-              ))}
-            </div>
+            commentTree.topLevel.map((comment, index) => (
+              <CommentItem
+                key={comment.id || index}
+                comment={comment}
+                replies={commentTree.repliesByParent[comment.id] || []}
+                expanded={Boolean(expandedReplies[comment.id])}
+                getLikeState={getLikeState}
+                onToggleLike={onToggleCommentLike}
+                onToggleReplies={(commentId) => setExpandedReplies(prev => ({ ...prev, [commentId]: true }))}
+                onReply={handleReply}
+                onSummonAiReply={handleSummonAiReply}
+              />
+            ))
           )}
         </div>
+        {replyTarget && (
+          <div className="replying-strip">
+            <span>回复 <strong>@{replyTarget.targetName}</strong></span>
+            <button type="button" onClick={() => setReplyTarget(null)}>取消</button>
+          </div>
+        )}
         <div className="comment-input" data-thread-composer="true">
           <div className="avatar" style={{ '--avatar-bg': '#e8dde5' }}>读</div>
           <div className="input-wrap">
@@ -3371,7 +4767,7 @@ function CommentPanel({ comments, userComments, thread, onAddUserComment, onSend
               onKeyDown={e => {
                 if (e.key === 'Enter' && !isSending) handleSubmit();
               }}
-              placeholder={isSending ? 'AI 书友正在回复...' : '写下你的评论...'}
+              placeholder={isSending ? 'AI 书友正在回复...' : replyTarget ? `回复 @${replyTarget.targetName}` : '写下你的评论...'}
             />
             <Icon className="smile" name="smile" size={20} strokeWidth={1.8} />
           </div>
@@ -3380,11 +4776,23 @@ function CommentPanel({ comments, userComments, thread, onAddUserComment, onSend
           </button>
         </div>
       </div>
+      {summonTarget && (
+        <SummonPanel
+          mode="comment"
+          title="召唤 AI 书友回复"
+          subtitle="选择要来这条评论底下接话的 AI 书友。"
+          personas={availablePersonas}
+          selectedIds={summonSelectedIds}
+          onToggle={toggleSummonReplyPersona}
+          onGenerate={generateSummonReply}
+          onClose={() => setSummonTarget(null)}
+        />
+      )}
     </>
   );
 }
 
-function ChapterJumpPanel({ chapter, chapterIndex, chapters, progress, onClose, onChangeChapter, onOpenCatalog }) {
+function ChapterJumpPanel({ chapter, chapterIndex, chapters, paragraphIndex, paragraphCount, paragraphProgress, onClose, onChangeChapter, onChangeParagraph, onOpenCatalog }) {
   return (
     <>
       <div className="bottom-sheet-backdrop plain-backdrop" onClick={onClose} />
@@ -3392,24 +4800,61 @@ function ChapterJumpPanel({ chapter, chapterIndex, chapters, progress, onClose, 
         <div className="sheet-grabber" />
         <div className="jump-head">
           <span>{chapter?.title || `第 ${chapterIndex + 1} 章`}</span>
-          <span className="jump-progress">{progress}%</span>
+          <span className="jump-progress">{paragraphProgress}%</span>
         </div>
         <input
           className="jump-range"
           type="range"
           min="0"
-          max={Math.max(0, chapters.length - 1)}
-          value={chapterIndex}
-          onChange={event => onChangeChapter(Number(event.target.value))}
+          max={Math.max(0, paragraphCount - 1)}
+          value={Math.min(Math.max(0, paragraphIndex), Math.max(0, paragraphCount - 1))}
+          onChange={event => onChangeParagraph(Number(event.target.value))}
         />
         <div className="jump-controls">
           <button onClick={() => chapterIndex > 0 && onChangeChapter(chapterIndex - 1)}>上一章</button>
           <button onClick={onOpenCatalog}>目录</button>
-          <span>共{chapters.length}章</span>
+          <span>{chapterIndex + 1}/{chapters.length} 章</span>
           <button onClick={() => chapterIndex < chapters.length - 1 && onChangeChapter(chapterIndex + 1)}>下一章</button>
         </div>
       </div>
+      {false && (
+        <SummonPanel
+          mode="comment"
+          title="召唤 AI 书友回复"
+          subtitle="选择要来这条评论底下接话的 AI 书友。"
+          personas={availablePersonas}
+          selectedIds={summonSelectedIds}
+          onToggle={toggleSummonReplyPersona}
+          onGenerate={generateSummonReply}
+          onClose={() => setSummonTarget(null)}
+        />
+      )}
     </>
+  );
+}
+
+function ParagraphActionPanel({ onOpenComment, onOpenSummon }) {
+  const handleAction = (event, handler) => {
+    event.stopPropagation();
+    handler();
+  };
+  return (
+    <div
+      className="paragraph-action-bar"
+      data-paragraph-actions="true"
+      onClick={event => event.stopPropagation()}
+      onPointerDown={event => event.stopPropagation()}
+      onContextMenu={event => event.preventDefault()}
+    >
+      <button className="paragraph-action-button" type="button" data-paragraph-action="comment" onClick={event => handleAction(event, onOpenComment)}>
+        <Icon name="comment" size={16} strokeWidth={1.9} />
+        <span>评论</span>
+      </button>
+      <button className="paragraph-action-button" type="button" data-paragraph-action="summon" onClick={event => handleAction(event, onOpenSummon)}>
+        <Icon name="users" size={16} strokeWidth={1.9} />
+        <span>召唤书友评论</span>
+      </button>
+    </div>
   );
 }
 
@@ -3455,12 +4900,16 @@ function ReadingSettingsPanel({ settings, onClose }) {
   );
 }
 
-function SummonPanel({ personas, selectedIds, onToggle, onGenerate, onClose }) {
+function SummonPanel({ personas, selectedIds, onToggle, onGenerate, onClose, isGenerating = false, mode = 'paragraph', title = '鍙敜 AI 涔﹀弸璇勮', subtitle = '閫夋嫨浣犳兂鍙敜鐨?AI 涔﹀弸锛?' }) {
   const selectedCount = selectedIds.length;
   return (
     <>
       <div className="bottom-sheet-backdrop" onClick={onClose} />
-      <div className="sheet-panel summon-panel">
+      <div
+        className="sheet-panel summon-panel"
+        data-paragraph-summon-panel={mode === 'paragraph' ? 'true' : undefined}
+        data-comment-summon-panel={mode === 'comment' ? 'true' : undefined}
+      >
         <div className="sheet-grabber" />
         <div className="sheet-head" style={{ padding: '0 0 6px' }}>
           <div>
@@ -3472,7 +4921,14 @@ function SummonPanel({ personas, selectedIds, onToggle, onGenerate, onClose }) {
         {personas.map(persona => {
           const checked = selectedIds.includes(persona.id);
           return (
-            <button className="summon-row" key={persona.id} onClick={() => onToggle(persona.id)}>
+            <button
+              className="summon-row"
+              key={persona.id}
+              data-paragraph-summon-persona={mode === 'paragraph' ? persona.id : undefined}
+              data-comment-summon-persona={mode === 'comment' ? persona.id : undefined}
+              onClick={() => onToggle(persona.id)}
+              disabled={isGenerating}
+            >
               <div className="avatar" style={{ '--avatar-bg': persona.color }}>{persona.avatar}</div>
               <div style={{ textAlign: 'left', minWidth: 0 }}>
                 <div className="persona-title">{persona.name}</div>
@@ -3482,24 +4938,37 @@ function SummonPanel({ personas, selectedIds, onToggle, onGenerate, onClose }) {
             </button>
           );
         })}
-        <button className="summon-button" disabled={!selectedCount} onClick={onGenerate}>生成评论（{selectedCount}）</button>
+        <button
+          className="summon-button"
+          data-paragraph-summon-generate={mode === 'paragraph' ? 'true' : undefined}
+          data-comment-summon-generate={mode === 'comment' ? 'true' : undefined}
+          disabled={!selectedCount || isGenerating}
+          onClick={onGenerate}
+        >
+          {isGenerating ? 'Generating...' : `Generate (${selectedCount})`}
+        </button>
       </div>
     </>
   );
 }
 
-function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, onUpdateProgress, settings, userComments, aiThreads, onAddUserComment, onSendThreadMessage, aiState, chapterDiscussionComments, chapterDiscussionStatus, aiPrebuildState, onOpenChapterDiscussion, onGenerateChapter }) {
+function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, onUpdateProgress, settings, userComments, commentReplies, commentLikes, onAddUserComment, onSubmitComment, onSummonCommentReply, onToggleCommentLike, aiState, chapterDiscussionComments, chapterDiscussionStatus, aiPrebuildState, onOpenChapterDiscussion, onGenerateChapter, onSummonParagraphComments }) {
   const chapter = chapters[chapterIndex];
   const scrollRef = useRef(null);
   const [expandedParagraph, setExpandedParagraph] = useState(() => window.location.hash === '#reader-comment' ? 2 : null);
   const [expandedChapterDiscussion, setExpandedChapterDiscussion] = useState(() => window.location.hash === '#reader-chapter-discussion');
   const [showChapterJump, setShowChapterJump] = useState(() => window.location.hash === '#reader-jump');
   const [showReadingSettings, setShowReadingSettings] = useState(() => window.location.hash === '#reader-settings');
+  const [jumpParagraphIndex, setJumpParagraphIndex] = useState(0);
+  const [paragraphActionIndex, setParagraphActionIndex] = useState(null);
   const [summonParagraph, setSummonParagraph] = useState(() => window.location.hash === '#reader-summon' ? 2 : null);
   const [summonSelectedIds, setSummonSelectedIds] = useState(() => settings.personas.filter(p => p.enabled).slice(0, 2).map(p => p.id));
+  const [isSummonGenerating, setIsSummonGenerating] = useState(false);
   const [readerToast, setReaderToast] = useState(null);
   const longPressTimer = useRef(null);
   const suppressNextClick = useRef(false);
+  const isRestoringScroll = useRef(false);
+  const latestScrollTop = useRef(0);
 
   const paragraphs = useMemo(() => {
     if (!chapter) return [];
@@ -3510,25 +4979,62 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
     onUpdateProgress(chapterIndex);
     setExpandedParagraph(window.location.hash === '#reader-comment' ? 2 : null);
     setExpandedChapterDiscussion(window.location.hash === '#reader-chapter-discussion');
+    setShowChapterJump(window.location.hash === '#reader-jump');
+    setJumpParagraphIndex(0);
+    setParagraphActionIndex(null);
+    setSummonParagraph(null);
   }, [chapterIndex, onUpdateProgress]);
 
   useEffect(() => {
-    if (settings.liveSettings.enabled && chapter) {
+    const availableIds = settings.personas.filter(persona => persona.enabled).map(persona => persona.id);
+    setSummonSelectedIds(prev => {
+      const kept = prev.filter(id => availableIds.includes(id));
+      return kept.length ? kept : availableIds.slice(0, 2);
+    });
+  }, [settings.personas]);
+
+  useEffect(() => {
+    if (settings.liveSettings.enabled && chapter && settings.personas.length) {
       onGenerateChapter(chapterIndex, chapter.title, paragraphs, false);
     }
-  }, [chapterIndex, chapter, paragraphs, onGenerateChapter, settings.liveSettings.enabled, settings.liveTriggerKey]);
+  }, [chapterIndex, chapter, paragraphs, onGenerateChapter, settings.liveSettings.enabled, settings.liveTriggerKey, settings.personas.length]);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollTop = chapterIndex === novel.lastReadChapter ? novel.lastScrollPos || 0 : 0;
-  }, [chapterIndex, novel.lastReadChapter, novel.lastScrollPos]);
+    const targetScrollTop = getChapterScrollPos(novel, chapterIndex);
+    isRestoringScroll.current = true;
+    let lastAppliedScrollTop = null;
+    const restoreScroll = () => {
+      if (lastAppliedScrollTop != null && Math.abs(el.scrollTop - lastAppliedScrollTop) > 2) {
+        return;
+      }
+      el.scrollTop = targetScrollTop;
+      lastAppliedScrollTop = el.scrollTop;
+      latestScrollTop.current = el.scrollTop;
+    };
+    restoreScroll();
+    const frame = window.requestAnimationFrame(() => {
+      restoreScroll();
+      isRestoringScroll.current = false;
+    });
+    const timer = window.setTimeout(() => {
+      restoreScroll();
+      isRestoringScroll.current = false;
+    }, 120);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
+  }, [chapterIndex, novel.id, chapter?.content]);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return undefined;
     let timer = null;
     const handleScroll = () => {
+      latestScrollTop.current = el.scrollTop;
+      if (isRestoringScroll.current) return;
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => onUpdateProgress(chapterIndex, el.scrollTop), 250);
     };
@@ -3536,7 +5042,18 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
     return () => {
       el.removeEventListener('scroll', handleScroll);
       if (timer) clearTimeout(timer);
+      if (!isRestoringScroll.current) {
+        const finalScrollTop = Number(latestScrollTop.current);
+        onUpdateProgress(chapterIndex, Number.isFinite(finalScrollTop) ? finalScrollTop : el.scrollTop);
+      }
     };
+  }, [chapterIndex, onUpdateProgress]);
+
+  const persistCurrentScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    latestScrollTop.current = el.scrollTop;
+    onUpdateProgress(chapterIndex, el.scrollTop);
   }, [chapterIndex, onUpdateProgress]);
 
   const activeAiState = aiState.chapterIndex === chapterIndex ? aiState : { status: 'idle', commentsByKey: {}, error: '' };
@@ -3549,25 +5066,30 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
     return Array.isArray(aiCommentsByKey[key]) && aiCommentsByKey[key].length > 0;
   });
   const progress = novel.displayReaderProgress || (chapters.length > 0 ? ((chapterIndex + 1) / chapters.length * 100).toFixed(2) : '0.00');
+  const paragraphCount = Math.max(1, paragraphs.length);
+  const activeJumpParagraphIndex = clamp(jumpParagraphIndex, 0, paragraphCount - 1);
+  const paragraphProgress = paragraphs.length ? ((activeJumpParagraphIndex + 1) / paragraphCount * 100).toFixed(0) : '0';
   const readerStyle = {
     '--reader-font-size': `${settings.fontSize || 20}px`,
     '--reader-line-height': settings.lineHeight || 1.84,
   };
-  const getParagraphAiComments = useCallback((paragraphKey, paragraphText, paragraphIndex) => {
+  const getParagraphAiComments = useCallback((paragraphKey) => {
     if (Array.isArray(aiCommentsByKey[paragraphKey]) && aiCommentsByKey[paragraphKey].length) {
       return aiCommentsByKey[paragraphKey];
     }
-    return generateDemoComments(paragraphText, paragraphIndex, chapterIndex, settings.personas);
-  }, [aiCommentsByKey, chapterIndex, settings.personas]);
-  const getParagraphThread = useCallback((paragraphIndex) => {
-    const threadKey = buildParagraphThreadKey(novel.id, chapterIndex, paragraphIndex);
-    return aiThreads?.[threadKey] || createEmptyThread(threadKey);
-  }, [aiThreads, chapterIndex, novel.id]);
+    return [];
+  }, [aiCommentsByKey]);
+  const getScopeReplies = useCallback((scopeKey) => {
+    return commentReplies?.[scopeKey] || {};
+  }, [commentReplies]);
   const chapterDiscussionKey = buildChapterCommentKey(novel.id, chapterIndex);
-  const chapterDiscussionThreadKey = buildChapterThreadKey(novel.id, chapterIndex);
-  const chapterDiscussionThread = aiThreads?.[chapterDiscussionThreadKey] || createEmptyThread(chapterDiscussionThreadKey);
   const chapterDiscussionUserComments = userComments[chapterDiscussionKey] || [];
   const chapterDiscussionAiComments = Array.isArray(chapterDiscussionComments) ? chapterDiscussionComments : [];
+  const chapterDiscussionTotalCount = countCommentTree(
+    [...chapterDiscussionAiComments, ...chapterDiscussionUserComments],
+    getScopeReplies(chapterDiscussionKey),
+  );
+  const chapterDiscussionPreviewComments = [...chapterDiscussionAiComments, ...chapterDiscussionUserComments].slice(0, 2);
   const nextQueuedCount = Array.isArray(aiPrebuildState?.queuedChapters) ? aiPrebuildState.queuedChapters.length : 0;
   const chapterDiscussionMeta = chapterDiscussionStatus?.status === 'loading'
     ? '本章章评正在准备中…'
@@ -3575,7 +5097,11 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
       ? `已缓存 ${chapterDiscussionAiComments.length} 条章评首评。`
       : chapterCommentCount > 0
         ? `已缓存 ${chapterCommentCount} 条 AI 段评，可先从这里进入本章讨论。`
-        : '本章讨论入口已就位；没有缓存时仍保留示例段评。';
+        : chapterDiscussionStatus?.status === 'error'
+          ? (chapterDiscussionStatus?.error || '本章 AI 章评生成失败。')
+          : settings.liveSettings.enabled
+            ? '本章 AI 评论正在生成中，生成完成后会出现在对应段落。'
+            : '本章讨论入口已就位；当前未启用 AI 生成。';
   const prebuildMeta = aiPrebuildState?.running
     ? `后台正在预热后续 ${nextQueuedCount} 章。`
     : aiPrebuildState?.lastError
@@ -3593,7 +5119,8 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
     clearLongPress();
     longPressTimer.current = setTimeout(() => {
       suppressNextClick.current = true;
-      setSummonParagraph(index);
+      setShowChapterJump(false);
+      setParagraphActionIndex(index);
       longPressTimer.current = null;
     }, 520);
   };
@@ -3602,29 +5129,111 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
       ? prev.filter(id => id !== personaId)
       : [...prev, personaId]);
   };
-  const generateSummonedComments = () => {
-    if (summonParagraph === null) return;
-    const key = `${chapterIndex}-${summonParagraph}`;
-    const paragraph = paragraphs[summonParagraph] || '';
-    const selectedPersonas = settings.personas.filter(persona => summonSelectedIds.includes(persona.id));
-    selectedPersonas.forEach((persona, index) => {
-      const text = [
-        '从这句话能看出场景里的压迫感已经铺开了。',
-        '这里像是在把角色的判断和时代背景同时往前推。',
-        '这个细节很适合回头看，信息量比表面更重。',
-      ][(hashText(paragraph + persona.id) + index) % 3];
-      onAddUserComment(key, text, {
-        personaName: persona.name,
-        personaTag: persona.tag,
-        personaColor: persona.color,
-        personaAvatar: persona.avatar,
-        source: 'summoned',
+  const openChapterDiscussion = () => {
+    if (!paragraphs.length) return;
+    setExpandedChapterDiscussion(true);
+    if (typeof onOpenChapterDiscussion === 'function') {
+      onOpenChapterDiscussion({
+        chapterIndex,
+        chapterTitle: chapter?.title || '',
+        chapterText: chapter?.content || '',
       });
+    }
+  };
+  const getBottomVisibleParagraphIndex = () => {
+    const el = scrollRef.current;
+    if (!el) return activeJumpParagraphIndex;
+    const containerRect = el.getBoundingClientRect();
+    const nodes = Array.from(el.querySelectorAll('[data-reader-paragraph]'));
+    let bottomIndex = activeJumpParagraphIndex;
+    let bottomEdge = Number.NEGATIVE_INFINITY;
+    nodes.forEach(node => {
+      const rect = node.getBoundingClientRect();
+      if (rect.bottom <= containerRect.top || rect.top >= containerRect.bottom) return;
+      const index = Number(node.dataset.readerParagraph);
+      if (!Number.isFinite(index)) return;
+      const edge = Math.min(rect.bottom, containerRect.bottom);
+      if (edge >= bottomEdge) {
+        bottomEdge = edge;
+        bottomIndex = index;
+      }
     });
+    return clamp(bottomIndex, 0, paragraphCount - 1);
+  };
+  const openReaderControls = (index = null) => {
+    const nextIndex = Number.isFinite(index) ? index : getBottomVisibleParagraphIndex();
+    setJumpParagraphIndex(clamp(nextIndex, 0, paragraphCount - 1));
+    setShowChapterJump(true);
+  };
+  const shouldIgnoreReaderTap = (target) => {
+    if (!(target instanceof Element)) return false;
+    return Boolean(target.closest('button, input, textarea, select, a, [data-paragraph-actions], [data-comment-panel="true"], [data-chapter-discussion], .sheet-panel, .bottom-sheet-backdrop'));
+  };
+  const handleReaderAreaClick = (event) => {
+    if (suppressNextClick.current) {
+      suppressNextClick.current = false;
+      return;
+    }
+    if (paragraphActionIndex !== null) {
+      if (event.target instanceof Element && event.target.closest('[data-paragraph-actions]')) return;
+      setParagraphActionIndex(null);
+      return;
+    }
+    if (shouldIgnoreReaderTap(event.target)) return;
+    openReaderControls();
+  };
+  const scrollToParagraph = (index) => {
+    const nextIndex = clamp(index, 0, paragraphCount - 1);
+    setJumpParagraphIndex(nextIndex);
+    const el = scrollRef.current;
+    const target = el?.querySelector(`[data-reader-paragraph="${nextIndex}"]`);
+    if (!el || !target) return;
+    const nextTop = Math.max(0, target.offsetTop - 12);
+    isRestoringScroll.current = true;
+    el.scrollTop = nextTop;
+    onUpdateProgress(chapterIndex, nextTop);
+    window.setTimeout(() => {
+      isRestoringScroll.current = false;
+    }, 120);
+  };
+  const openParagraphComment = (index) => {
+    setParagraphActionIndex(null);
+    setExpandedParagraph(index);
+  };
+  const openSummonComment = (index) => {
+    setParagraphActionIndex(null);
+    setSummonParagraph(index);
+  };
+  const generateSummonedComments = async () => {
+    if (summonParagraph === null) return;
+    const targetParagraphIndex = summonParagraph;
+    const key = `${chapterIndex}-${targetParagraphIndex}`;
+    const paragraph = paragraphs[targetParagraphIndex] || '';
+    const selectedPersonas = settings.personas.filter(persona => summonSelectedIds.includes(persona.id));
+    if (!selectedPersonas.length || typeof onSummonParagraphComments !== 'function') return;
+    setIsSummonGenerating(true);
     setSummonParagraph(null);
-    setExpandedParagraph(summonParagraph);
-    setReaderToast({ title: '已添加 AI 书友评论', subtitle: `写入 ${selectedPersonas.length} 条本段说` });
-    window.setTimeout(() => setReaderToast(null), 1900);
+    setReaderToast({ title: 'AI 书友正在后台生成', subtitle: '你可以继续阅读，评论生成后会写入本段。' });
+    try {
+      const generatedCount = await onSummonParagraphComments({
+        paragraphKey: key,
+        chapterIndex,
+        paragraphIndex: targetParagraphIndex,
+        chapterTitle: chapter?.title || '',
+        paragraphText: paragraph,
+        personas: selectedPersonas,
+      });
+      setSummonParagraph(null);
+      setReaderToast({
+        title: generatedCount > 0 ? 'AI 书友评论已生成' : 'AI 书友没有生成可用评论',
+        subtitle: generatedCount > 0 ? `写入 ${generatedCount} 条本段评论` : '没有写入本地固定话术。',
+      });
+    } catch (error) {
+      setReaderToast({ title: 'AI 书友生成失败', subtitle: getErrorMessage(error) });
+    } finally {
+      setIsSummonGenerating(false);
+      window.setTimeout(() => setReaderToast(null), 2200);
+    }
   };
 
   return (
@@ -3632,21 +5241,21 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
       <StatusBar />
       <TopBar
         title={`${chapter?.title || `第 ${chapterIndex + 1} 章`} · ${progress}%`}
-        left={<button onClick={onBack} aria-label="返回目录"><Icon name="chevronLeft" size={24} strokeWidth={1.9} /></button>}
+        left={<button onClick={() => { persistCurrentScroll(); onBack(); }} aria-label="返回目录"><Icon name="chevronLeft" size={24} strokeWidth={1.9} /></button>}
         right={<button onClick={() => setShowReadingSettings(true)} aria-label="阅读设置"><Icon name="more" size={22} /></button>}
       />
-      <div ref={scrollRef} className="scroll-area reader-scroll">
+      <div ref={scrollRef} className="scroll-area reader-scroll" onClick={handleReaderAreaClick}>
         <div className="reader-article">
           <div className="reader-title-muted">{novel.title}</div>
           {activeAiState.status === 'error' && (
             <div className="status-message error">{activeAiState.error}</div>
           )}
-          <div className="card" data-chapter-discussion style={{ marginBottom: 16, padding: '14px 16px' }}>
+          <div className="card legacy-chapter-discussion" style={{ marginBottom: 16, padding: '14px 16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center' }}>
                             <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 15, fontWeight: 700 }}>????</div>
-                <div className="muted" style={{ marginTop: 4 }} data-chapter-discussion-meta>{chapterDiscussionMeta}</div>
-                <div className="muted" style={{ marginTop: 4 }} data-prebuild-meta>{prebuildMeta}</div>
+                <div className="muted" style={{ marginTop: 4 }} data-legacy-chapter-discussion-meta>{chapterDiscussionMeta}</div>
+                <div className="muted" style={{ marginTop: 4 }} data-legacy-prebuild-meta>{prebuildMeta}</div>
               </div>
               <button
                 className="btn btn-outline"
@@ -3669,73 +5278,134 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
           </div>
           {paragraphs.map((paragraph, index) => {
             const key = `${chapterIndex}-${index}`;
-            const aiComments = getParagraphAiComments(key, paragraph, index);
+            const aiComments = getParagraphAiComments(key);
             const myComments = userComments[key] || [];
-            const totalCount = aiComments.length + myComments.length;
+            const totalCount = countCommentTree([...aiComments, ...myComments], getScopeReplies(key));
             return (
-              <p
-                className="reader-p"
-                key={key}
-                data-reader-paragraph={index}
-                role="button"
-                tabIndex="0"
-                aria-label={`打开章节跳转：第 ${index + 1} 段`}
-                onClick={() => {
-                  if (suppressNextClick.current) {
-                    suppressNextClick.current = false;
-                    return;
-                  }
-                  setShowChapterJump(true);
-                }}
-                onPointerDown={() => startLongPress(index)}
-                onPointerUp={clearLongPress}
-                onPointerCancel={clearLongPress}
-                onContextMenu={(event) => { event.preventDefault(); setSummonParagraph(index); }}
-              >
-                {paragraph}
-                {totalCount > 0 && (
-                  <CommentBadge
-                    count={totalCount}
-                    active={expandedParagraph === index}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      setExpandedParagraph(expandedParagraph === index ? null : index);
-                    }}
+              <div className="reader-paragraph-wrap" key={key}>
+                <p
+                  className="reader-p"
+                  data-reader-paragraph={index}
+                  role="button"
+                  tabIndex="0"
+                  aria-label={`打开章节跳转：第 ${index + 1} 段`}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (suppressNextClick.current) {
+                      suppressNextClick.current = false;
+                      return;
+                    }
+                    if (paragraphActionIndex !== null) {
+                      setParagraphActionIndex(null);
+                      return;
+                    }
+                    openReaderControls(index);
+                  }}
+                  onPointerDown={() => startLongPress(index)}
+                  onPointerUp={clearLongPress}
+                  onPointerCancel={clearLongPress}
+                  onContextMenu={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    setShowChapterJump(false);
+                    setParagraphActionIndex(index);
+                  }}
+                >
+                  {paragraph}
+                  {totalCount > 0 && (
+                    <CommentBadge
+                      count={totalCount}
+                      active={expandedParagraph === index}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setExpandedParagraph(expandedParagraph === index ? null : index);
+                      }}
+                    />
+                  )}
+                </p>
+                {paragraphActionIndex === index && (
+                  <ParagraphActionPanel
+                    onOpenComment={() => openParagraphComment(index)}
+                    onOpenSummon={() => openSummonComment(index)}
                   />
                 )}
-              </p>
+              </div>
             );
           })}
+          <section className="chapter-end-discussion" data-chapter-discussion onClick={event => event.stopPropagation()}>
+            <button
+              className="chapter-end-discussion-header"
+              type="button"
+              disabled={!paragraphs.length}
+              onClick={openChapterDiscussion}
+            >
+              <span className="chapter-end-title">
+                <span>本章说</span>
+                <span className="chapter-end-count">{chapterDiscussionTotalCount} 条评论</span>
+              </span>
+              <Icon name="chevronRight" size={18} strokeWidth={1.9} />
+            </button>
+            <div className="chapter-end-meta" data-chapter-discussion-meta>{chapterDiscussionMeta}</div>
+            <div className="chapter-end-meta" data-prebuild-meta>{prebuildMeta}</div>
+            {chapterDiscussionPreviewComments.length > 0 && (
+              <div className="chapter-end-preview-list">
+                {chapterDiscussionPreviewComments.map(comment => (
+                  <button
+                    className="chapter-end-preview"
+                    type="button"
+                    key={comment.id}
+                    onClick={openChapterDiscussion}
+                  >
+                    <span className="chapter-end-preview-avatar" style={{ '--avatar-bg': comment.personaColor || '#b8844e' }}>
+                      {comment.personaAvatar || 'AI'}
+                    </span>
+                    <span style={{ minWidth: 0 }}>
+                      <span className="chapter-end-preview-name">{comment.personaName || 'AI 书友'}</span>
+                      <span className="chapter-end-preview-text">{normalizeCommentText(comment.text)}</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+            <button className="chapter-end-composer" type="button" onClick={openChapterDiscussion}>
+              写下你的本章想法...
+            </button>
+          </section>
         </div>
-      </div>
-
-      <div className="reader-progress">
-        <button disabled={chapterIndex <= 0} onClick={() => chapterIndex > 0 && onChangeChapter(chapterIndex - 1)}>上一章</button>
-        <div className="reader-progress-middle">
-          <div className="mini-track"><div className="mini-fill" style={{ width: `${progress}%` }} /></div>
-          <span>{chapterIndex + 1}/{chapters.length}</span>
-        </div>
-        <button disabled={chapterIndex >= chapters.length - 1} onClick={() => chapterIndex < chapters.length - 1 && onChangeChapter(chapterIndex + 1)}>下一章</button>
       </div>
 
       {expandedParagraph !== null && (() => {
         const key = `${chapterIndex}-${expandedParagraph}`;
-        const aiComments = getParagraphAiComments(key, paragraphs[expandedParagraph], expandedParagraph);
+        const aiComments = getParagraphAiComments(key);
         const myComments = userComments[key] || [];
         return (
           <CommentPanel
             comments={aiComments}
             userComments={myComments}
-            thread={getParagraphThread(expandedParagraph)}
+            commentReplies={getScopeReplies(key)}
+            personas={settings.personas}
+            commentLikes={commentLikes}
             onAddUserComment={(text) => onAddUserComment(key, text)}
-            onSendThreadMessage={(text) => onSendThreadMessage({
-              threadKey: buildParagraphThreadKey(novel.id, chapterIndex, expandedParagraph),
+            onSubmitComment={({ text, replyTarget }) => onSubmitComment({
+              scopeKey: key,
               chapterIndex,
               paragraphIndex: expandedParagraph,
               chapterTitle: chapter?.title || '',
               paragraphText: paragraphs[expandedParagraph] || '',
-              userText: text,
+              text,
+              replyTarget,
             })}
+            onSummonAiReply={({ parentComment, targetComment, personas }) => onSummonCommentReply({
+              scopeKey: key,
+              chapterIndex,
+              paragraphIndex: expandedParagraph,
+              chapterTitle: chapter?.title || '',
+              paragraphText: paragraphs[expandedParagraph] || '',
+              parentComment,
+              targetComment,
+              personas,
+            })}
+            onToggleCommentLike={onToggleCommentLike}
             onClose={() => setExpandedParagraph(null)}
           />
         );
@@ -3744,16 +5414,30 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
         <CommentPanel
           comments={chapterDiscussionAiComments}
           userComments={chapterDiscussionUserComments}
-          thread={chapterDiscussionThread}
+          commentReplies={getScopeReplies(chapterDiscussionKey)}
+          personas={settings.personas}
+          commentLikes={commentLikes}
           onAddUserComment={(text) => onAddUserComment(chapterDiscussionKey, text)}
-          onSendThreadMessage={(text) => onSendThreadMessage({
-            threadKey: chapterDiscussionThreadKey,
+          onSubmitComment={({ text, replyTarget }) => onSubmitComment({
+            scopeKey: chapterDiscussionKey,
             chapterIndex,
             paragraphIndex: 0,
             chapterTitle: chapter?.title || '',
             paragraphText: chapter?.content || '',
-            userText: text,
+            text,
+            replyTarget,
           })}
+          onSummonAiReply={({ parentComment, targetComment, personas }) => onSummonCommentReply({
+            scopeKey: chapterDiscussionKey,
+            chapterIndex,
+            paragraphIndex: 0,
+            chapterTitle: chapter?.title || '',
+            paragraphText: chapter?.content || '',
+            parentComment,
+            targetComment,
+            personas,
+          })}
+          onToggleCommentLike={onToggleCommentLike}
           onClose={() => setExpandedChapterDiscussion(false)}
         />
       )}
@@ -3762,10 +5446,13 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
           chapter={chapter}
           chapterIndex={chapterIndex}
           chapters={chapters}
-          progress={progress}
+          paragraphIndex={activeJumpParagraphIndex}
+          paragraphCount={paragraphCount}
+          paragraphProgress={paragraphProgress}
           onClose={() => setShowChapterJump(false)}
-          onChangeChapter={(index) => { onChangeChapter(index); setShowChapterJump(false); }}
-          onOpenCatalog={() => { setShowChapterJump(false); onBack(); }}
+          onChangeChapter={(index) => { persistCurrentScroll(); onChangeChapter(index); setShowChapterJump(false); }}
+          onChangeParagraph={scrollToParagraph}
+          onOpenCatalog={() => { persistCurrentScroll(); setShowChapterJump(false); onBack(); }}
         />
       )}
       {showReadingSettings && <ReadingSettingsPanel settings={settings} onClose={() => setShowReadingSettings(false)} />}
@@ -3775,6 +5462,7 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
           selectedIds={summonSelectedIds}
           onToggle={toggleSummon}
           onGenerate={generateSummonedComments}
+          isGenerating={isSummonGenerating}
           onClose={() => setSummonParagraph(null)}
         />
       )}
@@ -4162,7 +5850,11 @@ function App() {
   const [fontSize, setFontSize] = useState(() => baseSettings.fontSize || 20);
   const [lineHeight, setLineHeight] = useState(() => baseSettings.lineHeight || 1.84);
   const [theme, setTheme] = useState(() => baseSettings.theme || 'light');
-  const [liveSettings, setLiveSettings] = useState(() => ({ ...DEFAULT_LIVE_SETTINGS, ...lsGet(STORAGE_KEYS.liveSettings, DEFAULT_LIVE_SETTINGS) }));
+  const [liveSettings, setLiveSettings] = useState(() => ({
+    ...DEFAULT_LIVE_SETTINGS,
+    ...lsGet(STORAGE_KEYS.liveSettings, DEFAULT_LIVE_SETTINGS),
+    promptVersion: DEFAULT_PROMPT_VERSION,
+  }));
   const [modelProfiles, setModelProfiles] = useState(() => {
     const saved = lsGet(STORAGE_KEYS.modelProfiles, DEFAULT_MODEL_PROFILES);
     return (saved && saved.length ? saved : DEFAULT_MODEL_PROFILES).map(normalizeModelProfile);
@@ -4179,6 +5871,10 @@ function App() {
   const [aiPrebuildState, setAiPrebuildState] = useState(() => ({ ...createPrebuildState(), ...lsGet(STORAGE_KEYS.aiPrebuildState, {}) }));
   const [aiThreads, setAiThreads] = useState(() => lsGet(STORAGE_KEYS.aiThreads, {}));
   const [userComments, setUserComments] = useState({});
+  const [commentReplies, setCommentReplies] = useState({});
+  const [commentLikes, setCommentLikes] = useState({});
+  const firstChapterBundlePromiseRef = useRef(null);
+  const firstChapterBundleVisibleRef = useRef(false);
 
   const currentNovel = novels.find(novel => novel.id === currentNovelId);
   const currentChapters = useMemo(() => {
@@ -4198,8 +5894,42 @@ function App() {
     () => connectionFingerprint(currentProfile, currentApiKey, liveSettings.proxyUrl),
     [currentProfile, currentApiKey, liveSettings.proxyUrl],
   );
+  const currentBookPersonas = useMemo(
+    () => getBookPersonas(personas, currentNovel || {}),
+    [personas, currentNovel],
+  );
+  const currentBookAiFingerprint = useMemo(
+    () => profileFingerprint(modelProfiles, currentBookPersonas, liveSettings.promptVersion, defaultProfileId),
+    [modelProfiles, currentBookPersonas, liveSettings.promptVersion, defaultProfileId],
+  );
 
   useEffect(() => { lsSet(STORAGE_KEYS.novels, novels); }, [novels]);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem('rwm_demo_seeded') === '1') return;
+    } catch {}
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch(DEMO_BOOK_PATH);
+        if (!res.ok || cancelled) return;
+        const text = await res.text();
+        if (cancelled || !text) return;
+        const chapters = parseNovelChapters(text);
+        if (!chapters.length) return;
+        const meta = createDemoNovelMeta(chapters);
+        lsSet(`rwm_novel_${meta.id}`, { chapters });
+        setNovels(prev => {
+          if (prev.some(book => book.id === meta.id)) return prev;
+          return [{ ...meta, isNew: true }, ...prev];
+        });
+        try { localStorage.setItem('rwm_demo_seeded', '1'); } catch {}
+      } catch {}
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
   useEffect(() => { lsSet(STORAGE_KEYS.settings, { fontSize, lineHeight, theme }); }, [fontSize, lineHeight, theme]);
   useEffect(() => { lsSet(STORAGE_KEYS.liveSettings, liveSettings); }, [liveSettings]);
   useEffect(() => { lsSet(STORAGE_KEYS.modelProfiles, modelProfiles); }, [modelProfiles]);
@@ -4210,7 +5940,9 @@ function App() {
   useEffect(() => {
     setChapterDiscussionState({});
     setAiPrebuildState(createPrebuildState());
-  }, [currentNovelId, liveTriggerKey]);
+    firstChapterBundlePromiseRef.current = null;
+    firstChapterBundleVisibleRef.current = false;
+  }, [currentNovelId, liveTriggerKey, currentBookAiFingerprint]);
 
   useEffect(() => {
     const resolvedDefaultId = getDefaultProfileId(modelProfiles, liveSettings.profileId);
@@ -4231,7 +5963,15 @@ function App() {
   }, [currentConnectionFingerprint]);
 
   useEffect(() => {
-    if (currentNovelId) setUserComments(lsGet(`rwm_comments_${currentNovelId}`, {}));
+    if (currentNovelId) {
+      setUserComments(lsGet(`rwm_comments_${currentNovelId}`, {}));
+      setCommentReplies(lsGet(buildCommentRepliesStorageKey(currentNovelId), {}));
+      setCommentLikes(lsGet(buildCommentLikesStorageKey(currentNovelId), {}));
+    } else {
+      setUserComments({});
+      setCommentReplies({});
+      setCommentLikes({});
+    }
   }, [currentNovelId]);
 
   const persistApiKeys = useCallback((updater) => {
@@ -4299,6 +6039,7 @@ function App() {
       lastReadChapter: 0,
       maxReadChapter: 0,
       lastScrollPos: 0,
+      chapterScrollPositions: {},
       addedAt: Date.now(),
       coverTheme: ((hashText(title) % 6) + 1),
     };
@@ -4323,6 +6064,8 @@ function App() {
     try {
       localStorage.removeItem(`rwm_novel_${id}`);
       localStorage.removeItem(`rwm_comments_${id}`);
+      localStorage.removeItem(buildCommentRepliesStorageKey(id));
+      localStorage.removeItem(buildCommentLikesStorageKey(id));
     } catch {}
     clearNovelAiCache(id);
     if (currentNovelId === id) {
@@ -4365,47 +6108,304 @@ function App() {
       novel.id === currentNovelId
         ? {
             ...novel,
-            lastReadChapter: chapterIndex,
-            maxReadChapter: Math.max(novel.maxReadChapter || 0, chapterIndex),
-            lastScrollPos: scrollPos != null ? scrollPos : novel.lastScrollPos || 0,
+            ...updateChapterScrollProgress(novel, chapterIndex, scrollPos),
           }
         : novel
     )));
   }, [currentNovelId]);
 
+  const updateCurrentNovelAiGeneration = useCallback((patch) => {
+    if (!currentNovelId) return;
+    setNovels(prev => prev.map(novel => {
+      if (novel.id !== currentNovelId) return novel;
+      return {
+        ...novel,
+        ...patch,
+        aiGenerationJob: {
+          ...(novel.aiGenerationJob || {}),
+          ...(patch.aiGenerationJob || {}),
+        },
+      };
+    }));
+  }, [currentNovelId]);
+
+  const handleUpdateBookPersonas = useCallback((novelId, allowedPersonaIds) => {
+    const hasOverride = Array.isArray(allowedPersonaIds);
+    const normalizedIds = hasOverride ? normalizeBookPersonaIds(allowedPersonaIds) : undefined;
+    setNovels(prev => prev.map(novel => {
+      if (novel.id !== novelId) return novel;
+      const next = {
+        ...novel,
+        allowedPersonaIds: normalizedIds,
+        aiGeneratedThrough: -1,
+        aiGenerationJob: {},
+      };
+      if (!hasOverride) delete next.allowedPersonaIds;
+      return next;
+    }));
+    clearNovelAiCache(novelId);
+    if (novelId === currentNovelId) {
+      setChapterAiState({ chapterIndex: null, status: 'idle', commentsByKey: {}, error: '', fingerprint: '' });
+      setChapterDiscussionState({});
+      setAiPrebuildState(createPrebuildState());
+      firstChapterBundlePromiseRef.current = null;
+      firstChapterBundleVisibleRef.current = false;
+    }
+    showToast({
+      title: hasOverride ? '已更新本书 AI 书友' : '已恢复跟随全局书友',
+      subtitle: hasOverride ? `当前允许 ${normalizedIds.length} 位书友出现。` : '这本书会使用全局启用的 AI 书友。',
+    });
+  }, [clearNovelAiCache, currentNovelId, showToast]);
+
+  const markAiChapterComplete = useCallback((chapterIndex, jobPatch = {}) => {
+    if (!currentNovelId) return;
+    setNovels(prev => prev.map(novel => {
+      if (novel.id !== currentNovelId) return novel;
+      const nextThrough = Math.max(getAiGeneratedThrough(novel, currentChapters.length), chapterIndex);
+      return {
+        ...novel,
+        aiGeneratedThrough: nextThrough,
+        aiGenerationJob: {
+          ...(novel.aiGenerationJob || {}),
+          ...jobPatch,
+          lastCompletedChapter: nextThrough,
+          updatedAt: Date.now(),
+        },
+      };
+    }));
+  }, [currentChapters.length, currentNovelId]);
+
   const handleAddUserComment = useCallback((paragraphKey, text, patch = {}) => {
+    const comment = createReaderComment(text, patch);
     setUserComments(prev => {
       const existing = prev[paragraphKey] || [];
       const updated = {
         ...prev,
-        [paragraphKey]: [...existing, {
-          id: uid(),
-          personaName: patch.personaName || '我',
-          personaTag: patch.personaTag || '读者',
-          personaColor: patch.personaColor || '#e8dde5',
-          personaAvatar: patch.personaAvatar || '读',
-          text,
-          likes: 0,
-          liked: false,
-          source: patch.source || 'reader',
-        }],
+        [paragraphKey]: [...existing, comment],
       };
       lsSet(`rwm_comments_${currentNovelId}`, updated);
       return updated;
     });
+    return comment;
   }, [currentNovelId]);
 
-  const getRunnableProfileGroups = useCallback((activePersonas = personas.filter(persona => persona.enabled)) => {
+  const addCommentReply = useCallback((scopeKey, parentCommentId, reply) => {
+    if (!scopeKey || !parentCommentId || !reply || !currentNovelId) return;
+    setCommentReplies(prev => {
+      const scopeReplies = prev[scopeKey] || {};
+      const updated = {
+        ...prev,
+        [scopeKey]: {
+          ...scopeReplies,
+          [parentCommentId]: [
+            ...(scopeReplies[parentCommentId] || []),
+            reply,
+          ],
+        },
+      };
+      lsSet(buildCommentRepliesStorageKey(currentNovelId), updated);
+      return updated;
+    });
+  }, [currentNovelId]);
+
+  const handleToggleCommentLike = useCallback((comment) => {
+    if (!currentNovelId || !comment?.id) return;
+    setCommentLikes(prev => {
+      const baseLikes = Math.max(0, Number(comment.likes) || 0);
+      const current = prev[comment.id] || {
+        likes: baseLikes,
+        liked: Boolean(comment.liked),
+      };
+      const nextLiked = !current.liked;
+      const nextLikes = Math.max(0, (Number(current.likes) || baseLikes) + (nextLiked ? 1 : -1));
+      const updated = {
+        ...prev,
+        [comment.id]: {
+          likes: nextLikes,
+          liked: nextLiked,
+        },
+      };
+      lsSet(buildCommentLikesStorageKey(currentNovelId), updated);
+      return updated;
+    });
+  }, [currentNovelId]);
+
+  const getRunnableProfileGroups = useCallback((activePersonas = currentBookPersonas) => {
     return groupPersonasByProfile(activePersonas, modelProfiles, defaultProfileId)
       .filter(group => liveSettings.proxyUrl.trim()
         && group.profile.baseUrl.trim()
         && group.profile.model.trim()
         && !/api\.example\.com/i.test(group.profile.baseUrl));
-  }, [defaultProfileId, liveSettings.proxyUrl, modelProfiles, personas]);
+  }, [currentBookPersonas, defaultProfileId, liveSettings.proxyUrl, modelProfiles]);
+
+  const selectReplyPersonas = useCallback((targetComment, limit = 2) => {
+    const enabled = currentBookPersonas;
+    if (!enabled.length) return [];
+    const preferred = enabled.filter(persona => persona.id !== targetComment?.personaId);
+    const pool = preferred.length ? preferred : enabled;
+    const start = hashText(`${targetComment?.id || ''}-${targetComment?.text || ''}`) % pool.length;
+    const ordered = [...pool.slice(start), ...pool.slice(0, start)];
+    return ordered.slice(0, Math.max(1, limit));
+  }, [currentBookPersonas]);
+
+  const generateCommentReplies = useCallback(async ({
+    scopeKey,
+    parentComment,
+    targetComment,
+    chapterIndex,
+    paragraphIndex,
+    chapterTitle,
+    paragraphText,
+    userMessage,
+    limit = 2,
+    personas: selectedPersonas = [],
+  }) => {
+    if (!currentNovelId || !scopeKey || !parentComment?.id || !targetComment || !liveSettings.enabled) return 0;
+    const allowedPersonaIds = new Set(currentBookPersonas.map(persona => persona.id));
+    const manualReplyPersonas = (Array.isArray(selectedPersonas) ? selectedPersonas : [])
+      .filter(persona => persona?.enabled !== false && allowedPersonaIds.has(persona.id));
+    const replyPersonas = manualReplyPersonas.length ? manualReplyPersonas : selectReplyPersonas(targetComment, limit);
+    const replyLimit = manualReplyPersonas.length ? manualReplyPersonas.length : limit;
+    const profileGroups = getRunnableProfileGroups(replyPersonas);
+    if (!replyPersonas.length || !profileGroups.length) return 0;
+
+    const memoryArtifact = lsGet(buildChapterMemoryKey(currentNovelId, chapterIndex), null);
+    const memorySummary = memoryArtifact?.payload?.plotSummary || '';
+    const recentReplies = commentReplies?.[scopeKey]?.[parentComment.id] || [];
+
+    const replyResults = await mapWithConcurrency(replyPersonas.slice(0, replyLimit), AI_REQUEST_CONCURRENCY, async (persona) => {
+      const group = profileGroups.find(item => item.personas.some(candidate => candidate.id === persona.id)) || profileGroups[0];
+      if (!group) return null;
+      const replyProfile = group.profile;
+      const apiKey = apiKeysByProfileId[replyProfile.id] || '';
+      const body = {
+        model: replyProfile.model,
+        temperature: Math.min(1.1, Math.max(0.35, replyProfile.temperature)),
+        max_tokens: Math.min(360, replyProfile.maxOutputTokens || 360),
+        messages: [
+          { role: 'system', content: 'Reply with comment text only in concise Simplified Chinese. Do not output JSON or Markdown.' },
+          {
+            role: 'user',
+            content: buildCommentReplyPrompt({
+              novelTitle: currentNovel?.title || '',
+              chapterTitle,
+              paragraphText,
+              memorySummary,
+              parentComment,
+              targetComment,
+              recentReplies,
+              userMessage,
+              persona,
+            }),
+          },
+        ],
+      };
+      const replyText = normalizeCommentText(await aiClient.generateThreadReply(liveSettings.proxyUrl, replyProfile, apiKey, body));
+      if (!replyText) return null;
+      return { persona, replyText };
+    });
+
+    let generatedCount = 0;
+    let firstError = null;
+    for (const result of replyResults) {
+      if (result.status === 'rejected') {
+        if (!firstError) firstError = result.reason;
+        continue;
+      }
+      const value = result.value;
+      if (!value) continue;
+      const { persona, replyText } = value;
+      addCommentReply(scopeKey, parentComment.id, createReaderComment(replyText, {
+        personaId: persona.id,
+        personaName: persona.name,
+        personaTag: persona.tag,
+        personaColor: persona.color,
+        personaAvatar: persona.avatar,
+        source: 'llm',
+        likes: 8 + (hashText(`${replyText}-${persona.id}`) % 48),
+        replyToCommentId: targetComment.id,
+        replyToName: targetComment.personaName || '',
+      }));
+      generatedCount += 1;
+    }
+    if (generatedCount === 0 && firstError) {
+      console.warn('AI comment reply failed', firstError);
+    }
+    return generatedCount;
+  }, [addCommentReply, apiKeysByProfileId, commentReplies, currentBookPersonas, currentNovel?.title, currentNovelId, getRunnableProfileGroups, liveSettings.enabled, liveSettings.proxyUrl, selectReplyPersonas]);
+
+  const handleSubmitComment = useCallback(async ({
+    scopeKey,
+    chapterIndex,
+    paragraphIndex,
+    chapterTitle,
+    paragraphText,
+    text,
+    replyTarget,
+  }) => {
+    const cleanText = normalizeCommentText(text);
+    if (!cleanText) return;
+    let parentComment = null;
+    let targetComment = null;
+
+    if (replyTarget?.parentId && replyTarget?.parentComment) {
+      parentComment = replyTarget.parentComment;
+      targetComment = createReaderComment(cleanText, {
+        replyToCommentId: replyTarget.targetComment?.id || parentComment.id,
+        replyToName: replyTarget.targetComment?.personaName || parentComment.personaName || '',
+      });
+      addCommentReply(scopeKey, parentComment.id, targetComment);
+    } else {
+      targetComment = handleAddUserComment(scopeKey, cleanText);
+      parentComment = targetComment;
+    }
+
+    const generatedCount = await generateCommentReplies({
+      scopeKey,
+      parentComment,
+      targetComment,
+      chapterIndex,
+      paragraphIndex,
+      chapterTitle,
+      paragraphText,
+      userMessage: cleanText,
+      limit: 2,
+    });
+    if (!generatedCount && liveSettings.enabled) {
+      showToast({ title: 'AI 书友暂时没有回复', subtitle: '你的评论已经发出。' });
+    }
+  }, [addCommentReply, generateCommentReplies, handleAddUserComment, liveSettings.enabled, showToast]);
+
+  const handleSummonCommentReply = useCallback(async ({
+    scopeKey,
+    chapterIndex,
+    paragraphIndex,
+    chapterTitle,
+    paragraphText,
+    parentComment,
+    targetComment,
+    personas,
+  }) => {
+    const generatedCount = await generateCommentReplies({
+      scopeKey,
+      parentComment,
+      targetComment,
+      chapterIndex,
+      paragraphIndex,
+      chapterTitle,
+      paragraphText,
+      userMessage: targetComment?.text || '',
+      limit: 2,
+      personas,
+    });
+    if (!generatedCount) {
+      showToast({ title: 'AI 书友没有生成回复', subtitle: '可以稍后再试，或换一个更快的模型。' });
+    }
+  }, [generateCommentReplies, showToast]);
 
   const ensureChapterSummary = useCallback(async (chapterIndex, chapterTitle, chapterText, force = false) => {
     if (!currentNovelId) return null;
-    const fingerprint = `${liveTriggerKey}:memory-v1`;
+    const fingerprint = `${currentBookAiFingerprint}:memory-v1`;
     const storageKey = buildChapterMemoryKey(currentNovelId, chapterIndex);
     const cached = lsGet(storageKey, null);
     if (!force && cached?.state === 'committed' && cached?.fingerprint === fingerprint) {
@@ -4418,7 +6418,7 @@ function App() {
     let previousSummary = previousArtifact?.state === 'committed'
       ? previousArtifact.payload
       : createEmptyMemorySummary(Math.max(0, chapterIndex - 1));
-    const activePersonas = personas.filter(persona => persona.enabled);
+    const activePersonas = currentBookPersonas;
     const profileGroups = getRunnableProfileGroups(activePersonas);
     const summaryGroup = profileGroups.find(group => group.profile.id === defaultProfileId) || profileGroups[0] || null;
 
@@ -4462,7 +6462,248 @@ function App() {
     );
     lsSet(storageKey, committed);
     return committed;
-  }, [apiKeysByProfileId, currentChapters, currentNovel?.title, currentNovelId, defaultProfileId, getRunnableProfileGroups, liveSettings.proxyUrl, liveTriggerKey, personas]);
+  }, [apiKeysByProfileId, currentBookAiFingerprint, currentBookPersonas, currentChapters, currentNovel?.title, currentNovelId, defaultProfileId, getRunnableProfileGroups, liveSettings.proxyUrl]);
+
+  const ensureFirstChapterBundle = useCallback(async ({
+    force = false,
+    updateVisibleState = false,
+  } = {}) => {
+    if (updateVisibleState) {
+      firstChapterBundleVisibleRef.current = true;
+    }
+    if (!currentNovelId || !currentChapters.length) return false;
+    const chapterIndex = 0;
+    const chapter = currentChapters[chapterIndex];
+    if (!chapter) return false;
+    if (!liveSettings.enabled) {
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: currentBookAiFingerprint });
+      }
+      return false;
+    }
+    if (!currentBookPersonas.length) {
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: currentBookAiFingerprint });
+      }
+      setAiPrebuildState(prev => ({
+        ...prev,
+        running: false,
+        queuedChapters: [],
+        lastError: '',
+        startupStatus: 'idle',
+        startupError: '',
+        startupCompleted: false,
+      }));
+      return false;
+    }
+
+    const fingerprint = currentBookAiFingerprint;
+    const memoryFingerprint = `${currentBookAiFingerprint}:memory-v1`;
+    const memoryKey = buildChapterMemoryKey(currentNovelId, chapterIndex);
+    const aiCacheKey = buildAiCacheKey(currentNovelId, chapterIndex, fingerprint);
+    const discussionKey = buildChapterCommentKey(currentNovelId, chapterIndex);
+    const cachedMemory = lsGet(memoryKey, null);
+    const cachedAi = lsGet(aiCacheKey, null);
+    const cachedDiscussion = lsGet(discussionKey, null);
+    const hasStartupCache = cachedMemory?.state === 'committed'
+      && cachedMemory?.fingerprint === memoryFingerprint
+      && cachedAi?.fingerprint === fingerprint
+      && ['first-chapter-bundle', 'first-chapter-progressive'].includes(cachedAi?.source)
+      && cachedAi?.commentsByKey
+      && cachedDiscussion?.fingerprint === fingerprint
+      && cachedDiscussion?.source === 'first-chapter-bundle'
+      && Array.isArray(cachedDiscussion?.comments);
+
+    if (!force && hasStartupCache) {
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'success', commentsByKey: cachedAi.commentsByKey, error: '', fingerprint });
+        setChapterDiscussionState(prev => ({
+          ...prev,
+          [discussionKey]: { status: cachedDiscussion.status || 'success', comments: cachedDiscussion.comments, error: cachedDiscussion.error || '' },
+        }));
+      }
+      setAiPrebuildState(prev => ({
+        ...prev,
+        running: false,
+        queuedChapters: [],
+        lastCompletedChapter: Math.max(prev.lastCompletedChapter, chapterIndex),
+        lastError: '',
+        startupStatus: 'success',
+        startupError: '',
+        startupCompleted: true,
+      }));
+      markAiChapterComplete(chapterIndex);
+      return true;
+    }
+
+    if (firstChapterBundlePromiseRef.current && !force) {
+      return firstChapterBundlePromiseRef.current;
+    }
+
+    const promise = (async () => {
+      const paragraphs = String(chapter.content || '').split(/\n+/).map(item => item.trim()).filter(Boolean);
+      const startupParagraphLimit = Math.max(1, paragraphs.length);
+      const startupChunks = chunkStartupParagraphs(paragraphs, startupParagraphLimit, FIRST_CHAPTER_COMMENT_CHUNK_SIZE);
+      const activePersonas = currentBookPersonas;
+      const profileGroups = getRunnableProfileGroups(activePersonas);
+      const startupGroup = profileGroups.find(group => group.profile.id === defaultProfileId) || profileGroups[0] || null;
+
+      if (!startupGroup || !activePersonas.length) {
+        throw new Error('No runnable AI profile for startup bundle');
+      }
+
+      setAiPrebuildState(prev => ({
+        ...prev,
+        running: true,
+        queuedChapters: [chapterIndex],
+        lastError: '',
+        startupStatus: 'running',
+        startupError: '',
+      }));
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'loading', commentsByKey: {}, error: '', fingerprint });
+        setChapterDiscussionState(prev => ({
+          ...prev,
+          [discussionKey]: { status: 'loading', comments: [], error: '' },
+        }));
+      }
+
+      const apiKey = apiKeysByProfileId[startupGroup.profile.id] || '';
+      const body = {
+        model: startupGroup.profile.model,
+        temperature: Math.min(0.85, Math.max(0.25, startupGroup.profile.temperature)),
+        max_tokens: Math.min(6000, startupGroup.profile.maxOutputTokens || 6000),
+        messages: [
+          { role: 'system', content: 'Output strict JSON only. No Markdown. Use exactly the requested schema.' },
+          {
+            role: 'user',
+            content: buildFirstChapterBundlePrompt({
+              novelTitle: currentNovel?.title || '',
+              chapterTitle: chapter.title || '',
+              chapterText: chapter.content || '',
+              paragraphs,
+              personas: activePersonas,
+              paragraphLimit: startupParagraphLimit,
+            }),
+          },
+        ],
+      };
+      const bundle = await aiClient.generateFirstChapterBundle(liveSettings.proxyUrl, startupGroup.profile, apiKey, body);
+      const validation = validateFirstChapterBundle(bundle, startupParagraphLimit);
+      if (!validation.ok) throw new Error(`Startup bundle schema invalid: ${validation.reason}`);
+
+      const committedSummary = promoteSummaryArtifact(
+        createSummaryArtifact(currentNovelId, chapterIndex, bundle.summary, memoryFingerprint)
+      );
+      const chapterComments = normalizeBundleChapterComments(
+        bundle.chapterComments,
+        activePersonas,
+        chapterIndex,
+        startupGroup.profile.id,
+      );
+      if (!chapterComments.length) {
+        throw new Error('Startup bundle produced no usable chapter comments');
+      }
+
+      lsSet(memoryKey, committedSummary);
+      lsSet(discussionKey, {
+        comments: chapterComments,
+        generatedAt: Date.now(),
+        fingerprint,
+        status: 'success',
+        error: '',
+        source: 'first-chapter-bundle',
+      });
+
+      if (firstChapterBundleVisibleRef.current) {
+        setChapterAiState({ chapterIndex, status: 'loading', commentsByKey: {}, error: '', fingerprint });
+        setChapterDiscussionState(prev => ({
+          ...prev,
+          [discussionKey]: { status: 'success', comments: chapterComments, error: '' },
+        }));
+      }
+
+      const commentsByKey = {};
+      const chunkErrors = [];
+      const memorySummary = bundle.summary?.plotSummary || '';
+      const commitParagraphProgress = (partial = true) => {
+        const payload = {
+          commentsByKey: { ...commentsByKey },
+          generatedAt: Date.now(),
+          fingerprint,
+          source: 'first-chapter-progressive',
+          partial,
+        };
+        lsSet(aiCacheKey, payload);
+        if (firstChapterBundleVisibleRef.current && Object.keys(commentsByKey).length) {
+          setChapterAiState({ chapterIndex, status: 'success', commentsByKey: { ...commentsByKey }, error: '', fingerprint });
+        }
+      };
+
+      await mapWithConcurrency(startupChunks, AI_REQUEST_CONCURRENCY, async (chunk, chunkIndex) => {
+        try {
+          const rawComments = await aiClient.generateChunk(
+            liveSettings.proxyUrl,
+            startupGroup.profile,
+            apiKey,
+            chapter.title || '',
+            chunk,
+            activePersonas,
+            memorySummary,
+          );
+          mergeCommentsByKey(
+            commentsByKey,
+            normalizeGeneratedComments(rawComments, activePersonas, chapterIndex, startupGroup.profile.id, chunkIndex),
+          );
+          commitParagraphProgress(true);
+        } catch (error) {
+          chunkErrors.push(getErrorMessage(error));
+        }
+      });
+
+      if (!Object.keys(commentsByKey).length) {
+        throw new Error(chunkErrors[0] || 'Startup paragraph comments produced no usable comments');
+      }
+
+      commitParagraphProgress(false);
+      setAiPrebuildState(prev => ({
+        ...prev,
+        running: false,
+        queuedChapters: [],
+        lastCompletedChapter: Math.max(prev.lastCompletedChapter, chapterIndex),
+        lastError: chunkErrors.length ? chunkErrors[0] : '',
+        startupStatus: 'success',
+        startupError: chunkErrors.length ? chunkErrors[0] : '',
+        startupCompleted: true,
+      }));
+      markAiChapterComplete(chapterIndex);
+      return true;
+    })().catch(error => {
+      const message = getErrorMessage(error);
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'error', commentsByKey: {}, error: message, fingerprint });
+        setChapterDiscussionState(prev => ({
+          ...prev,
+          [discussionKey]: { status: 'error', comments: [], error: message },
+        }));
+      }
+      setAiPrebuildState(prev => ({
+        ...prev,
+        running: false,
+        queuedChapters: [],
+        lastError: message,
+        startupStatus: 'error',
+        startupError: message,
+        startupCompleted: false,
+      }));
+      throw error;
+    }).finally(() => {
+      firstChapterBundlePromiseRef.current = null;
+    });
+
+    firstChapterBundlePromiseRef.current = promise;
+    return promise;
+  }, [apiKeysByProfileId, currentBookAiFingerprint, currentBookPersonas, currentChapters, currentNovel?.title, currentNovelId, defaultProfileId, getRunnableProfileGroups, liveSettings.enabled, liveSettings.proxyUrl, markAiChapterComplete]);
 
   const ensureChapterComments = useCallback(async ({
     chapterIndex,
@@ -4470,85 +6711,162 @@ function App() {
     paragraphs,
     force = false,
     updateVisibleState = false,
+    maxChunks,
+    requireAllChunks = false,
   }) => {
     if (!currentNovelId) return {};
     if (!liveSettings.enabled) {
       if (updateVisibleState) {
-        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: liveTriggerKey });
+        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: currentBookAiFingerprint });
       }
       return {};
     }
 
-    const activePersonas = personas.filter(persona => persona.enabled);
+    const activePersonas = currentBookPersonas;
     const profileGroups = getRunnableProfileGroups(activePersonas);
     if (!profileGroups.length) {
       if (updateVisibleState) {
-        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: liveTriggerKey });
+        setChapterAiState({ chapterIndex, status: 'idle', commentsByKey: {}, error: '', fingerprint: currentBookAiFingerprint });
       }
       return {};
     }
 
-    const fingerprint = profileFingerprint(modelProfiles, personas, liveSettings.promptVersion, defaultProfileId);
+    const fingerprint = currentBookAiFingerprint;
     const cacheKey = buildAiCacheKey(currentNovelId, chapterIndex, fingerprint);
-    if (!force) {
-      const cached = lsGet(cacheKey, null);
-      if (cached?.commentsByKey) {
-        if (updateVisibleState) {
-          setChapterAiState({ chapterIndex, status: 'success', commentsByKey: cached.commentsByKey, error: '', fingerprint });
-        }
-        return cached.commentsByKey;
+    const allChunks = chunkParagraphs(paragraphs, CHAPTER_COMMENT_CHUNK_SIZE);
+    const cached = !force ? lsGet(cacheKey, null) : null;
+    if (isCompleteChapterCommentCache(cached, paragraphs, fingerprint, CHAPTER_COMMENT_CHUNK_SIZE)) {
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'success', commentsByKey: cached.commentsByKey, error: '', fingerprint });
       }
+      return cached.commentsByKey;
     }
 
     if (updateVisibleState) {
       setChapterAiState({ chapterIndex, status: 'loading', commentsByKey: {}, error: '', fingerprint });
     }
 
-    const summaryArtifact = await ensureChapterSummary(chapterIndex, chapterTitle, paragraphs.join('\n\n'), force);
-    const memorySummary = summaryArtifact?.payload?.plotSummary || '';
+    const chapterText = paragraphs.join('\n\n');
+    const memoryKey = buildChapterMemoryKey(currentNovelId, chapterIndex);
+    const cachedMemory = lsGet(memoryKey, null);
+    let memorySummary = cachedMemory?.state === 'committed' ? (cachedMemory?.payload?.plotSummary || '') : '';
+    if (!memorySummary && updateVisibleState) {
+      memorySummary = createFallbackSummaryPayload({
+        chapterIndex,
+        chapterTitle,
+        chapterText,
+        previousSummary: createEmptyMemorySummary(Math.max(0, chapterIndex - 1)),
+      }).plotSummary;
+      ensureChapterSummary(chapterIndex, chapterTitle, chapterText, force).catch(() => {});
+    } else if (!memorySummary) {
+      const summaryArtifact = await ensureChapterSummary(chapterIndex, chapterTitle, chapterText, force);
+      memorySummary = summaryArtifact?.payload?.plotSummary || '';
+    }
 
-    const merged = {};
-    const chunks = chunkParagraphs(paragraphs);
+    const canResumeCache = Boolean(
+      cached?.commentsByKey
+      && cached.fingerprint === fingerprint
+      && Number(cached.paragraphCount) === paragraphs.length
+      && Number(cached.chunkSize) === CHAPTER_COMMENT_CHUNK_SIZE
+      && Number(cached.expectedChunkCount) === allChunks.length
+    );
+    const completedChunkIndexes = new Set(
+      canResumeCache ? normalizeCompletedChunkIndexes(cached.completedChunkIndexes, allChunks.length) : []
+    );
+    const merged = canResumeCache ? { ...cached.commentsByKey } : {};
+    const commitProgress = (complete = false) => {
+      const payload = createChapterCommentCachePayload({
+        commentsByKey: { ...merged },
+        fingerprint,
+        paragraphs,
+        chunkSize: CHAPTER_COMMENT_CHUNK_SIZE,
+        completedChunkIndexes: [...completedChunkIndexes],
+        complete,
+      });
+      lsSet(cacheKey, payload);
+      if (updateVisibleState && Object.keys(merged).length) {
+        setChapterAiState({ chapterIndex, status: 'success', commentsByKey: { ...merged }, error: '', fingerprint });
+      }
+    };
+    const effectiveMaxChunks = Number.isFinite(maxChunks) && maxChunks > 0
+      ? Math.min(maxChunks, allChunks.length)
+      : allChunks.length;
+    const chunks = allChunks.slice(0, Math.max(1, effectiveMaxChunks));
     const errors = [];
     let successCount = 0;
+    const tasks = [];
     for (const group of profileGroups) {
+      const apiKey = apiKeysByProfileId[group.profile.id] || '';
+      for (let index = 0; index < chunks.length; index++) {
+        if (completedChunkIndexes.has(index)) continue;
+        tasks.push({ group, apiKey, chunkIndex: index, chunk: chunks[index] });
+      }
+    }
+    if (!tasks.length && Object.keys(merged).length) {
+      commitProgress(completedChunkIndexes.size >= allChunks.length);
+      return merged;
+    }
+    await mapWithConcurrency(tasks, AI_REQUEST_CONCURRENCY, async ({ group, apiKey, chunkIndex, chunk }) => {
       try {
-        const apiKey = apiKeysByProfileId[group.profile.id] || '';
-        for (let index = 0; index < chunks.length; index++) {
-          const rawComments = await aiClient.generateChunk(
-            liveSettings.proxyUrl,
-            group.profile,
-            apiKey,
-            chapterTitle,
-            chunks[index],
-            group.personas,
-            memorySummary,
-          );
-          mergeCommentsByKey(
-            merged,
-            normalizeGeneratedComments(rawComments, group.personas, chapterIndex, group.profile.id, index),
-          );
-        }
+        const rawComments = await aiClient.generateChunk(
+          liveSettings.proxyUrl,
+          group.profile,
+          apiKey,
+          chapterTitle,
+          chunk,
+          group.personas,
+          memorySummary,
+        );
+        mergeCommentsByKey(
+          merged,
+          normalizeGeneratedComments(rawComments, group.personas, chapterIndex, group.profile.id, chunkIndex),
+        );
+        completedChunkIndexes.add(chunkIndex);
+        commitProgress();
         successCount += 1;
       } catch (error) {
         errors.push(`${group.profile.name || group.profile.model}: ${getErrorMessage(error)}`);
       }
-    }
+    });
 
     if (!successCount) {
+      if (Object.keys(merged).length) {
+        commitProgress(false);
+        if (requireAllChunks && errors.length) {
+          if (updateVisibleState) {
+            setChapterAiState({ chapterIndex, status: 'error', commentsByKey: merged, error: errors[0], fingerprint });
+          }
+          throw new Error(errors[0]);
+        }
+        return merged;
+      }
       if (updateVisibleState) {
         setChapterAiState({ chapterIndex, status: 'error', commentsByKey: {}, error: errors[0] || 'AI 评论生成失败', fingerprint });
       }
       return {};
     }
 
-    const payload = { commentsByKey: merged, generatedAt: Date.now(), fingerprint };
+    if (requireAllChunks && errors.length) {
+      if (updateVisibleState) {
+        setChapterAiState({ chapterIndex, status: 'error', commentsByKey: merged, error: errors[0], fingerprint });
+      }
+      throw new Error(errors[0]);
+    }
+
+    const payload = createChapterCommentCachePayload({
+      commentsByKey: merged,
+      fingerprint,
+      paragraphs,
+      chunkSize: CHAPTER_COMMENT_CHUNK_SIZE,
+      completedChunkIndexes: [...completedChunkIndexes],
+      complete: completedChunkIndexes.size >= allChunks.length && !errors.length,
+    });
     lsSet(cacheKey, payload);
     if (updateVisibleState) {
       setChapterAiState({ chapterIndex, status: 'success', commentsByKey: merged, error: '', fingerprint });
     }
     return merged;
-  }, [apiKeysByProfileId, currentNovelId, defaultProfileId, ensureChapterSummary, getRunnableProfileGroups, liveSettings, liveTriggerKey, modelProfiles, personas]);
+  }, [apiKeysByProfileId, currentBookAiFingerprint, currentBookPersonas, currentNovelId, ensureChapterSummary, getRunnableProfileGroups, liveSettings]);
 
   const ensureChapterDiscussionSeed = useCallback(async ({
     chapterIndex,
@@ -4559,13 +6877,17 @@ function App() {
   }) => {
     if (!currentNovelId) return [];
     const storageKey = buildChapterCommentKey(currentNovelId, chapterIndex);
-    const fingerprint = profileFingerprint(modelProfiles, personas, liveSettings.promptVersion, defaultProfileId);
+    const fingerprint = currentBookAiFingerprint;
     const cached = lsGet(storageKey, null);
-    if (!force && cached?.fingerprint === fingerprint && Array.isArray(cached?.comments) && cached.comments.length) {
+    if (!force && cached?.fingerprint === fingerprint && Array.isArray(cached?.comments)) {
       if (updateState) {
         setChapterDiscussionState(prev => ({
           ...prev,
-          [storageKey]: { status: 'success', comments: cached.comments },
+          [storageKey]: {
+            status: cached?.status || (cached.comments.length ? 'success' : 'error'),
+            comments: cached.comments,
+            error: cached?.error || '',
+          },
         }));
       }
       return cached.comments;
@@ -4580,15 +6902,15 @@ function App() {
 
     const summaryArtifact = await ensureChapterSummary(chapterIndex, chapterTitle, chapterText, force);
     const memorySummary = summaryArtifact?.payload?.plotSummary || '';
-    const activePersonas = personas.filter(persona => persona.enabled);
+    const activePersonas = currentBookPersonas;
     const seededPersonas = activePersonas.slice(0, 2);
     const profileGroups = getRunnableProfileGroups(activePersonas);
     let comments = [];
 
     if (profileGroups.length && seededPersonas.length) {
-      for (const persona of seededPersonas) {
+      const seedResults = await mapWithConcurrency(seededPersonas, AI_REQUEST_CONCURRENCY, async (persona) => {
         const group = profileGroups.find(item => item.personas.some(candidate => candidate.id === persona.id)) || profileGroups[0];
-        if (!group) continue;
+        if (!group) return null;
         const apiKey = apiKeysByProfileId[group.profile.id] || '';
         const body = {
           model: group.profile.model,
@@ -4609,41 +6931,35 @@ function App() {
           ],
         };
         try {
-          const text = normalizeText(await aiClient.generateThreadReply(liveSettings.proxyUrl, group.profile, apiKey, body));
-          if (text) {
-            comments.push(buildAiComment(persona, `chapter-${chapterIndex}`, chapterIndex, text, group.profile.id, {
-              discussionMode: 'open',
-            }));
-          }
-        } catch {}
-      }
+          const text = normalizeCommentText(await aiClient.generateThreadReply(liveSettings.proxyUrl, group.profile, apiKey, body));
+          if (!text) return null;
+          return buildAiComment(persona, `chapter-${chapterIndex}`, chapterIndex, text, group.profile.id, {
+            discussionMode: 'open',
+          });
+        } catch {
+          return null;
+        }
+      });
+      comments = seedResults
+        .map(result => result.status === 'fulfilled' ? result.value : null)
+        .filter(Boolean);
     }
 
-    if (!comments.length) {
-      const fallbackPersonas = seededPersonas.length ? seededPersonas : [DEFAULT_PERSONAS[0]];
-      const fallbackTexts = [
-        '这一章更像是在把后面的冲突慢慢压出来，表面不炸，底下已经很紧了。',
-        '我更在意这章的人物状态变化，很多话没明说，但态度已经变了。',
-      ];
-      comments = fallbackPersonas.map((persona, index) => buildAiComment(
-        persona,
-        `chapter-${chapterIndex}`,
-        chapterIndex,
-        fallbackTexts[index % fallbackTexts.length],
-        'chapter-demo',
-        { discussionMode: 'open' },
-      ));
-    }
-
-    lsSet(storageKey, { comments, generatedAt: Date.now(), fingerprint });
+    lsSet(storageKey, {
+      comments,
+      generatedAt: Date.now(),
+      fingerprint,
+      status: comments.length ? 'success' : 'error',
+      error: comments.length ? '' : '本章 AI 章评生成失败。',
+    });
     if (updateState) {
       setChapterDiscussionState(prev => ({
         ...prev,
-        [storageKey]: { status: 'success', comments },
+        [storageKey]: { status: comments.length ? 'success' : 'error', comments, error: comments.length ? '' : '本章 AI 章评生成失败。' },
       }));
     }
     return comments;
-  }, [apiKeysByProfileId, currentNovel?.title, currentNovelId, defaultProfileId, ensureChapterSummary, getRunnableProfileGroups, liveSettings.promptVersion, liveSettings.proxyUrl, modelProfiles, personas]);
+  }, [apiKeysByProfileId, currentBookAiFingerprint, currentBookPersonas, currentNovel?.title, currentNovelId, ensureChapterSummary, getRunnableProfileGroups, liveSettings.proxyUrl]);
 
   const handleSendThreadMessage = useCallback(async ({
     threadKey,
@@ -4667,7 +6983,7 @@ function App() {
       [threadKey]: appendThreadTurn(prev[threadKey] || createEmptyThread(threadKey), userTurn),
     }));
 
-    const activePersonas = personas.filter(persona => persona.enabled);
+    const activePersonas = currentBookPersonas;
     const profileGroups = groupPersonasByProfile(activePersonas, modelProfiles, defaultProfileId)
       .filter(group => liveSettings.proxyUrl.trim()
         && group.profile.baseUrl.trim()
@@ -4711,7 +7027,7 @@ function App() {
         ],
       };
       try {
-        replyText = normalizeText(await aiClient.generateThreadReply(liveSettings.proxyUrl, replyProfile, apiKey, body));
+        replyText = normalizeCommentText(await aiClient.generateThreadReply(liveSettings.proxyUrl, replyProfile, apiKey, body));
       } catch (error) {
         replyText = '';
       }
@@ -4720,16 +7036,8 @@ function App() {
     }
 
     if (!replyText) {
-      const fallbackReplies = [
-        '我觉得他不是突然退让，更像是在先把情绪压住，后面大概率还有动作。',
-        '从这一段看，他像是意识到了代价，所以才会先收一步，不一定是真的认输。',
-        '这里读起来像是短暂停顿，重点不是退，而是他已经开始重新判断局势了。',
-      ];
-      replyText = fallbackReplies[(hashText(`${paragraphText}-${userText}`) + paragraphIndex) % fallbackReplies.length];
-      if (!replyPersona) {
-        replyPersona = activePersonas[0] || DEFAULT_PERSONAS[0];
-        replyTag = replyPersona.tag || '书友';
-      }
+      showToast({ title: 'AI 回复失败', subtitle: '这次没有生成出可用回复。' });
+      return;
     }
 
     const assistantTurn = {
@@ -4745,13 +7053,91 @@ function App() {
       ...prev,
       [threadKey]: appendThreadTurn(prev[threadKey] || createEmptyThread(threadKey), assistantTurn),
     }));
-  }, [aiThreads, apiKeysByProfileId, currentNovel?.title, currentNovelId, defaultProfileId, liveSettings.proxyUrl, modelProfiles, personas]);
+  }, [aiThreads, apiKeysByProfileId, currentBookPersonas, currentNovel?.title, currentNovelId, defaultProfileId, liveSettings.proxyUrl, modelProfiles, showToast]);
+
+  const handleSummonParagraphComments = useCallback(async ({
+    paragraphKey,
+    chapterIndex,
+    paragraphIndex,
+    chapterTitle,
+    paragraphText,
+    personas: selectedPersonas = [],
+  }) => {
+    if (!currentNovelId) return 0;
+    if (!liveSettings.enabled) throw new Error('AI 生成尚未启用。');
+    const allowedIds = new Set(currentBookPersonas.map(persona => persona.id));
+    const enabledPersonas = selectedPersonas.filter(persona => persona?.enabled !== false && allowedIds.has(persona.id));
+    const profileGroups = getRunnableProfileGroups(enabledPersonas);
+    if (!profileGroups.length) throw new Error('没有可用的 AI 接口。');
+
+    const memoryArtifact = lsGet(buildChapterMemoryKey(currentNovelId, chapterIndex), null);
+    const memorySummary = memoryArtifact?.payload?.plotSummary || '';
+    const errors = [];
+
+    const summonResults = await mapWithConcurrency(enabledPersonas, AI_REQUEST_CONCURRENCY, async (persona) => {
+      const group = profileGroups.find(item => item.personas.some(candidate => candidate.id === persona.id)) || profileGroups[0];
+      if (!group) return null;
+      const apiKey = apiKeysByProfileId[group.profile.id] || '';
+      const body = {
+        model: group.profile.model,
+        temperature: Math.min(1.05, Math.max(0.4, group.profile.temperature)),
+        max_tokens: Math.min(360, group.profile.maxOutputTokens || 360),
+        messages: [
+          { role: 'system', content: 'Reply with comment text only in concise Simplified Chinese. Do not output JSON or Markdown.' },
+          {
+            role: 'user',
+            content: buildSummonedParagraphCommentPrompt({
+              novelTitle: currentNovel?.title || '',
+              chapterTitle,
+              paragraphText,
+              memorySummary,
+              persona,
+            }),
+          },
+        ],
+      };
+      try {
+        const text = normalizeCommentText(await aiClient.generateThreadReply(liveSettings.proxyUrl, group.profile, apiKey, body));
+        if (!text) return null;
+        return { persona, text };
+      } catch (error) {
+        errors.push(`${persona.name || group.profile.name}: ${getErrorMessage(error)}`);
+        return null;
+      }
+    });
+
+    let generatedCount = 0;
+    for (const result of summonResults) {
+      if (result.status !== 'fulfilled' || !result.value) continue;
+      const { persona, text } = result.value;
+      handleAddUserComment(paragraphKey, text, {
+        personaName: persona.name,
+        personaTag: persona.tag,
+        personaColor: persona.color,
+        personaAvatar: persona.avatar,
+        source: 'summoned-llm',
+      });
+      generatedCount += 1;
+    }
+
+    if (!generatedCount && errors.length) {
+      throw new Error(errors[0]);
+    }
+    return generatedCount;
+  }, [apiKeysByProfileId, currentBookPersonas, currentNovel?.title, currentNovelId, getRunnableProfileGroups, handleAddUserComment, liveSettings.enabled, liveSettings.proxyUrl]);
 
   const handleOpenChapterDiscussion = useCallback(async ({
     chapterIndex,
     chapterTitle,
     chapterText,
   }) => {
+    if (chapterIndex === 0) {
+      await ensureFirstChapterBundle({
+        force: false,
+        updateVisibleState: true,
+      });
+      return;
+    }
     await ensureChapterDiscussionSeed({
       chapterIndex,
       chapterTitle,
@@ -4759,9 +7145,16 @@ function App() {
       force: false,
       updateState: true,
     });
-  }, [ensureChapterDiscussionSeed]);
+  }, [ensureChapterDiscussionSeed, ensureFirstChapterBundle]);
 
   const generateChapterComments = useCallback(async (chapterIndex, chapterTitle, paragraphs, force = false) => {
+    if (chapterIndex === 0) {
+      await ensureFirstChapterBundle({
+        force,
+        updateVisibleState: true,
+      });
+      return;
+    }
     await ensureChapterComments({
       chapterIndex,
       chapterTitle,
@@ -4769,80 +7162,193 @@ function App() {
       force,
       updateVisibleState: true,
     });
-  }, [ensureChapterComments]);
+  }, [ensureChapterComments, ensureFirstChapterBundle]);
 
-  useEffect(() => {
-    if (screen !== 'reader' || !currentNovelId || !currentChapters.length || !liveSettings.enabled) return undefined;
-    const queuedChapters = planPrebuildWindow({
-      currentChapterIndex: currentChapter + 1,
-      chapterCount: currentChapters.length,
-      warmCount: 4,
-    });
-    if (!queuedChapters.length) {
-      setAiPrebuildState(prev => ({ ...prev, running: false, queuedChapters: [], lastError: '' }));
-      return undefined;
+  const ensureCompleteChapterAi = useCallback(async (chapterIndex, { force = false, updateVisibleState = false } = {}) => {
+    const chapter = currentChapters[chapterIndex];
+    if (!chapter) throw new Error(`章节不存在：${chapterIndex + 1}`);
+    if (chapterIndex === 0) {
+      const ok = await ensureFirstChapterBundle({ force, updateVisibleState });
+      if (!ok) throw new Error('第一章 AI 评论未完成。');
+      markAiChapterComplete(chapterIndex);
+      return true;
     }
 
-    let cancelled = false;
-    setAiPrebuildState(prev => ({
-      ...prev,
-      running: true,
-      queuedChapters,
-      lastError: '',
-    }));
+    const chapterTitle = chapter.title || `第 ${chapterIndex + 1} 章`;
+    const chapterText = chapter.content || '';
+    const paragraphs = String(chapterText || '').split(/\n+/).map(item => item.trim()).filter(Boolean);
+    await ensureChapterSummary(chapterIndex, chapterTitle, chapterText, force);
+    const maxChunks = Math.max(1, Math.ceil(Math.max(1, paragraphs.length) / 8));
+    const commentsByKey = await ensureChapterComments({
+      chapterIndex,
+      chapterTitle,
+      paragraphs,
+      force,
+      updateVisibleState,
+      maxChunks,
+      requireAllChunks: true,
+    });
+    if (!Object.keys(commentsByKey || {}).length) {
+      throw new Error(`第 ${chapterIndex + 1} 章段评生成失败。`);
+    }
+    const chapterComments = await ensureChapterDiscussionSeed({
+      chapterIndex,
+      chapterTitle,
+      chapterText,
+      force,
+      updateState: updateVisibleState,
+    });
+    if (!Array.isArray(chapterComments) || !chapterComments.length) {
+      throw new Error(`第 ${chapterIndex + 1} 章章评生成失败。`);
+    }
+    markAiChapterComplete(chapterIndex);
+    return true;
+  }, [currentChapters, ensureChapterComments, ensureChapterDiscussionSeed, ensureChapterSummary, ensureFirstChapterBundle, markAiChapterComplete]);
+
+  const handleStartAiGeneration = useCallback((targetChapterIndex) => {
+    if (!currentNovelId || !currentNovel || !currentChapters.length) return;
+    if (!liveSettings.enabled) {
+      showToast({ title: '请先启用 AI', subtitle: '需要在 AI 接口设置里保存可用模型后再生成。' });
+      return;
+    }
+    if (!currentBookPersonas.length) {
+      showToast({ title: '本书暂无可用 AI 书友', subtitle: '请先在本书 AI 书友里至少选择一位。' });
+      return;
+    }
+    const chapterCount = currentChapters.length;
+    const frontier = getAiGeneratedThrough(currentNovel, chapterCount);
+    const target = clamp(Number(targetChapterIndex) || 0, 0, chapterCount - 1);
+    if (target <= frontier) {
+      showToast({ title: '这些章节已经生成过', subtitle: `当前已生成至第 ${Math.max(1, frontier + 1)} 章。` });
+      return;
+    }
+
+    updateCurrentNovelAiGeneration({
+      aiGenerationJob: {
+        running: true,
+        targetChapterIndex: target,
+        currentChapterIndex: frontier + 1,
+        startedAt: Date.now(),
+        lastError: '',
+      },
+    });
 
     (async () => {
-      for (const index of queuedChapters) {
-        if (cancelled) return;
-        const chapter = currentChapters[index];
-        if (!chapter) continue;
-        await ensureChapterSummary(index, chapter.title || '', chapter.content || '', false);
-        if (cancelled) return;
-        await ensureChapterComments({
-          chapterIndex: index,
-          chapterTitle: chapter.title || '',
-          paragraphs: String(chapter.content || '').split(/\n+/).map(item => item.trim()).filter(Boolean),
-          force: false,
-          updateVisibleState: false,
-        });
-        if (cancelled) return;
-        await ensureChapterDiscussionSeed({
-          chapterIndex: index,
-          chapterTitle: chapter.title || '',
-          chapterText: chapter.content || '',
-          force: false,
-          updateState: false,
-        });
-        if (cancelled) return;
-        setAiPrebuildState(prev => ({
-          ...prev,
-          lastCompletedChapter: index,
-          queuedChapters: prev.queuedChapters.filter(item => item !== index),
-        }));
-      }
+      const queue = [];
+      for (let index = frontier + 1; index <= target; index += 1) queue.push(index);
+      let lastCompleted = frontier;
+      let maxStarted = frontier;
+      let firstError = null;
 
-      if (!cancelled) {
-        setAiPrebuildState(prev => ({
-          ...prev,
-          running: false,
-          queuedChapters: [],
-          lastError: '',
-        }));
+      const results = await mapWithConcurrency(queue, AI_CHAPTER_PREBUILD_CONCURRENCY, async (index) => {
+        if (firstError) return { index, ok: false, skipped: true };
+        if (index > maxStarted) {
+          maxStarted = index;
+          updateCurrentNovelAiGeneration({
+            aiGenerationJob: {
+              running: true,
+              targetChapterIndex: target,
+              currentChapterIndex: index,
+              lastError: '',
+            },
+          });
+        }
+        try {
+          await ensureCompleteChapterAi(index, {
+            force: false,
+            updateVisibleState: screen === 'reader' && currentChapter === index,
+          });
+          return { index, ok: true };
+        } catch (error) {
+          if (!firstError) firstError = error;
+          return { index, ok: false, error };
+        }
+      });
+
+      const okIndexes = results
+        .map(result => result.status === 'fulfilled' ? result.value : null)
+        .filter(value => value && value.ok)
+        .map(value => value.index)
+        .sort((a, b) => a - b);
+      let contiguous = frontier;
+      for (const index of okIndexes) {
+        if (index === contiguous + 1) contiguous = index;
+        else break;
       }
-    })().catch(error => {
-      if (!cancelled) {
-        setAiPrebuildState(prev => ({
-          ...prev,
-          running: false,
-          lastError: getErrorMessage(error),
-        }));
+      lastCompleted = contiguous;
+
+      if (!firstError) {
+        updateCurrentNovelAiGeneration({
+          aiGeneratedThrough: target,
+          aiGenerationJob: {
+            running: false,
+            targetChapterIndex: target,
+            currentChapterIndex: target,
+            lastCompletedChapter: target,
+            lastError: '',
+            completedAt: Date.now(),
+          },
+        });
+        showToast({ title: 'AI 评论预生成完成', subtitle: `已生成至第 ${target + 1} 章。` });
+      } else {
+        updateCurrentNovelAiGeneration({
+          aiGeneratedThrough: lastCompleted,
+          aiGenerationJob: {
+            running: false,
+            targetChapterIndex: target,
+            currentChapterIndex: Math.max(0, lastCompleted + 1),
+            lastCompletedChapter: lastCompleted,
+            lastError: getErrorMessage(firstError),
+            completedAt: Date.now(),
+          },
+        });
+        showToast({ title: 'AI 预生成中断', subtitle: getErrorMessage(firstError) });
       }
+    })();
+  }, [currentBookPersonas.length, currentChapter, currentChapters, currentNovel, currentNovelId, ensureCompleteChapterAi, liveSettings.enabled, screen, showToast, updateCurrentNovelAiGeneration]);
+
+  const ensureCompleteChapterAiRef = useRef(ensureCompleteChapterAi);
+  useEffect(() => {
+    ensureCompleteChapterAiRef.current = ensureCompleteChapterAi;
+  }, [ensureCompleteChapterAi]);
+
+  useEffect(() => {
+    if (!['chapters', 'reader'].includes(screen) || !currentNovelId || !currentChapters.length || !liveSettings.enabled || !currentBookPersonas.length) return undefined;
+    let cancelled = false;
+
+    const prebuildWindow = planPrebuildWindow({
+      currentChapterIndex: currentChapter,
+      chapterCount: currentChapters.length,
+      warmCount: 5,
     });
+    if (!prebuildWindow.length) return undefined;
+
+    let collectedError = null;
+
+    (async () => {
+      await mapWithConcurrency(prebuildWindow, AI_CHAPTER_PREBUILD_CONCURRENCY, async (index) => {
+        if (cancelled) return;
+        try {
+          await ensureCompleteChapterAiRef.current(index, {
+            force: false,
+            updateVisibleState: screen === 'reader' && currentChapter === index,
+          });
+        } catch (error) {
+          if (!collectedError) collectedError = error;
+        }
+      });
+      if (!cancelled && collectedError) {
+        setAiPrebuildState(prev => ({
+          ...prev,
+          lastError: getErrorMessage(collectedError),
+        }));
+      }
+    })();
 
     return () => {
       cancelled = true;
     };
-  }, [currentChapter, currentChapters, currentNovelId, ensureChapterComments, ensureChapterDiscussionSeed, ensureChapterSummary, liveSettings.enabled, screen]);
+  }, [currentBookPersonas.length, currentChapter, currentChapters.length, currentNovelId, liveSettings.enabled, screen]);
 
 const handleTestConnection = useCallback(async () => {
     if (!liveSettings.proxyUrl.trim() || !currentProfile.baseUrl.trim() || !currentProfile.model.trim()) {
@@ -4928,6 +7434,11 @@ const handleTestConnection = useCallback(async () => {
     liveTriggerKey,
     currentConnectionFingerprint,
   };
+  const readerSettingsObj = {
+    ...settingsObj,
+    personas: currentBookPersonas,
+    liveTriggerKey: currentBookAiFingerprint,
+  };
 
   return (
     <>
@@ -4947,11 +7458,15 @@ const handleTestConnection = useCallback(async () => {
         <ChapterListScreen
           novel={currentNovel}
           chapters={currentChapters}
+          personas={personas}
           onSelectChapter={handleSelectChapter}
           onBack={() => setScreen('bookshelf')}
           onContinue={() => handleContinueNovel(currentNovel.id)}
           onDeleteNovel={handleDelete}
           onRenameNovel={handleRenameNovel}
+          onStartAiGeneration={handleStartAiGeneration}
+          onUpdateBookPersonas={handleUpdateBookPersonas}
+          liveEnabled={liveSettings.enabled}
           toast={appToast}
         />
       )}
@@ -4963,17 +7478,21 @@ const handleTestConnection = useCallback(async () => {
           onBack={() => setScreen('chapters')}
           onChangeChapter={handleChangeChapter}
           onUpdateProgress={handleUpdateProgress}
-          settings={settingsObj}
+          settings={readerSettingsObj}
           userComments={userComments}
-          aiThreads={aiThreads}
+          commentReplies={commentReplies}
+          commentLikes={commentLikes}
           onAddUserComment={handleAddUserComment}
-          onSendThreadMessage={handleSendThreadMessage}
+          onSubmitComment={handleSubmitComment}
+          onSummonCommentReply={handleSummonCommentReply}
+          onToggleCommentLike={handleToggleCommentLike}
           aiState={chapterAiState}
           chapterDiscussionComments={chapterDiscussionState[buildChapterCommentKey(currentNovelId, currentChapter)]?.comments || []}
           chapterDiscussionStatus={chapterDiscussionState[buildChapterCommentKey(currentNovelId, currentChapter)] || { status: 'idle', comments: [] }}
           aiPrebuildState={aiPrebuildState}
           onOpenChapterDiscussion={handleOpenChapterDiscussion}
           onGenerateChapter={generateChapterComments}
+          onSummonParagraphComments={handleSummonParagraphComments}
         />
       )}
       {screen === 'settings' && (

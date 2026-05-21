@@ -13,3 +13,12 @@ design_bundle.txt
 bundle_tail.txt
 Prototype
 ReadWithMe.html
+新建 文本文档.txt
+新建文件夹/
+
+# One-off scripts & portfolio materials
+build_doc.py
+*.docx
+
+# Internal implementation plans
+docs/superpowers/plans/
