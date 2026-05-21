@@ -5909,6 +5909,15 @@ function App() {
     try {
       if (localStorage.getItem('rwm_demo_seeded') === '1') return;
     } catch {}
+    try {
+      const existing = lsGet(STORAGE_KEYS.novels, []);
+      if (Array.isArray(existing) && existing.some(book =>
+        book && (book.id === DEMO_BOOK_ID || book.fileName === '水浒传.txt' || book.title === DEMO_BOOK_TITLE)
+      )) {
+        try { localStorage.setItem('rwm_demo_seeded', '1'); } catch {}
+        return;
+      }
+    } catch {}
     let cancelled = false;
     (async () => {
       try {
@@ -5920,6 +5929,45 @@ function App() {
         if (!chapters.length) return;
         const meta = createDemoNovelMeta(chapters);
         lsSet(`rwm_novel_${meta.id}`, { chapters });
+
+        try {
+          const cacheRes = await fetch('./demo-water-margin-cache.json');
+          if (cacheRes.ok && !cancelled) {
+            const cache = await cacheRes.json();
+            const visitorFingerprint = profileFingerprint(
+              modelProfiles,
+              personas,
+              liveSettings.promptVersion,
+              defaultProfileId,
+            );
+            const visitorHash = String(hashText(visitorFingerprint));
+            const visitorMemoryFingerprint = `${visitorFingerprint}:memory-v1`;
+            (cache.entries || []).forEach(entry => {
+              if (!entry || typeof entry.key !== 'string' || !entry.value) return;
+              let key = entry.key;
+              let value = entry.value;
+              const paragraphMatch = key.match(/^(rwm_ai_comments_.+_\d+)_\d+$/);
+              const memoryMatch = key.match(/^rwm_ai_memory_.+_\d+$/);
+              if (paragraphMatch) {
+                key = `${paragraphMatch[1]}_${visitorHash}`;
+                value = { ...value, fingerprint: visitorFingerprint };
+              } else if (memoryMatch) {
+                value = { ...value, fingerprint: visitorMemoryFingerprint };
+              } else {
+                value = { ...value, fingerprint: visitorFingerprint };
+              }
+              try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+            });
+            if (cache.threads && Object.keys(cache.threads).length) {
+              try {
+                const existing = JSON.parse(localStorage.getItem(STORAGE_KEYS.aiThreads) || '{}');
+                const merged = { ...cache.threads, ...existing };
+                localStorage.setItem(STORAGE_KEYS.aiThreads, JSON.stringify(merged));
+              } catch {}
+            }
+          }
+        } catch {}
+
         setNovels(prev => {
           if (prev.some(book => book.id === meta.id)) return prev;
           return [{ ...meta, isNew: true }, ...prev];
