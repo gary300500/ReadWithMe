@@ -2124,7 +2124,7 @@ textarea {
 
 .friend-card {
   display: grid;
-  grid-template-columns: 52px 1fr 20px;
+  grid-template-columns: 52px 1fr auto;
   gap: 12px;
   align-items: center;
   width: 100%;
@@ -2135,6 +2135,28 @@ textarea {
   border: 1px solid var(--border);
   border-radius: 10px;
   background: rgba(255, 252, 247, 0.72);
+}
+
+.friend-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.friend-delete-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: var(--danger);
+  border: 1px solid rgba(200, 95, 75, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 246, 244, 0.72);
+}
+
+.friend-delete-full {
+  width: 100%;
+  margin-top: 10px;
 }
 
 .friend-avatar {
@@ -2369,6 +2391,397 @@ textarea {
   line-height: 1.55;
 }
 
+.persona-panel {
+  margin-bottom: 13px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: rgba(255, 252, 247, 0.58);
+}
+
+.persona-panel.is-frozen {
+  opacity: 0.72;
+}
+
+.persona-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.persona-chip {
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 252, 247, 0.72);
+  color: #5e554a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.persona-chip.active {
+  color: #fff;
+  border-color: rgba(92, 116, 91, 0.72);
+  background: linear-gradient(180deg, #6f8d6d, #4f704f);
+}
+
+.persona-chip:disabled,
+.input:disabled,
+.prompt-box:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.mode-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: #7b6d5f;
+  background: rgba(255, 248, 236, 0.86);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.mode-pill.active {
+  color: #fff;
+  border-color: rgba(92, 116, 91, 0.72);
+  background: #59765b;
+}
+
+.advanced-hint,
+.preview-hint {
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+.advanced-prompt-box {
+  min-height: 220px;
+}
+
+.inline-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+.preview-sample {
+  padding: 10px;
+  border: 1px solid rgba(188, 176, 160, 0.76);
+  border-radius: 8px;
+  background: rgba(255, 252, 247, 0.72);
+  color: #5e554a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.preview-output {
+  min-height: 42px;
+  margin-top: 10px;
+  padding: 10px 11px;
+  border-left: 3px solid #6f8d6d;
+  border-radius: 7px;
+  background: rgba(236, 244, 235, 0.8);
+  color: #465442;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.avatar-edit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border: none;
+  background: transparent;
+  color: #8d7a5d;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.avatar-edit-link:hover {
+  color: var(--accent);
+}
+
+.name-headline-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: 100%;
+  margin: 4px 0 22px;
+}
+.name-headline {
+  width: 100%;
+  max-width: 240px;
+  padding: 6px 4px 8px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: #1f1b16;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  outline: none;
+  transition: border-color 160ms ease;
+}
+.name-headline:focus {
+  border-bottom-color: var(--accent);
+}
+.name-headline-counter {
+  color: #b1a697;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.persona-style-card {
+  padding: 4px 14px;
+}
+.persona-style-card .field-section {
+  padding: 12px 0;
+  border-top: 1px solid rgba(188, 176, 160, 0.32);
+}
+.persona-style-card .field-section:first-child {
+  border-top: none;
+}
+.persona-style-card .field-section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.persona-style-card .field-section-row .field-label {
+  margin: 0;
+}
+.persona-style-card .picker-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex: 0 0 auto;
+  width: 144px;
+  height: 36px;
+  padding: 0 10px 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 248, 236, 0.9);
+  color: #3f382f;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+.persona-style-card .picker-trigger:hover {
+  border-color: rgba(182, 122, 47, 0.4);
+  background: rgba(255, 244, 224, 0.95);
+}
+.persona-style-card .picker-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.persona-style-card .picker-trigger .chev {
+  color: #b5a48a;
+  flex: 0 0 auto;
+}
+
+.picker-sheet {
+  padding: 6px 0 10px;
+}
+.picker-sheet-title {
+  padding: 10px 20px 6px;
+  color: #1f1b16;
+  font-size: 15px;
+  font-weight: 900;
+  text-align: center;
+}
+.picker-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 13px 22px;
+  background: transparent;
+  border: none;
+  color: #2e2820;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+.picker-option:hover {
+  background: rgba(255, 244, 224, 0.6);
+}
+.picker-option.active {
+  color: var(--accent);
+}
+.picker-option .picker-check {
+  color: var(--accent);
+}
+.persona-style-card .field-section .persona-chip-grid {
+  margin-top: 10px;
+}
+
+.entry-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: rgba(255, 252, 247, 0.58);
+  text-align: left;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.entry-row:hover {
+  background: rgba(255, 248, 236, 0.86);
+  border-color: rgba(182, 122, 47, 0.32);
+}
+.entry-row-label {
+  color: #1f1b16;
+  font-size: 14px;
+  font-weight: 900;
+}
+.entry-row-tail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #b1a697;
+}
+
+.preview-card {
+  padding: 14px;
+}
+.preview-card .preview-sample {
+  padding: 11px 13px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(245, 240, 232, 0.92);
+  color: #5e554a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.preview-reply {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+}
+.preview-reply .friend-avatar {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  font-size: 15px;
+}
+.preview-card .preview-output {
+  flex: 1;
+  margin-top: 0;
+  padding: 10px 13px;
+  border-left: none;
+  border-radius: 12px 12px 12px 4px;
+  background: linear-gradient(180deg, #f1efd9, #e6e2c4);
+  color: #3f4730;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+  min-height: 38px;
+}
+.preview-card .preview-output.is-placeholder,
+.preview-card .preview-output.is-loading {
+  color: #8a8474;
+  font-weight: 600;
+  background: rgba(245, 240, 232, 0.55);
+}
+.preview-card .preview-output.is-error {
+  background: rgba(255, 232, 224, 0.92);
+  color: #a4413a;
+  font-weight: 700;
+}
+.preview-card .inline-actions {
+  margin-top: 14px;
+}
+
+.friend-menu-sheet .action-row.danger {
+  color: var(--danger);
+}
+
+.persona-sections {
+  display: grid;
+  gap: 4px;
+}
+.persona-sections.is-frozen,
+.examples-card.is-frozen {
+  opacity: 0.6;
+}
+.section-field {
+  margin-bottom: 14px;
+}
+.section-box {
+  min-height: 64px;
+}
+.field-sub-hint {
+  display: block;
+  margin-top: 5px;
+  color: #b1a697;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.section-frozen-hint {
+  text-align: left;
+  margin: 0 0 12px;
+  color: #a4413a;
+}
+
+.examples-card {
+  padding: 14px;
+}
+.example-row {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 248, 236, 0.5);
+}
+.example-row-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.example-index {
+  color: #8d7a5d;
+  font-size: 12px;
+  font-weight: 900;
+}
+.example-remove {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  color: var(--danger);
+  background: transparent;
+}
+.example-remove:disabled {
+  opacity: 0.4;
+}
+.example-box {
+  min-height: 48px;
+  font-size: 13px;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -2418,6 +2831,7 @@ const STORAGE_KEYS = {
   modelProfiles: 'rwm_model_profiles',
   personas: 'rwm_personas',
   personasVersion: 'rwm_personas_version',
+  deletedDefaultPersonas: 'rwm_deleted_default_personas',
   apiKeys: 'rwm_model_api_keys',
   aiThreads: 'rwm_ai_threads',
   aiPrebuildState: 'rwm_ai_prebuild_state',
@@ -2429,12 +2843,13 @@ const DEMO_BOOK_TITLE = '水浒传';
 const DEMO_BOOK_PATH = './水浒传.txt';
 const DEFAULT_PROXY_URL = 'http://127.0.0.1:11435';
 const DEFAULT_PROMPT_VERSION = 'v3';
-const PERSONA_SCHEMA_VERSION = 'ai-friends-flow-2026-05';
+const PERSONA_SCHEMA_VERSION = 'ai-friends-sectioned-2026-06';
 const FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS = 2000;
 const FIRST_CHAPTER_COMMENT_CHUNK_SIZE = 5;
 const CHAPTER_COMMENT_CHUNK_SIZE = 8;
 const AI_REQUEST_CONCURRENCY = 4;
 const AI_CHAPTER_PREBUILD_CONCURRENCY = 2;
+const AI_MANUAL_CHAPTER_GENERATION_CONCURRENCY = 1;
 const CHAPTER_DISCUSSION_TEXT_LIMIT = 6000;
 
 const DEFAULT_LIVE_SETTINGS = {
@@ -2459,13 +2874,14 @@ const DEFAULT_PERSONAS = [
     name: '吐槽姬',
     tag: '吐槽达人',
     description: '毒舌吐槽，直言真相，擅长发现槽点',
-    stylePrompt: [
-      '你是“吐槽姬”，一个毒舌但不刻薄的读书伙伴。',
-      '擅长犀利吐槽、发现槽点，用幽默的方式调侃情节、人物和设定。',
-      '',
-      '风格：直接、调侃、机智，偶尔卖萌。',
-      '目标：让阅读过程更有趣，戳破矛盾与不合理之处。',
-    ].join('\n'),
+    identity: '毒舌但不刻薄的老书虫，擅长用幽默戳破矛盾和离谱操作。',
+    attentionFocus: '离谱行为、前后打脸、社死现场、反差和嘴硬。',
+    voice: '直接、调侃、机智，偶尔卖萌，敢下狠评但火力对着剧情不对用户。例：「这操作真离谱」「嘴硬成这样也是绝了」。',
+    relationship: '像关系好的损友，爱拉着用户一起吐槽。',
+    interaction: '被用户或其他书友点到就接梗，意见不同会直接怼回去，但点到为止、不抬杠。',
+    examples: [
+      { trigger: '他刚发誓万无一失，下一秒就被自己的影子绊倒。', reply: '誓言刚立 flag 就倒，这下脸打得真响' },
+    ],
     avatar: '姬',
     color: '#f4a6b3',
     frequency: 'high',
@@ -2477,7 +2893,14 @@ const DEFAULT_PERSONAS = [
     name: '分析菌',
     tag: '逻辑分析',
     description: '逻辑缜密，擅长分析情节与细节',
-    stylePrompt: '你是“分析菌”，逻辑缜密，擅长拆解剧情结构、人物动机、伏笔与细节线索。评论要清晰、有根据，避免过度脑补。',
+    identity: '逻辑缜密的拆解型读者，擅长看穿剧情结构和人物动机。',
+    attentionFocus: '伏笔、逻辑缺口、人物动机、没说完的信息和细节线索。',
+    voice: '清晰、有根据、短句下判断，不过度脑补，不绕弯。',
+    relationship: '像会点破线索的老读者，提醒「注意这里」但不说教。',
+    interaction: '回用户时给出推断的依据，和别的书友观点冲突时摆理由而不是抬杠。',
+    examples: [
+      { trigger: '她随口提了一句邻居家的狗，作者却写了整整一段。', reply: '这条狗被特写了，八成后面要出事' },
+    ],
     avatar: '析',
     color: '#cfd8c0',
     frequency: 'medium',
@@ -2489,7 +2912,14 @@ const DEFAULT_PERSONAS = [
     name: '考据党',
     tag: '考据考据',
     description: '考据严谨，文史背景无所不查',
-    stylePrompt: '你是“考据党”，严谨、博闻，擅长从历史、文化、制度、地理和设定层面补充背景。评论要克制准确，不确定时用推测语气。',
+    identity: '严谨博闻的考据型读者，爱从历史、制度、设定层面补背景。',
+    attentionFocus: '设定规则、世界机制、制度漏洞和与史实文化的出入。',
+    voice: '克制准确，不确定时用推测语气，不卖弄。',
+    relationship: '像随时补冷知识的同好，分享但不压人。',
+    interaction: '回用户时补一句背景，遇到别的书友说法存疑会客气地提出佐证。',
+    examples: [
+      { trigger: '城门夜里大开，守军却一个没拦。', reply: '夜不闭门这设定，跟当时的宵禁制度对不上' },
+    ],
     avatar: '考',
     color: '#e7a75d',
     frequency: 'low',
@@ -2501,7 +2931,14 @@ const DEFAULT_PERSONAS = [
     name: '感慨君',
     tag: '情绪共鸣',
     description: '感性细腻，随时为角色抒发感慨',
-    stylePrompt: '你是“感慨君”，感性细腻，擅长捕捉人物情绪、命运感和氛围变化。评论要有共情，但不要夸张煽情。',
+    identity: '感性细腻的共情型读者，擅长捕捉情绪、命运感和氛围。',
+    attentionFocus: '人物情绪变化、关系拉扯、压抑或委屈、命运转折。',
+    voice: '有共情、语气软，不夸张煽情，不喊口号。',
+    relationship: '像一起读书轻声分享心情的人。',
+    interaction: '回用户时顺着情绪接，和别的书友共情或轻轻补一句感受。',
+    examples: [
+      { trigger: '他笑着说没事，转身把那封信揉成了一团。', reply: '嘴上说没事，那团纸里全是没说出口的' },
+    ],
     avatar: '感',
     color: '#e8c2a3',
     frequency: 'medium',
@@ -2513,7 +2950,14 @@ const DEFAULT_PERSONAS = [
     name: '提问菌',
     tag: '抛出问题',
     description: '好奇发问，指出问题引发思考',
-    stylePrompt: '你是“提问菌”，好奇而敏锐，擅长提出读者会在意的问题，指出逻辑空白、信息缺口和后续悬念。评论要像抛出思考，不要替作者下结论。',
+    identity: '好奇敏锐的提问型读者，爱抛出读者会在意的疑问。',
+    attentionFocus: '逻辑空白、信息缺口、未解悬念和说不通的地方。',
+    voice: '像抛出思考，多用问句，不替作者下结论。',
+    relationship: '像引着用户一起琢磨的人。',
+    interaction: '回用户时反问或追问，和别的书友讨论时把问题再推进一层。',
+    examples: [
+      { trigger: '所有人都说他死了，可没人见过尸体。', reply: '都说死了却没见尸体，这是真死还是诈死？' },
+    ],
     avatar: '问',
     color: '#d9d2b3',
     frequency: 'low',
@@ -2525,12 +2969,110 @@ const DEFAULT_PERSONAS = [
     name: '我的小书友',
     tag: '自定义',
     description: '温柔陪伴，喜欢从细节里发现温暖',
-    stylePrompt: '你是“我的小书友”，温柔、耐心、陪伴感强。喜欢从细节里发现温暖，关注人物之间细微的情绪流动。评论要轻柔自然，像一起读书时的小声分享。',
+    identity: '温柔耐心、陪伴感强的小书友，爱从细节里发现温暖。',
+    attentionFocus: '人物之间细微的情绪流动和不经意的善意。',
+    voice: '轻柔自然，像一起读书时的小声分享。',
+    relationship: '像追同一本书的熟悉书友，随时接话。',
+    interaction: '回用户时温和回应，和别的书友也友好接茬、少有锋芒。',
+    examples: [
+      { trigger: '她把最后一块饼塞给了那个陌生小孩。', reply: '自己都不够吃还分出去，这点小善良好戳人' },
+    ],
     avatar: '友',
     color: '#d8dce3',
     frequency: 'medium',
     preset: false,
     enabled: true,
+  },
+];
+
+// 分区式人格：用户逐段编辑这几个分区，拼接时再自动加上锁定的通用规则
+const PERSONA_SECTION_FIELDS = [
+  {
+    key: 'identity',
+    label: '人设 / 角色定位',
+    heading: '[Persona]',
+    placeholder: '这个书友是谁、什么性格。例：毒舌但不刻薄的老书虫，爱拆穿离谱操作。',
+    hint: '一句话立住性格，决定整体基调。',
+    maxLength: 400,
+  },
+  {
+    key: 'attentionFocus',
+    label: '关注点 / 读法',
+    heading: '[Attention]',
+    placeholder: '读一段时最先盯住什么。例：前后矛盾、社死现场、嘴硬打脸。',
+    hint: '决定 TA 和别的书友看同一段时反应不同。',
+    maxLength: 400,
+  },
+  {
+    key: 'voice',
+    label: '说话风格 / 语气',
+    heading: '[Voice]',
+    placeholder: '怎么说话，可附语气示例。例：短句、犀利、爱玩梗，像「这操作真离谱」。',
+    hint: '口语化越具体，预览里区别越明显。',
+    maxLength: 400,
+  },
+  {
+    key: 'relationship',
+    label: '与读者的关系',
+    heading: '[Relationship]',
+    placeholder: '和用户什么关系。例：像关系好的损友，爱拉着一起吐槽。',
+    hint: '影响称呼口吻和亲疏感。',
+    maxLength: 300,
+  },
+  {
+    key: 'interaction',
+    label: '互动方式',
+    heading: '[Interaction]',
+    placeholder: '怎么回用户、怎么跟其他 AI 书友接话。例：被@就接梗，意见不同会直接怼回去但不抬杠。',
+    hint: '用于回复用户和书友之间的互动。',
+    maxLength: 400,
+  },
+];
+
+const PERSONA_SECTION_DEFAULTS = {
+  identity: '一个陪用户一起读小说的书友，性格自然、有自己的脾气。',
+  attentionFocus: '段落里最戳人的那个点：反差、悬念、情绪或人物关系的变化。',
+  voice: '像真实读者随手发的短评，口语、自然，不端着。',
+  relationship: '像和用户一起读的人，同步当下的反应。',
+  interaction: '回用户时像朋友接话；和其他书友意见不同也能自然接茬，不复读、不抬杠。',
+};
+
+const PREVIEW_SAMPLE_POOL = [
+  {
+    id: 'key-door',
+    direction: 'teasing',
+    label: '吐槽反差',
+    text: '他刚把钥匙丢进河里，身后的门就自己开了。门缝里探出一只手，把一模一样的钥匙放到他脚边，还很礼貌地敲了敲门板。旁边的人沉默半天：“所以你刚才到底在努力什么？”',
+  },
+  {
+    id: 'same-clock',
+    direction: 'suspense',
+    label: '悬疑异常',
+    text: '墙上的钟停在三点十七分。她明明刚换过电池，可每次有人提到失踪的司机，秒针都会自己倒退一格。最奇怪的是，屋里所有人的手机也同时跳回了三点十七分。',
+  },
+  {
+    id: 'wrong-letter',
+    direction: 'embarrassment',
+    label: '社死误会',
+    text: '他当着全班念完那封道歉信，才发现信封背面写着“请交给班主任”。全班安静了三秒，班主任也安静了三秒，最后只有他自己还保持着深情的表情。',
+  },
+  {
+    id: 'two-promises',
+    direction: 'conflict',
+    label: '角色冲突',
+    text: '她说自己从不骗人，可下一刻就把同一枚玉佩交给了两个不同的人。一个拿去救命，一个拿去定亲。她站在门口，还认真问：“这应该不算冲突吧？”',
+  },
+  {
+    id: 'reckless-plan',
+    direction: 'reckless',
+    label: '离谱操作',
+    text: '为了证明自己没有偷听，他决定从窗户翻出去再敲门进来。结果刚落地，就和正在窗外偷听的三个人排成了一排。屋里的人打开窗：“要不你们开个会？”',
+  },
+  {
+    id: 'almost-said',
+    direction: 'emotion',
+    label: '轻微拉扯',
+    text: '他把伞递过去，说只是顺路。她看了眼他被雨淋透的半边肩膀，没有拆穿，只低声说了句谢谢。两个人都往前走，却谁也没有先松开伞柄。',
   },
 ];
 
@@ -3043,13 +3585,123 @@ function normalizePersona(persona = {}, index = 0) {
   });
 }
 
+function normalizePersonaExamples(examples) {
+  return (Array.isArray(examples) ? examples : [])
+    .map(item => ({
+      trigger: normalizeText(item?.trigger || ''),
+      reply: normalizeText(item?.reply || ''),
+    }))
+    .filter(item => item.trigger || item.reply)
+    .slice(0, 6);
+}
+
 function normalizeReadingPersona(persona = {}) {
+  const sections = {};
+  PERSONA_SECTION_FIELDS.forEach(({ key }) => {
+    sections[key] = normalizeText(persona[key] || '');
+  });
+  // 旧数据迁移：没有人设分区时，用历史 stylePrompt 兜底填到「人设」
+  if (!sections.identity) sections.identity = normalizeText(persona.stylePrompt || '');
   return {
-    interactionTendency: 'responsive',
-    disagreementStyle: 'gentle',
-    relationshipFeel: 'book-friend',
     ...persona,
+    ...sections,
+    examples: normalizePersonaExamples(persona.examples),
+    advancedPromptEnabled: Boolean(persona.advancedPromptEnabled),
+    advancedPromptText: normalizeText(persona.advancedPromptText || ''),
   };
+}
+
+function compilePersonaPrompt(persona = {}) {
+  const name = normalizeText(persona.name) || 'AI书友';
+  const tag = normalizeText(persona.tag) || '书友';
+  const sectionValue = (key) => {
+    const value = normalizeText(persona[key] || '');
+    if (value) return value;
+    if (key === 'identity' && normalizeText(persona.stylePrompt || '')) return normalizeText(persona.stylePrompt);
+    return PERSONA_SECTION_DEFAULTS[key] || '';
+  };
+  const examples = normalizePersonaExamples(persona.examples);
+  const sectionLines = [];
+  PERSONA_SECTION_FIELDS.forEach(({ key, heading }) => {
+    sectionLines.push(heading);
+    if (key === 'identity') sectionLines.push(`你是“${name}”，标签是“${tag}”。`);
+    sectionLines.push(sectionValue(key));
+    sectionLines.push('');
+  });
+  const exampleLines = examples.length
+    ? [
+        '[Examples]',
+        '下面是这个书友看到某类内容时会怎么回应的示范，照着这种「触发→反应」的感觉走，但不要照抄内容：',
+        ...examples.flatMap((item, index) => [
+          `${index + 1}. 看到这样的内容：${item.trigger || '（任意段落）'}`,
+          `   你会这样回应：${item.reply || '（用你自己的风格接话）'}`,
+        ]),
+        '',
+      ]
+    : [];
+  return [
+    '[Shared Rules]',
+    '你是在小说阅读界面里、贴着某一个段落冒出来的 AI 书友。',
+    '把自己当成正在追这本书的真实读者，发的是随手短评，不是书评、不是赏析、不是剧情总结。',
+    '只抓住这一段里最戳到你的那一个点，用一句口语化的话说出真实反应。',
+    '可以用网络口语、语气词、半句话；别文绉绉，别面面俱到。',
+    '硬规则：不剧透后文；不复述这段在讲什么；不空泛夸奖；不解释自己的人设；不写成两句以上的小作文。',
+    '',
+    '对比示例（学的是"抓具体细节+真实反应"，不要照抄内容）：',
+    '✗「这一段节奏紧凑，把人物和局势都推进了一步」——空泛、像书评，禁止',
+    '✗「这段说的是他把钥匙丢进河里然后门开了」——复述剧情，禁止',
+    '✓「钥匙都丢了门还自己开，那他刚才到底较什么劲」——抓住具体细节、像真人吐槽',
+    '',
+    ...sectionLines,
+    ...exampleLines,
+    '[Output Contract]',
+    '只输出 1 条段评，纯文本，不要任何前后缀。',
+    '长度优先 16-28 个中文字符，硬上限 36 个中文字符。',
+    '最多 1 句话，必要时 2 个短分句；不要分点，不要加引号。',
+  ].filter(line => line !== '').join('\n');
+}
+
+function getActivePersonaPrompt(persona = {}) {
+  const advanced = normalizeText(persona.advancedPromptText || '');
+  if (persona.advancedPromptEnabled && advanced) return advanced;
+  return compilePersonaPrompt(persona);
+}
+
+function getPersonaPromptSummary(persona = {}) {
+  return [
+    `id=${persona.id || ''}`,
+    `name=${persona.name || ''}`,
+    `tag=${persona.tag || ''}`,
+    getActivePersonaPrompt(persona),
+  ].join('\n');
+}
+
+function getModelProfileLabel(profile = {}) {
+  const name = normalizeText(profile.name || '') || '未命名接口';
+  const model = normalizeText(profile.model || '') || '未填写模型';
+  return `${name} / ${model}`;
+}
+
+function getNextPreviewSample(previousDirection = '', seed = Date.now()) {
+  const pool = PREVIEW_SAMPLE_POOL;
+  if (!pool.length) return { id: 'fallback', direction: 'default', label: '默认示例', text: '他刚说完万无一失，门外就传来了第二个自己的声音。' };
+  const candidates = pool.filter(sample => sample.direction !== previousDirection);
+  const list = candidates.length ? candidates : pool;
+  const index = Math.abs(Number(seed) || 0) % list.length;
+  return list[index];
+}
+
+function buildPersonaPreviewPrompt({ persona = {}, sample = null } = {}) {
+  const previewSample = sample || getNextPreviewSample();
+  return [
+    getActivePersonaPrompt(persona),
+    '',
+    '[Preview Task]',
+    `示例方向：${previewSample.label || previewSample.direction || '默认示例'}`,
+    `小说片段：${previewSample.text || ''}`,
+    '只输出 1 条段评预览。',
+    '不要输出 JSON，不要解释人设，不要复述剧情。',
+  ].join('\n');
 }
 
 function frequencyLabel(frequency) {
@@ -3070,7 +3722,12 @@ function createBlankPersona() {
     name: '',
     tag: '自定义',
     description: '自定义阅读陪伴角色',
-    stylePrompt: '',
+    identity: '',
+    attentionFocus: '',
+    voice: '',
+    relationship: '',
+    interaction: '',
+    examples: [],
     avatar: '友',
     color: '#d8dce3',
     frequency: 'medium',
@@ -3101,7 +3758,8 @@ function profileFingerprint(profilesInput, personas, promptVersion, defaultProfi
       p.id,
       p.name,
       p.tag,
-      p.stylePrompt,
+      getActivePersonaPrompt(p),
+      p.advancedPromptEnabled,
       getPersonaProfileId(p, profiles, resolvedDefaultId),
     ]),
     promptVersion,
@@ -3311,6 +3969,14 @@ function updateChapterScrollProgress(novel = {}, chapterIndex = 0, scrollPos = n
   };
 }
 
+function markNovelReadStarted(novel = {}) {
+  if (!novel || typeof novel !== 'object') return novel;
+  if (!novel.isNew) return novel;
+  const next = { ...novel };
+  delete next.isNew;
+  return next;
+}
+
 function getAiGeneratedThrough(novel = {}, chapterCount = 0) {
   const raw = Number(novel?.aiGeneratedThrough);
   if (!Number.isFinite(raw)) return -1;
@@ -3324,6 +3990,99 @@ function getAiPregenTarget(currentThrough, chapterCount, step) {
   const start = clamp(Number.isFinite(rawStart) ? rawStart : -1, -1, count - 1);
   const next = start + Math.max(1, Number(step) || 1);
   return clamp(next, 0, count - 1);
+}
+
+function getNextAiGenerationProgress(novel = {}, chapterCount = 0, completedChapterIndex = -1) {
+  const count = Math.max(0, Number(chapterCount) || 0);
+  const completed = new Set();
+  const savedCompleted = Array.isArray(novel?.aiCompletedChapters) ? novel.aiCompletedChapters : [];
+  savedCompleted.forEach(index => {
+    const value = Number(index);
+    if (Number.isInteger(value) && value >= 0 && value < count) completed.add(value);
+  });
+  if (!savedCompleted.length) {
+    const legacyThrough = getAiGeneratedThrough(novel, count);
+    for (let index = 0; index <= legacyThrough; index += 1) completed.add(index);
+  }
+  const nextCompleted = Number(completedChapterIndex);
+  if (Number.isInteger(nextCompleted) && nextCompleted >= 0 && nextCompleted < count) {
+    completed.add(nextCompleted);
+  }
+  let aiGeneratedThrough = -1;
+  while (completed.has(aiGeneratedThrough + 1)) {
+    aiGeneratedThrough += 1;
+  }
+  return {
+    aiGeneratedThrough,
+    aiCompletedChapters: Array.from(completed).sort((a, b) => a - b),
+  };
+}
+
+function getVisibleAiGenerationJob(novel = {}, chapterCount = 0) {
+  const frontier = getAiGeneratedThrough(novel, chapterCount);
+  const job = novel?.aiGenerationJob || {};
+  const target = Number(job.targetChapterIndex);
+  if (job.running && Number.isFinite(target) && target <= frontier) {
+    return {
+      ...job,
+      running: false,
+      currentChapterIndex: target,
+      targetChapterIndex: target,
+      lastCompletedChapter: frontier,
+      lastError: '',
+    };
+  }
+  if (job.running) {
+    const current = Number(job.currentChapterIndex);
+    return {
+      ...job,
+      currentChapterIndex: Math.max(
+        Number.isFinite(current) ? current : frontier + 1,
+        frontier + 1,
+      ),
+    };
+  }
+  return job;
+}
+
+function getReconciledAiGenerationProgress(novel = {}, chapterCount = 0, completedChapterIndexes = []) {
+  const count = Math.max(0, Number(chapterCount) || 0);
+  const completed = new Set(getNextAiGenerationProgress(novel, count, -1).aiCompletedChapters);
+  (Array.isArray(completedChapterIndexes) ? completedChapterIndexes : []).forEach(index => {
+    const value = Number(index);
+    if (Number.isInteger(value) && value >= 0 && value < count) completed.add(value);
+  });
+  const progress = getNextAiGenerationProgress({
+    ...novel,
+    aiGeneratedThrough: -1,
+    aiCompletedChapters: Array.from(completed),
+  }, count, -1);
+  const withProgress = {
+    ...novel,
+    aiGeneratedThrough: progress.aiGeneratedThrough,
+    aiCompletedChapters: progress.aiCompletedChapters,
+  };
+  return {
+    aiGeneratedThrough: progress.aiGeneratedThrough,
+    aiCompletedChapters: progress.aiCompletedChapters,
+    aiGenerationJob: getVisibleAiGenerationJob(withProgress, count),
+  };
+}
+
+function getCachedAiCompletedChapters(novelId, chapters = [], fingerprint = '') {
+  if (!novelId || !fingerprint || !Array.isArray(chapters)) return [];
+  return chapters.map((chapter, chapterIndex) => {
+    const paragraphs = String(chapter?.content || '').split(/\n+/).map(item => item.trim()).filter(Boolean);
+    const cached = lsGet(buildAiCacheKey(novelId, chapterIndex, fingerprint), null);
+    if (chapterIndex === 0) {
+      return cached?.fingerprint === fingerprint && cached?.commentsByKey && Object.keys(cached.commentsByKey).length
+        ? chapterIndex
+        : null;
+    }
+    return isCompleteChapterCommentCache(cached, paragraphs, fingerprint, CHAPTER_COMMENT_CHUNK_SIZE)
+      ? chapterIndex
+      : null;
+  }).filter(index => Number.isInteger(index));
 }
 
 function createPrebuildState() {
@@ -3342,6 +4101,36 @@ function planPrebuildWindow({ currentChapterIndex, chapterCount, warmCount = 5 }
   const start = Math.max(0, Number(currentChapterIndex || 0));
   const end = Math.min(Number(chapterCount || 0), start + Number(warmCount || 0));
   return Array.from({ length: Math.max(0, end - start) }, (_, offset) => start + offset);
+}
+
+function planAiPrebuildWindow({ currentChapterIndex, generatedThrough = -1, chapterCount, warmCount = 5 }) {
+  const count = Math.max(0, Number(chapterCount) || 0);
+  if (!count) return [];
+  const current = clamp(Math.floor(Number(currentChapterIndex) || 0), 0, count - 1);
+  const firstMissing = clamp(Math.floor(Number(generatedThrough) || -1) + 1, 0, count - 1);
+  return planPrebuildWindow({
+    currentChapterIndex: Math.min(current, firstMissing),
+    chapterCount: count,
+    warmCount,
+  });
+}
+
+function getVisibleAiCommentsByKey({ aiState = {}, chapterIndex = 0, cachedAi = null, fingerprint = '' } = {}) {
+  if (
+    aiState?.chapterIndex === chapterIndex
+    && aiState?.commentsByKey
+    && Object.keys(aiState.commentsByKey).length
+  ) {
+    return aiState.commentsByKey;
+  }
+  if (
+    cachedAi?.fingerprint === fingerprint
+    && cachedAi?.commentsByKey
+    && Object.keys(cachedAi.commentsByKey).length
+  ) {
+    return cachedAi.commentsByKey;
+  }
+  return {};
 }
 
 function createEmptyMemorySummary(chapterIndex = 0) {
@@ -3464,14 +4253,17 @@ function buildParagraphFirstCommentPrompt({ chapterTitle, chunk, personas, memor
     'Even if the source novel text is Traditional Chinese, every generated comment must be Simplified Chinese.',
     'Requirements:',
     '1. At most one comment per paragraph; some paragraphs may have no comment.',
-    '2. Keep comments short, specific, and tightly grounded in the paragraph.',
-    '3. Do not spoil unread future content.',
-    '4. Use only enabled personaId values.',
-    '5. Output strict JSON only: {"comments":[{"paragraphIndex":0,"personaId":"...","text":"...","discussionMode":"open"}]}.',
-    '6. discussionMode must be one of: closed, open, inviting.',
+    '2. Each comment must grab ONE concrete detail in that paragraph and react to it like a real reader texting a friend — casual spoken Chinese, not a literary review.',
+    '3. Never give vague praise like "节奏紧凑/推进感强/刻画到位", and never restate what the paragraph says. Reacting to a specific detail is the whole point.',
+    '4. Obey each persona prompt strictly: a sharp persona sounds sharp, a gentle one stays soft, a teasing one mocks — when several personas comment, their voices must read clearly different, not interchangeable.',
+    '5. Keep each comment within ~36 Chinese characters, one sentence or two short clauses, no quotes, no bullet points.',
+    '6. Do not spoil unread future content.',
+    '7. Use only enabled personaId values.',
+    '8. Output strict JSON only: {"comments":[{"paragraphIndex":0,"personaId":"...","text":"...","discussionMode":"open"}]}.',
+    '9. discussionMode must be one of: closed, open, inviting.',
     `Chapter title: ${chapterTitle || ''}`,
     `Chapter memory: ${memorySummary || 'none'}`,
-    `Available personas: ${personas.map(p => `${p.id}=${p.name}/${p.tag}/interaction=${p.interactionTendency || 'responsive'}/disagreement=${p.disagreementStyle || 'gentle'}/${p.stylePrompt}`).join('; ')}`,
+    `Available personas:\n${personas.map(getPersonaPromptSummary).join('\n---\n')}`,
     `Paragraphs: ${JSON.stringify(chunk, null, 2)}`,
   ].join('\n');
 }
@@ -3488,7 +4280,7 @@ function buildParagraphFollowUpPrompt({ novelTitle, chapterTitle, paragraphText,
     `Chapter memory: ${memorySummary || 'none'}`,
     `Thread summary: ${threadSummary || 'none'}`,
     `Recent turns: ${JSON.stringify(threadTurns || [])}`,
-    `Reply persona: ${persona ? `${persona.name}/${persona.tag}/interaction=${persona.interactionTendency || 'responsive'}/disagreement=${persona.disagreementStyle || 'gentle'}/relationship=${persona.relationshipFeel || 'book-friend'}/${persona.stylePrompt}` : 'default-book-friend'}`,
+    `Reply persona:\n${persona ? getPersonaPromptSummary(persona) : 'default-book-friend'}`,
     `User follow-up: ${userMessage || ''}`,
   ].join('\n');
 }
@@ -3505,7 +4297,7 @@ function buildChapterDiscussionPrompt({ novelTitle, chapterTitle, chapterText, m
     `Novel: ${novelTitle || ''}`,
     `Chapter: ${chapterTitle || ''}`,
     `Shared memory: ${memorySummary || 'none'}`,
-    `Available personas: ${(personas || []).map(p => `${p.id}=${p.name}/${p.tag}/interaction=${p.interactionTendency || 'responsive'}/disagreement=${p.disagreementStyle || 'gentle'}/${p.stylePrompt}`).join('; ')}`,
+    `Available personas:\n${(personas || []).map(getPersonaPromptSummary).join('\n---\n')}`,
     `Chapter text: ${String(chapterText || '').slice(0, CHAPTER_DISCUSSION_TEXT_LIMIT)}`,
   ].join('\n');
 }
@@ -3554,7 +4346,7 @@ function buildFirstChapterBundlePrompt({
     'discussionMode must be one of: closed, open, inviting.',
     `Novel: ${novelTitle || ''}`,
     `Chapter: ${chapterTitle || ''}`,
-    `Available personas: ${(personas || []).map(p => `${p.id}=${p.name}/${p.tag}/interaction=${p.interactionTendency || 'responsive'}/disagreement=${p.disagreementStyle || 'gentle'}/${p.stylePrompt}`).join('; ')}`,
+    `Available personas:\n${(personas || []).map(getPersonaPromptSummary).join('\n---\n')}`,
     `Chapter paragraph count: ${startupParagraphs.length}`,
     `Chapter text for context: ${String(chapterText || '').slice(0, 8000)}`,
   ].join('\n');
@@ -3636,7 +4428,7 @@ function buildCommentReplyPrompt({ novelTitle, chapterTitle, paragraphText, memo
       text: reply.text || '',
       replyToName: reply.replyToName || '',
     })))}`,
-    `Persona: ${persona ? `${persona.name}/${persona.tag}/interaction=${persona.interactionTendency || 'responsive'}/disagreement=${persona.disagreementStyle || 'gentle'}/relationship=${persona.relationshipFeel || 'book-friend'}/${persona.stylePrompt}` : 'default-book-friend'}`,
+    `Persona:\n${persona ? getPersonaPromptSummary(persona) : 'default-book-friend'}`,
     `Reader comment to answer: ${userMessage || targetComment?.text || ''}`,
   ].join('\n');
 }
@@ -3651,7 +4443,7 @@ function buildSummonedParagraphCommentPrompt({ novelTitle, chapterTitle, paragra
     `Novel: ${novelTitle || ''}`,
     `Chapter: ${chapterTitle || ''}`,
     `Shared memory: ${memorySummary || 'none'}`,
-    `Persona: ${persona?.name || ''} / ${persona?.tag || ''} / ${persona?.stylePrompt || ''}`,
+    `Persona:\n${persona ? getPersonaPromptSummary(persona) : ''}`,
     `Paragraph: ${paragraphText || ''}`,
   ].join('\n');
 }
@@ -3762,6 +4554,16 @@ const aiClient = {
     if (!res.ok) throw new Error(data?.error?.message || data?.error || `追问回复失败：${res.status}`);
     return String(data?.choices?.[0]?.message?.content || '').trim();
   },
+  async generatePersonaPreview(proxyUrl, profile, apiKey, body) {
+    const res = await fetch(`${proxyUrl.replace(/\/$/, '')}/proxy/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ baseUrl: normalizeUpstreamBase(profile.baseUrl), apiKey, body: disableModelThinking(body) }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data?.error?.message || data?.error || `预览生成失败：${res.status}`);
+    return String(data?.choices?.[0]?.message?.content || '').trim();
+  },
 };
 
 function getErrorMessage(error) {
@@ -3856,17 +4658,22 @@ function ensurePersonasLibrary() {
   const saved = lsGet(STORAGE_KEYS.personas, null);
   const versionMatches = localStorage.getItem(STORAGE_KEYS.personasVersion) === PERSONA_SCHEMA_VERSION;
   const defaultIds = new Set(DEFAULT_PERSONAS.map(persona => persona.id));
+  const deletedDefaultIds = new Set(lsGet(STORAGE_KEYS.deletedDefaultPersonas, []));
   if (!Array.isArray(saved)) {
-    const defaults = DEFAULT_PERSONAS.map(normalizePersona);
+    const defaults = DEFAULT_PERSONAS
+      .filter(persona => !deletedDefaultIds.has(persona.id))
+      .map(normalizePersona);
     lsSet(STORAGE_KEYS.personas, defaults);
     localStorage.setItem(STORAGE_KEYS.personasVersion, PERSONA_SCHEMA_VERSION);
     return defaults;
   }
   const savedMap = new Map(saved.map(persona => [persona.id, persona]));
-  const defaults = DEFAULT_PERSONAS.map((persona, index) => normalizePersona({
-    ...persona,
-    ...(versionMatches ? (savedMap.get(persona.id) || {}) : {}),
-  }, index));
+  const defaults = DEFAULT_PERSONAS
+    .filter(persona => !deletedDefaultIds.has(persona.id))
+    .map((persona, index) => normalizePersona({
+      ...persona,
+      ...(versionMatches ? (savedMap.get(persona.id) || {}) : {}),
+    }, index));
   const custom = saved
     .filter(persona => !defaultIds.has(persona.id) && !['gongming', 'wenrou'].includes(persona.id))
     .map(normalizePersona);
@@ -3911,6 +4718,7 @@ const Icon = ({ name, size = 22, strokeWidth = 2, ...props }) => {
     users: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></>,
     hex: <path d="M12 2 20.5 7v10L12 22 3.5 17V7L12 2Z" />,
     check: <polyline points="20 6 9 17 4 12" />,
+    refresh: <><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8" /><polyline points="21 3 21 8 16 8" /><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16" /><polyline points="3 21 3 16 8 16" /></>,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -4272,7 +5080,7 @@ function AiPreGenerationCard({ novel, chapterCount, liveEnabled, onStartGenerati
   const isControlledDialog = typeof onDialogClose === 'function';
   const frontier = getAiGeneratedThrough(novel, chapterCount);
   const generatedDisplay = frontier >= 0 ? `第 ${frontier + 1} 章` : '尚未生成';
-  const job = novel.aiGenerationJob || {};
+  const job = getVisibleAiGenerationJob(novel, chapterCount);
   const isRunning = Boolean(job.running);
   const nextChapterDisplay = Math.min(frontier + 2, chapterCount);
   const defaultTarget = Math.min(chapterCount, Math.max(nextChapterDisplay, frontier + 6));
@@ -5056,8 +5864,18 @@ function ReaderScreen({ novel, chapters, chapterIndex, onBack, onChangeChapter, 
     onUpdateProgress(chapterIndex, el.scrollTop);
   }, [chapterIndex, onUpdateProgress]);
 
-  const activeAiState = aiState.chapterIndex === chapterIndex ? aiState : { status: 'idle', commentsByKey: {}, error: '' };
-  const aiCommentsByKey = activeAiState.commentsByKey || {};
+  const cachedAiForChapter = lsGet(buildAiCacheKey(novel.id, chapterIndex, settings.liveTriggerKey), null);
+  const aiCommentsByKey = getVisibleAiCommentsByKey({
+    aiState,
+    chapterIndex,
+    cachedAi: cachedAiForChapter,
+    fingerprint: settings.liveTriggerKey,
+  });
+  const activeAiState = aiState.chapterIndex === chapterIndex
+    ? aiState
+    : (Object.keys(aiCommentsByKey).length
+      ? { status: 'success', commentsByKey: aiCommentsByKey, error: '' }
+      : { status: 'idle', commentsByKey: {}, error: '' });
   const chapterCommentCount = Object.values(aiCommentsByKey).reduce((total, comments) => {
     return total + (Array.isArray(comments) ? comments.length : 0);
   }, 0);
@@ -5648,7 +6466,19 @@ function SettingsScreen({ settings, onNavigate }) {
   );
 }
 
-function AiFriendsScreen({ personas, onNavigate, onEditFriend, onAddFriend, toast }) {
+function AiFriendsScreen({ personas, onNavigate, onEditFriend, onAddFriend, onDeleteFriend, toast }) {
+  const [deletingPersona, setDeletingPersona] = useState(null);
+  const openFriend = (personaId) => onEditFriend(personaId);
+  const handleCardKeyDown = (event, personaId) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    openFriend(personaId);
+  };
+  const confirmDelete = () => {
+    if (!deletingPersona) return;
+    onDeleteFriend(deletingPersona.id);
+    setDeletingPersona(null);
+  };
   return (
     <div className="app-screen">
       <StatusBar />
@@ -5662,7 +6492,14 @@ function AiFriendsScreen({ personas, onNavigate, onEditFriend, onAddFriend, toas
         </div>
         <div className="section-label">我的AI书友</div>
         {personas.map(persona => (
-          <button className="friend-card" key={persona.id} onClick={() => onEditFriend(persona.id)}>
+          <div
+            className="friend-card"
+            key={persona.id}
+            role="button"
+            tabIndex="0"
+            onClick={() => openFriend(persona.id)}
+            onKeyDown={event => handleCardKeyDown(event, persona.id)}
+          >
             <PersonaAvatar persona={persona} />
             <div style={{ minWidth: 0 }}>
               <div className="friend-title">
@@ -5672,32 +6509,74 @@ function AiFriendsScreen({ personas, onNavigate, onEditFriend, onAddFriend, toas
               <div className="friend-desc">{persona.description || persona.stylePrompt}</div>
               <div className="friend-desc">出现频率：{frequencyLabel(persona.frequency)}</div>
             </div>
-            <Icon name="chevronRight" size={18} style={{ color: '#9f9588' }} />
-          </button>
+            <div className="friend-card-actions">
+              <Icon name="chevronRight" size={18} style={{ color: '#9f9588' }} />
+            </div>
+          </div>
         ))}
       </div>
       <BottomNav active="friends" onNavigate={onNavigate} />
       <Toast toast={toast} />
+      {deletingPersona && (
+        <div className="delete-dialog" onClick={() => setDeletingPersona(null)}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>删除AI书友？</h3>
+            <p>删除「{deletingPersona.name}」后，它不会再出现在书友列表或后续评论生成里。</p>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setDeletingPersona(null)}>取消</button>
+              <button className="btn btn-danger" onClick={confirmDelete}>删除</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultProfileId = '', onBack, onSave, onNavigate }) {
+function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultProfileId = '', onBack, onSave, onDelete, onNavigate, onGeneratePreview }) {
   const isCreate = mode === 'create';
   const avatarFileRef = useRef(null);
   const [draft, setDraft] = useState(() => isCreate ? createBlankPersona() : { ...persona });
   const [showAvatarSheet, setShowAvatarSheet] = useState(false);
   const [showRestoreConfirm, setShowRestoreConfirm] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showAdvancedPage, setShowAdvancedPage] = useState(false);
+  const [showMoreSheet, setShowMoreSheet] = useState(false);
+  const [previewSample, setPreviewSample] = useState(() => getNextPreviewSample('', 0));
+  const [previewText, setPreviewText] = useState('');
+  const [previewStatus, setPreviewStatus] = useState('idle');
   useEffect(() => {
     setDraft(isCreate ? createBlankPersona() : { ...persona });
+    setShowAdvancedPage(false);
+    setPreviewText('');
+    setPreviewStatus('idle');
   }, [isCreate, persona?.id]);
   if (!isCreate && !persona) return null;
 
   const updateDraft = (patch) => setDraft(prev => ({ ...prev, ...patch }));
-  const promptText = draft.stylePrompt || '';
+  const normalizedDraft = normalizeReadingPersona(draft);
+  const draftExamples = normalizePersonaExamples(draft.examples);
+  const advancedEnabled = Boolean(normalizedDraft.advancedPromptEnabled);
+  const advancedPromptText = normalizedDraft.advancedPromptText || '';
   const defaultPersona = !isCreate ? DEFAULT_PERSONAS.find(item => item.id === persona.id) : null;
-  const canSubmit = !isCreate || (draft.name.trim() && promptText.trim());
+  const canSubmit = (!isCreate || draft.name.trim()) && (!advancedEnabled || normalizeText(advancedPromptText));
   const defaultProfile = getProfileById(modelProfiles, defaultProfileId) || modelProfiles[0] || null;
+
+  const updateExample = (index, patch) => {
+    const next = (Array.isArray(draft.examples) ? draft.examples : []).map((item, i) =>
+      i === index ? { ...item, ...patch } : item
+    );
+    updateDraft({ examples: next });
+  };
+  const addExample = () => {
+    const list = Array.isArray(draft.examples) ? draft.examples : [];
+    if (list.length >= 6) return;
+    updateDraft({ examples: [...list, { trigger: '', reply: '' }] });
+  };
+  const removeExample = (index) => {
+    const list = Array.isArray(draft.examples) ? draft.examples : [];
+    updateDraft({ examples: list.filter((_, i) => i !== index) });
+  };
 
   const handleAvatarFile = (event) => {
     const file = event.target.files?.[0];
@@ -5711,21 +6590,121 @@ function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultP
 
   const restoreDefault = () => {
     if (defaultPersona) setDraft(normalizePersona(defaultPersona, DEFAULT_PERSONAS.findIndex(item => item.id === defaultPersona.id)));
+    setPreviewText('');
+    setPreviewStatus('idle');
     setShowRestoreConfirm(false);
+  };
+
+  const openAdvancedPage = () => {
+    if (!advancedEnabled || !normalizeText(advancedPromptText)) {
+      updateDraft({
+        advancedPromptEnabled: true,
+        advancedPromptText: compilePersonaPrompt(normalizeReadingPersona(draft)),
+      });
+    }
+    setShowAdvancedPage(true);
+  };
+
+  const regenerateAdvancedPrompt = () => {
+    if (!window.confirm('重新生成会覆盖当前高级 Prompt，是否继续？')) return;
+    updateDraft({ advancedPromptText: compilePersonaPrompt(normalizeReadingPersona({ ...draft, advancedPromptEnabled: false })) });
+  };
+
+  const exitAdvancedMode = () => {
+    if (!window.confirm('退出高级模式后，将重新使用结构化人格生成评论。是否继续？')) return;
+    updateDraft({ advancedPromptEnabled: false });
+    setShowAdvancedPage(false);
+  };
+
+  const changePreviewSample = () => {
+    const next = getNextPreviewSample(previewSample.direction, Date.now());
+    setPreviewSample(next);
+    setPreviewText('');
+    setPreviewStatus('idle');
+  };
+
+  const generatePreview = async () => {
+    const normalized = normalizeReadingPersona(draft);
+    setPreviewStatus('loading');
+    try {
+      if (!onGeneratePreview) throw new Error('preview-generator-missing');
+      const result = await onGeneratePreview(normalized, previewSample);
+      setPreviewText(normalizeCommentText(result));
+      setPreviewStatus('success');
+    } catch (error) {
+      setPreviewText(getErrorMessage(error));
+      setPreviewStatus('error');
+    }
   };
 
   const submit = () => {
     if (!canSubmit) return;
     const name = draft.name.trim() || '我的AI书友';
+    const normalized = normalizeReadingPersona(draft);
     onSave({
-      ...draft,
+      ...normalized,
       name,
       tag: draft.preset ? draft.tag : '自定义',
       description: draft.description || `${name} 的自定义阅读视角`,
-      stylePrompt: normalizeText(promptText) || '你是一个温和、直接、会抓住细节的读书伙伴。',
       enabled: true,
     }, isCreate ? 'create' : 'edit');
   };
+
+  const confirmDelete = () => {
+    if (isCreate || !draft.id || !onDelete) return;
+    onDelete(draft.id);
+    setShowDeleteConfirm(false);
+  };
+
+  if (showAdvancedPage) {
+    return (
+      <div className="app-screen">
+        <StatusBar />
+        <TopBar
+          title="高级微调"
+          left={<button onClick={() => setShowAdvancedPage(false)} aria-label="返回编辑AI书友"><Icon name="chevronLeft" size={25} strokeWidth={1.9} /></button>}
+          right={null}
+        />
+        <div className="scroll-area edit-body" data-advanced-prompt-page>
+          <div style={{ color: '#8d8276', fontSize: 13, marginBottom: 12 }}>
+            高级 Prompt 会完全接管这个书友的段评风格。这里的内容会随 AI 书友设置一起保存。
+          </div>
+          <div className="persona-panel">
+            <div className="field-label-row">
+              <span className="field-label">当前书友</span>
+              <span className={`mode-pill ${advancedEnabled ? 'active' : ''}`}>{advancedEnabled ? '已接管' : '未启用'}</span>
+            </div>
+            <div className="friend-title" style={{ marginTop: 4 }}>{draft.name || '我的AI书友'}</div>
+            <div className="friend-desc">从基础人格生成初稿后，可以在这里继续加细节、禁忌和语气要求。</div>
+          </div>
+          <label className="form-field">
+            <span className="field-label-row">
+              <span className="field-label">高级 Prompt</span>
+              <span className="field-counter">{advancedPromptText.length}/5000</span>
+            </span>
+            <textarea
+              className="prompt-box advanced-prompt-box"
+              maxLength="5000"
+              value={advancedPromptText}
+              onChange={event => updateDraft({ advancedPromptEnabled: true, advancedPromptText: event.target.value })}
+            />
+          </label>
+          <div className="inline-actions">
+            <button type="button" className="btn btn-outline" onClick={regenerateAdvancedPrompt}>从基础人格重生成</button>
+            <button type="button" className="btn btn-outline" onClick={exitAdvancedMode}>退出高级模式</button>
+          </div>
+          <div className="settings-actions" style={{ marginTop: 18 }}>
+            <button className="btn btn-outline" onClick={() => setShowAdvancedPage(false)}>返回</button>
+            <button className="btn btn-primary" onClick={() => setShowAdvancedPage(false)} disabled={!normalizeText(advancedPromptText)}>完成</button>
+          </div>
+        </div>
+        <BottomNav active="friends" onNavigate={(target) => {
+          if (target === 'friends') setShowAdvancedPage(false);
+          else onNavigate(target);
+        }} />
+      </div>
+    );
+  }
 
   return (
     <div className="app-screen">
@@ -5733,24 +6712,26 @@ function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultP
       <TopBar
         title={isCreate ? '创建 AI书友' : '编辑 AI书友'}
         left={<button onClick={onBack} aria-label="返回AI书友设置"><Icon name="chevronLeft" size={25} strokeWidth={1.9} /></button>}
-        right={null}
+        right={isCreate ? null : (
+          <button className="round-button" onClick={() => setShowMoreSheet(true)} aria-label="更多操作"><Icon name="more" size={22} /></button>
+        )}
       />
       <div className="scroll-area edit-body">
-        <div style={{ color: '#8d8276', fontSize: 13, marginBottom: 8 }}>
-          {isCreate ? '自定义你的阅读伙伴' : '预设书友也可修改'}
-        </div>
         <div className="edit-avatar-zone">
           <PersonaAvatar persona={draft} />
-          <button className="btn btn-outline" style={{ height: 34, padding: '0 14px' }} onClick={() => setShowAvatarSheet(true)}>更换头像</button>
+          <button type="button" className="avatar-edit-link" onClick={() => setShowAvatarSheet(true)}>更换头像</button>
           <input ref={avatarFileRef} type="file" accept="image/*" onChange={handleAvatarFile} style={{ display: 'none' }} />
         </div>
-        <label className="form-field">
-          <span className="field-label-row">
-            <span className="field-label">名称</span>
-            <span className="field-counter">{(draft.name || '').length}/12</span>
-          </span>
-          <input className="input" maxLength="12" value={draft.name || ''} onChange={event => updateDraft({ name: event.target.value })} placeholder={isCreate ? '给你的AI书友起个名字' : ''} />
-        </label>
+        <div className="name-headline-wrap">
+          <input
+            className="name-headline"
+            maxLength="12"
+            value={draft.name || ''}
+            onChange={event => updateDraft({ name: event.target.value })}
+            placeholder={isCreate ? '给你的AI书友起个名字' : ''}
+          />
+          <span className="name-headline-counter">{(draft.name || '').length}/12</span>
+        </div>
         <label className="form-field">
           <span className="field-label">出现频率</span>
           <div className="frequency">
@@ -5764,6 +6745,65 @@ function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultP
           </div>
         </label>
         <div className="frequency-hint">{frequencyHint(draft.frequency)}</div>
+        {advancedEnabled && (
+          <div className="frequency-hint section-frozen-hint">高级 Prompt 已接管生成，以下分区暂不生效，仅作为来源参考。</div>
+        )}
+        <div className={`persona-sections ${advancedEnabled ? 'is-frozen' : ''}`} data-persona-sections>
+          {PERSONA_SECTION_FIELDS.map(({ key, label, placeholder, hint, maxLength }) => {
+            const value = draft[key] || '';
+            return (
+              <label key={key} className="form-field section-field">
+                <span className="field-label-row">
+                  <span className="field-label">{label}</span>
+                  <span className="field-counter">{value.length}/{maxLength}</span>
+                </span>
+                <textarea
+                  className="prompt-box section-box"
+                  maxLength={String(maxLength)}
+                  value={value}
+                  disabled={advancedEnabled}
+                  onChange={event => updateDraft({ [key]: event.target.value })}
+                  placeholder={placeholder}
+                />
+                {hint && <span className="field-sub-hint">{hint}</span>}
+              </label>
+            );
+          })}
+        </div>
+        <div className={`persona-panel examples-card ${advancedEnabled ? 'is-frozen' : ''}`} data-persona-examples>
+          <div className="field-label-row">
+            <span className="field-label">案例（看到什么 → 回什么）</span>
+            <span className="field-counter">{draftExamples.length}/6</span>
+          </div>
+          <div className="field-sub-hint" style={{ marginTop: 2, marginBottom: 10 }}>给几个示范，模型会照着这种「触发→反应」的感觉走（不照抄内容）。</div>
+          {(Array.isArray(draft.examples) ? draft.examples : []).map((item, index) => (
+            <div key={index} className="example-row">
+              <div className="example-row-head">
+                <span className="example-index">案例 {index + 1}</span>
+                <button type="button" className="example-remove" disabled={advancedEnabled} onClick={() => removeExample(index)} aria-label={`删除案例 ${index + 1}`}>
+                  <Icon name="trash" size={15} />
+                </button>
+              </div>
+              <textarea
+                className="prompt-box example-box"
+                maxLength="200"
+                value={item?.trigger || ''}
+                disabled={advancedEnabled}
+                onChange={event => updateExample(index, { trigger: event.target.value })}
+                placeholder="看到这样的内容…（小说片段）"
+              />
+              <textarea
+                className="prompt-box example-box"
+                maxLength="120"
+                value={item?.reply || ''}
+                disabled={advancedEnabled}
+                onChange={event => updateExample(index, { reply: event.target.value })}
+                placeholder="就回这样的内容…（这个书友的短评）"
+              />
+            </div>
+          ))}
+          <button type="button" className="btn btn-outline full-width-btn" disabled={advancedEnabled || draftExamples.length >= 6} onClick={addExample}>+ 添加案例</button>
+        </div>
         <label className="form-field">
           <span className="field-label">使用接口</span>
           <select
@@ -5777,29 +6817,60 @@ function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultP
             ))}
           </select>
         </label>
-        <label className="form-field">
-          <span className="field-label-row">
-            <span className="field-label">性格 Prompt</span>
-            <button type="button" className="help-icon-btn" aria-label="Prompt 说明">i</button>
+        <button type="button" className="entry-row" data-advanced-prompt-panel onClick={openAdvancedPage}>
+          <span className="entry-row-label">{advancedEnabled ? '编辑高级微调' : '进入高级微调'}</span>
+          <span className="entry-row-tail">
+            <span className={`mode-pill ${advancedEnabled ? 'active' : ''}`}>{advancedEnabled ? '已接管' : '未启用'}</span>
+            <Icon name="chevronRight" size={18} strokeWidth={1.8} />
           </span>
-          <textarea
-            className="prompt-box"
-            maxLength="800"
-            value={promptText}
-            onChange={event => updateDraft({ stylePrompt: event.target.value })}
-            placeholder={isCreate ? '例如：你是一个温柔但敏锐的读书伙伴，擅长从细节里发现人物情绪，并用简短自然的语气陪我阅读。' : ''}
-          />
-          <span className="prompt-footer"><span className="field-counter">{promptText.length}/800</span></span>
-        </label>
-        <div className="settings-actions" style={{ marginTop: 28 }}>
-          <button className="btn btn-outline" onClick={isCreate ? onBack : () => setShowRestoreConfirm(true)}>{isCreate ? '取消' : '恢复默认'}</button>
-          <button className="btn btn-primary" onClick={submit} disabled={!canSubmit}>{isCreate ? '创建AI书友' : '保存修改'}</button>
+        </button>
+        <div className="persona-panel preview-card" data-ai-friend-preview>
+          <div className="field-label-row" style={{ marginBottom: 10 }}>
+            <span className="field-label">段评预览</span>
+            <span className="mode-pill">{previewSample.label}</span>
+          </div>
+          <div className="preview-sample">{previewSample.text}</div>
+          <div className="preview-reply">
+            <PersonaAvatar persona={draft} />
+            <div
+              className={`preview-output ${
+                previewStatus === 'loading' ? 'is-loading'
+                : previewStatus === 'error' ? 'is-error'
+                : previewText ? '' : 'is-placeholder'
+              }`}
+            >
+              {previewText || (previewStatus === 'loading' ? '正在生成预览...' : '点击「生成预览」试听这个书友。')}
+            </div>
+          </div>
+          {previewStatus === 'error' && <div className="frequency-hint preview-hint">预览需要可用 AI 接口和 API Key。</div>}
+          <div className="inline-actions">
+            <button type="button" className="btn btn-outline" onClick={changePreviewSample}>换一个示例</button>
+            <button type="button" className="btn btn-primary" onClick={generatePreview} disabled={previewStatus === 'loading'}>{previewStatus === 'loading' ? '生成中' : '生成预览'}</button>
+          </div>
         </div>
+        <button className="btn btn-primary full-width-btn" style={{ marginTop: 28 }} onClick={submit} disabled={!canSubmit}>{isCreate ? '创建AI书友' : '保存修改'}</button>
       </div>
       <BottomNav active="friends" onNavigate={(target) => {
         if (target === 'friends') onBack();
         else onNavigate(target);
       }} />
+
+      {showMoreSheet && (
+        <>
+          <div className="bottom-sheet-backdrop" onClick={() => setShowMoreSheet(false)} />
+          <div className="sheet-panel friend-menu-sheet">
+            {defaultPersona && (
+              <button className="action-row" onClick={() => { setShowMoreSheet(false); setShowRestoreConfirm(true); }}>
+                <Icon name="refresh" size={20} />恢复默认人格
+              </button>
+            )}
+            <button className="action-row danger" onClick={() => { setShowMoreSheet(false); setShowDeleteConfirm(true); }}>
+              <Icon name="trash" size={20} />删除AI书友
+            </button>
+            <button className="action-cancel" onClick={() => setShowMoreSheet(false)}>取消</button>
+          </div>
+        </>
+      )}
 
       {showAvatarSheet && (
         <>
@@ -5821,6 +6892,19 @@ function FriendEditScreen({ persona, mode = 'edit', modelProfiles = [], defaultP
             <div className="dialog-actions">
               <button className="btn btn-outline" onClick={() => setShowRestoreConfirm(false)}>取消</button>
               <button className="btn btn-primary" onClick={restoreDefault}>确认恢复</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDeleteConfirm && (
+        <div className="delete-dialog" onClick={() => setShowDeleteConfirm(false)}>
+          <div className="dialog-card" onClick={event => event.stopPropagation()}>
+            <h3>删除AI书友？</h3>
+            <p>删除「{draft.name || '这个AI书友'}」后，它不会再出现在书友列表或后续评论生成里。</p>
+            <div className="dialog-actions">
+              <button className="btn btn-outline" onClick={() => setShowDeleteConfirm(false)}>取消</button>
+              <button className="btn btn-danger" onClick={confirmDelete}>删除</button>
             </div>
           </div>
         </div>
@@ -5993,6 +7077,29 @@ function App() {
   }, [currentNovelId, liveTriggerKey, currentBookAiFingerprint]);
 
   useEffect(() => {
+    if (!currentNovelId || !currentChapters.length || !currentBookAiFingerprint) return;
+    const cachedCompletedChapters = getCachedAiCompletedChapters(currentNovelId, currentChapters, currentBookAiFingerprint);
+    setNovels(prev => prev.map(novel => {
+      if (novel.id !== currentNovelId) return novel;
+      const reconciled = getReconciledAiGenerationProgress(
+        novel,
+        currentChapters.length,
+        cachedCompletedChapters,
+      );
+      const sameThrough = novel.aiGeneratedThrough === reconciled.aiGeneratedThrough;
+      const sameCompleted = JSON.stringify(novel.aiCompletedChapters || []) === JSON.stringify(reconciled.aiCompletedChapters);
+      const sameJob = JSON.stringify(novel.aiGenerationJob || {}) === JSON.stringify(reconciled.aiGenerationJob || {});
+      if (sameThrough && sameCompleted && sameJob) return novel;
+      return {
+        ...novel,
+        aiGeneratedThrough: reconciled.aiGeneratedThrough,
+        aiCompletedChapters: reconciled.aiCompletedChapters,
+        aiGenerationJob: reconciled.aiGenerationJob,
+      };
+    }));
+  }, [currentBookAiFingerprint, currentChapters, currentNovelId]);
+
+  useEffect(() => {
     const resolvedDefaultId = getDefaultProfileId(modelProfiles, liveSettings.profileId);
     if (resolvedDefaultId && resolvedDefaultId !== liveSettings.profileId) {
       setLiveSettings(prev => ({ ...prev, profileId: resolvedDefaultId }));
@@ -6124,6 +7231,7 @@ function App() {
   }, [clearNovelAiCache, currentNovelId]);
 
   const handleSelectNovel = (id) => {
+    setNovels(prev => prev.map(novel => novel.id === id ? markNovelReadStarted(novel) : novel));
     setCurrentNovelId(id);
     const novel = novels.find(item => item.id === id);
     setCurrentChapter(novel?.lastReadChapter || 0);
@@ -6133,6 +7241,7 @@ function App() {
   const handleContinueNovel = (id = currentNovelId) => {
     const novel = novels.find(item => item.id === id);
     if (!novel) return;
+    setNovels(prev => prev.map(item => item.id === id ? markNovelReadStarted(item) : item));
     setCurrentNovelId(id);
     setCurrentChapter(novel.lastReadChapter || 0);
     setScreen('reader');
@@ -6143,6 +7252,9 @@ function App() {
   };
 
   const handleSelectChapter = (index) => {
+    if (currentNovelId) {
+      setNovels(prev => prev.map(novel => novel.id === currentNovelId ? markNovelReadStarted(novel) : novel));
+    }
     setCurrentChapter(index);
     setScreen('reader');
   };
@@ -6155,7 +7267,7 @@ function App() {
     setNovels(prev => prev.map(novel => (
       novel.id === currentNovelId
         ? {
-            ...novel,
+            ...markNovelReadStarted(novel),
             ...updateChapterScrollProgress(novel, chapterIndex, scrollPos),
           }
         : novel
@@ -6186,6 +7298,7 @@ function App() {
         ...novel,
         allowedPersonaIds: normalizedIds,
         aiGeneratedThrough: -1,
+        aiCompletedChapters: [],
         aiGenerationJob: {},
       };
       if (!hasOverride) delete next.allowedPersonaIds;
@@ -6209,14 +7322,19 @@ function App() {
     if (!currentNovelId) return;
     setNovels(prev => prev.map(novel => {
       if (novel.id !== currentNovelId) return novel;
-      const nextThrough = Math.max(getAiGeneratedThrough(novel, currentChapters.length), chapterIndex);
+      const progress = getNextAiGenerationProgress(novel, currentChapters.length, chapterIndex);
+      const visibleJob = getVisibleAiGenerationJob({
+        ...novel,
+        aiGeneratedThrough: progress.aiGeneratedThrough,
+      }, currentChapters.length);
       return {
         ...novel,
-        aiGeneratedThrough: nextThrough,
+        aiGeneratedThrough: progress.aiGeneratedThrough,
+        aiCompletedChapters: progress.aiCompletedChapters,
         aiGenerationJob: {
-          ...(novel.aiGenerationJob || {}),
+          ...visibleJob,
           ...jobPatch,
-          lastCompletedChapter: nextThrough,
+          lastCompletedChapter: progress.aiGeneratedThrough,
           updatedAt: Date.now(),
         },
       };
@@ -7288,7 +8406,7 @@ function App() {
       let maxStarted = frontier;
       let firstError = null;
 
-      const results = await mapWithConcurrency(queue, AI_CHAPTER_PREBUILD_CONCURRENCY, async (index) => {
+      const results = await mapWithConcurrency(queue, AI_MANUAL_CHAPTER_GENERATION_CONCURRENCY, async (index) => {
         if (firstError) return { index, ok: false, skipped: true };
         if (index > maxStarted) {
           maxStarted = index;
@@ -7364,8 +8482,9 @@ function App() {
     if (!['chapters', 'reader'].includes(screen) || !currentNovelId || !currentChapters.length || !liveSettings.enabled || !currentBookPersonas.length) return undefined;
     let cancelled = false;
 
-    const prebuildWindow = planPrebuildWindow({
+    const prebuildWindow = planAiPrebuildWindow({
       currentChapterIndex: currentChapter,
+      generatedThrough: getAiGeneratedThrough(currentNovel || {}, currentChapters.length),
       chapterCount: currentChapters.length,
       warmCount: 5,
     });
@@ -7443,6 +8562,34 @@ const handleTestConnection = useCallback(async () => {
     setScreen('friendEdit');
   };
 
+  const handleDeleteFriend = useCallback((personaId) => {
+    const target = personas.find(persona => persona.id === personaId);
+    if (!target) return;
+    const defaultIds = new Set(DEFAULT_PERSONAS.map(persona => persona.id));
+    if (defaultIds.has(personaId)) {
+      const deletedDefaults = new Set(lsGet(STORAGE_KEYS.deletedDefaultPersonas, []));
+      deletedDefaults.add(personaId);
+      lsSet(STORAGE_KEYS.deletedDefaultPersonas, Array.from(deletedDefaults));
+    }
+    setPersonas(prev => prev.filter(persona => persona.id !== personaId));
+    setNovels(prev => prev.map(novel => {
+      if (!Array.isArray(novel.allowedPersonaIds)) return novel;
+      const nextIds = novel.allowedPersonaIds.filter(id => id !== personaId);
+      if (!nextIds.length) {
+        const next = { ...novel };
+        delete next.allowedPersonaIds;
+        return next;
+      }
+      return {
+        ...novel,
+        allowedPersonaIds: nextIds,
+      };
+    }));
+    if (editingPersonaId === personaId) setEditingPersonaId(null);
+    setScreen('friends');
+    showToast({ title: 'AI书友已删除', subtitle: `「${target.name}」不会再参与后续评论生成` });
+  }, [editingPersonaId, personas, showToast]);
+
   const handleSaveFriend = (draft, mode = 'edit') => {
     if (mode === 'create') {
       setPersonas(prev => [...prev, normalizePersona(draft, prev.length)]);
@@ -7453,6 +8600,33 @@ const handleTestConnection = useCallback(async () => {
     }
     setScreen('friends');
   };
+
+  const handleGenerateFriendPreview = useCallback(async (draftPersona, sample) => {
+    const normalizedPersona = normalizePersona(draftPersona, 0);
+    const explicitProfileId = String(normalizedPersona.modelProfileId || '').trim();
+    const profile = explicitProfileId
+      ? getProfileById(modelProfiles, explicitProfileId)
+      : getProfileById(modelProfiles, defaultProfileId);
+    const apiKey = apiKeysByProfileId[profile?.id] || (profile?.id === currentProfile?.id ? currentApiKey : '');
+    if (DEMO_MODE || !profile?.baseUrl || !profile?.model) {
+      const label = profile ? getModelProfileLabel(profile) : (explicitProfileId ? `未知接口 / ${explicitProfileId}` : '默认接口');
+      throw new Error(`${explicitProfileId ? '这个书友选择的接口' : '默认接口'}：${label} 缺少 Base URL 或模型名。`);
+    }
+    const body = {
+      model: profile.model,
+      temperature: Math.min(0.9, Math.max(0.35, Number(profile.temperature) || 0.7)),
+      max_tokens: 180,
+      messages: [
+        { role: 'system', content: 'Write concise Simplified Chinese only. Do not use Markdown.' },
+        { role: 'user', content: buildPersonaPreviewPrompt({ persona: normalizedPersona, sample }) },
+      ],
+    };
+    try {
+      return normalizeCommentText(await aiClient.generatePersonaPreview(liveSettings.proxyUrl, profile, apiKey, body));
+    } catch (error) {
+      throw new Error(`预览接口：${getModelProfileLabel(profile)}。上游错误：${getErrorMessage(error)}`);
+    }
+  }, [apiKeysByProfileId, currentApiKey, currentProfile, defaultProfileId, liveSettings.proxyUrl, modelProfiles]);
 
   const settingsObj = {
     fontSize,
@@ -7552,6 +8726,7 @@ const handleTestConnection = useCallback(async () => {
           onNavigate={navigateTab}
           onEditFriend={handleEditFriend}
           onAddFriend={handleAddFriend}
+          onDeleteFriend={handleDeleteFriend}
           toast={appToast}
         />
       )}
@@ -7562,7 +8737,9 @@ const handleTestConnection = useCallback(async () => {
           defaultProfileId={defaultProfileId}
           onBack={() => setScreen('friends')}
           onSave={handleSaveFriend}
+          onDelete={handleDeleteFriend}
           onNavigate={navigateTab}
+          onGeneratePreview={handleGenerateFriendPreview}
         />
       )}
       {screen === 'friendCreate' && (
@@ -7573,6 +8750,7 @@ const handleTestConnection = useCallback(async () => {
           onBack={() => setScreen('friends')}
           onSave={handleSaveFriend}
           onNavigate={navigateTab}
+          onGeneratePreview={handleGenerateFriendPreview}
         />
       )}
     </>

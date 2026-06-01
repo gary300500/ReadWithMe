@@ -22,3 +22,7 @@ build_doc.py
 
 # Internal implementation plans
 docs/superpowers/plans/
+
+# Local test/screenshot artifacts
+output/
+tests/_ui-screenshot.js
