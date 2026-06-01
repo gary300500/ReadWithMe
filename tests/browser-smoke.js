@@ -145,12 +145,12 @@ const { chromium } = require('playwright');
   const coldStartState = await page.evaluate(() => JSON.parse(localStorage.getItem('rwm_ai_prebuild_state') || '{}'));
   const personaScopedPrompts = chatPrompts.filter(prompt => prompt.includes('Available personas:'));
   if (!personaScopedPrompts.length) throw new Error('AI prompts should include persona scope');
-  const leakedPrompt = personaScopedPrompts.find(prompt => prompt.includes('tucao='));
+  const leakedPrompt = personaScopedPrompts.find(prompt => prompt.includes('id=tucao'));
   if (leakedPrompt) {
     throw new Error(`book persona whitelist leaked into prompt: ${leakedPrompt.slice(0, 500)}`);
   }
   const personaScopedJoined = personaScopedPrompts.join(' | ');
-  if (!personaScopedJoined.includes('fenxi=') || !personaScopedJoined.includes('kaozheng=')) {
+  if (!personaScopedJoined.includes('id=fenxi') || !personaScopedJoined.includes('id=kaozheng')) {
     throw new Error(`book personas missing from prompts: ${personaScopedJoined.slice(0, 500)}`);
   }
   await page.locator('[data-book-actions-open]').click();
