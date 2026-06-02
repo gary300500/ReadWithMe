@@ -83,6 +83,8 @@ function loadAppContract() {
     extractConstBlock(appSource, 'STORAGE_KEYS'),
     extractConstAssignment(appSource, 'PERSONA_SECTION_FIELDS'),
     extractConstAssignment(appSource, 'PERSONA_SECTION_DEFAULTS'),
+    // PERSONA_SAFETY_BLOCK 定义在 normalizeReadingPersona 与 compilePersonaPrompt 之间，
+    // 已随 normalizeReadingPersona 的函数块一并提取，无需单独再取（否则重复声明）。
     extractConstAssignment(appSource, 'PREVIEW_SAMPLE_POOL'),
     'const FIRST_CHAPTER_BUNDLE_MAX_PARAGRAPHS = 160;',
     'const CHAPTER_COMMENT_CHUNK_SIZE = 8;',
@@ -301,6 +303,11 @@ assert.deepEqual(
   {
     id: 'custom',
     name: '讨论君',
+    tag: '',
+    description: '',
+    preset: false,
+    enabled: false,
+    modelProfileId: '',
     identity: '',
     attentionFocus: '',
     voice: '',
@@ -612,16 +619,28 @@ assert.equal(compiledPrompt.includes('[Output Contract]'), true);
 assert.equal(compiledPrompt.includes('flag 立得真稳'), true);
 assert.equal(compiledPrompt.includes('吐槽姬'), true);
 assert.equal(compiledPrompt.includes('只输出 1 条'), true);
+// 安全块始终出现在编译结果里
+assert.equal(compiledPrompt.includes('[Safety]'), true);
+assert.equal(compiledPrompt.includes('不可信的小说内容'), true);
 // 没有案例时不应出现 Examples 段
 assert.equal(appContract.compilePersonaPrompt({ ...structuredPersona, examples: [] }).includes('[Examples]'), false);
 
+// 高级微调接管整段，但缺少安全块时会被强制追加，用户改不掉
+const advancedTakeover = appContract.getActivePersonaPrompt({
+  ...structuredPersona,
+  advancedPromptEnabled: true,
+  advancedPromptText: '高级 Prompt 已接管',
+});
+assert.equal(advancedTakeover.startsWith('高级 Prompt 已接管'), true);
+assert.equal(advancedTakeover.includes('[Safety]'), true);
+// 已自带安全块的高级 prompt 不重复追加
 assert.equal(
   appContract.getActivePersonaPrompt({
     ...structuredPersona,
     advancedPromptEnabled: true,
-    advancedPromptText: '高级 Prompt 已接管',
+    advancedPromptText: '高级接管\n[Safety]\n我自己写的安全规则',
   }),
-  '高级 Prompt 已接管'
+  '高级接管\n[Safety]\n我自己写的安全规则'
 );
 assert.equal(
   appContract.getActivePersonaPrompt({
